@@ -20,5 +20,11 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "jade": "^1.11.0",
+    "morgan": "^1.7.0",
+    "pug": "^2.0.0-beta9"
   }
 }
