@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Route for everything else.
 app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!' })
+  res.render('login', { title: 'Hey', message: 'Hello there!' })
 })
 // Fire it up!
 app.listen(3000);
