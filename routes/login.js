@@ -1,43 +1,43 @@
-var express = require('express');
-var router = express.Router();
+const loginDB = require('../entity/loginDB');
 
-router.get('/', function(req, res, next) {
-  if(req.session.email && req.session.password)
-    //res.redirect("/");
-    //redirigir a los tipos de usuario
-  else res.render('login');
-
-});
-
-router.post('/', function(req, res, next) {
-  console.log(req.session.userid);
-  console.log(req.body.user);
-  console.log(req.body.password);
-  if(req.body.user && req.body.password){
-    console.log("ok");
-
-    var sql = "SELECT id_usuario FROM Usuario WHERE nombre=? AND pasw=?";
-    var wheres = [req.body.user, req.body.password];
-    var query = req.app.mysql.format(sql, wheres);
-
-    req.app.mysql.query(query, function(err, rows, fields){
-      if(rows.length == 1){
-        res.append("user_id", rows[0].id);
-        req.session.user_id = rows[0].id;
-        //res.redirect("/");
-        //redirigir a los tipos de usuario
-      }else{
-        res.status(406).render("login");
-      }
-    })
-
-    req.session.user = req.body.user;
-    req.session.password = req.body.password;
-
-  }else{
-    //res.send("Error: email or password not found");
-    res.render("login");
+class Sesion {
+  
+  constructor() {
+    return (req, res, next) => {
+      if(req.method == 'POST' && req.path == '/api/login')
+        return Sesion.login(req, res);
+      if(req.method == 'DELETE' && req.path == '/api/logout')
+        return Sesion.logout(req, res);
+      if(req.session.user || req.path == '/view/login') return next();
+      if(req.path == '/') return res.render('login');
+      return res.sendStatus(401);
+    }
   }
-});
+  
+  static login(req, res){
+    if(req.session.user) return res.sendStatus(412); //precondition failed
+    loginDB.get(req.mysql, req.body.username,req.body.password, (value) => {
+      if(!value) return res.sendStatus(503) //service unavaliable
+      if(value.length == 1){
+        req.session.user = {
+          id : v[0].id,
+          tipo : v[0].id,
+          nombre : v[0].nombre,
+          apellidos : v[0].apellidos,
+          correo : v[0].correo,
+          telefono : v[0].telefono
+        }
+        res.send(req.session.user);
+        res.render('admin',{title: "Gelish",message:"Bienvenido"});
+      }else res.sendStatus(404); //not found
+    });
+  }
 
-module.exports = router;
+  static logout(req, res){
+    if(!req.session.user) return res.sendStatus(412) //precondition failed
+    req.session.user = undefined;
+    res.sendStatus(200);
+  }
+}
+
+module.exports = Sesion;
