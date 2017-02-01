@@ -42,17 +42,18 @@
                         <h3 class="panel-title">Inicio de sesión</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form">
+                      <!-- metodo para pasar nformacion a routes/ login.js -->
+                        <form id="form_login" role="form" action="/login" method="post" enctype="application/json">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Correo electrónico o usuario" name="user" type="input" autofocus>
+                                    <input class="form-control" placeholder="Correo electrónico o usuario" id="input_user" name="user" type="input" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
+                                    <input class="form-control" placeholder="Contraseña" id="input_password" type="password" name="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button type="button" class="btn btn-primary btn-lg btn-block">Iniciar sesión</button>
-                                
+                                <button type="submit" id="button_login" class="btn btn-primary btn-lg btn-block">Iniciar sesión</button>
+
                             </fieldset>
                         </form>
                     </div>
@@ -65,7 +66,7 @@
     <script src="js/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="js/metisMenu/metisMenu.min.js"></script>

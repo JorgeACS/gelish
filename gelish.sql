@@ -15,5 +15,5 @@ CREATE TABLE Usuario (
   cel VARCHAR(50) NOT NULL,
   PRIMARY KEY(id)
 );
-
-
+INSERT INTO Usuario(user_name,pass, tipo_usuario,nombre,apellido_paterno,apellido_materno,correo,id_sucursal,cel) 
+VALUES("ErickLF","123",0,"Erick","López","Fimbres","erick@hoohaa.com",-1,"662203040");
