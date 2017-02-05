@@ -1,19 +1,19 @@
 const loginDB = require('../entity/loginDB');
 
 class Sesion {
-  
+
   constructor() {
     return (req, res, next) => {
-      if(req.method == 'POST' && req.path == '/api/login')
+      if(req.method == 'POST' && req.path == '/login')
         return Sesion.login(req, res);
-      if(req.method == 'DELETE' && req.path == '/api/logout')
+      if(req.method == 'DELETE' && req.path == '/logout')
         return Sesion.logout(req, res);
       if(req.session.user || req.path == '/view/login') return next();
       if(req.path == '/') return res.render('login');
       return res.sendStatus(401);
     }
   }
-  
+
   static login(req, res){
     if(req.session.user) return res.sendStatus(412); //precondition failed
     loginDB.get(req.mysql, req.body.username,req.body.password, (value) => {

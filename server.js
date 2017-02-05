@@ -19,6 +19,7 @@ var agregarAdmin = require('./routes/agregarAdmin');
 var editarAdmin = require('./routes/editarAdmin');
 var eliminarAdmin = require('./routes/eliminarAdmin');
 var adminSuc = require('./routes/adminSuc');
+var Sesion = require('./routes/login');
 var login = require('./routes/login');
 var jaderouter = require('./routes/jaderouter');
 
@@ -26,6 +27,8 @@ var app = express();
 
 app.use(bodyParser.json());//leer parametros de peticion JSON
 app.use(bodyParser.urlencoded({ extended: false }));//leer de la url los parametros que se envian
+
+//var Sesion = new Sesion();
 
 app.use(session({
   secret:"NodeG",
@@ -46,6 +49,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 // Serve static files css javascript imagenes
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(new Sesion());
 
 app.use('/admin', admin);
 app.use('/agregarAdmin', agregarAdmin);
