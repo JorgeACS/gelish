@@ -1,4 +1,4 @@
-class loginDB{
+class LoginDB{
     static get(pool, username,password,func){
       pool.getConnection(function (err, db) {
         if(err) {
@@ -17,3 +17,5 @@ class loginDB{
       });
     }
 }
+
+module.exports = LoginDB;

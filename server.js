@@ -8,7 +8,7 @@ var session = require("express-session");
 var pool = mysql.createPool({
   connectionLimit: 100,
   host: "localhost",
-  user: "admin",
+  user: "root",
   password: '',
   database: "GELISH"
 });

@@ -16,19 +16,22 @@ class Sesion {
 
   static login(req, res){
     if(req.session.user) return res.sendStatus(412); //precondition failed
+    console.log(req.body.username)
+    console.log(req.body.password)
     loginDB.get(req.mysql, req.body.username,req.body.password, (value) => {
       if(!value) return res.sendStatus(503) //service unavaliable
       if(value.length == 1){
         req.session.user = {
-          id : v[0].id,
-          tipo : v[0].id,
-          nombre : v[0].nombre,
-          apellidos : v[0].apellidos,
-          correo : v[0].correo,
-          telefono : v[0].telefono
+          id : value[0].id,
+          tipo : value[0].id,
+          nombre : value[0].nombre,
+          apellidos : value[0].apellidos,
+          correo : value[0].correo,
+          telefono : value[0].telefono
         }
+        //res.render('admin',{title: "Gelish",message:"Bienvenido"});
         res.send(req.session.user);
-        res.render('admin',{title: "Gelish",message:"Bienvenido"});
+       
       }else res.sendStatus(404); //not found
     });
   }
