@@ -14,6 +14,7 @@ var pool = mysql.createPool({
 });
 
 var admin = require('./routes/admin');
+var agregarSucursal = require('./routes/agregarSucursal');
 var recepcionista = require('./routes/recepcionista');
 var agregarAdmin = require('./routes/agregarAdmin');
 var editarAdmin = require('./routes/editarAdmin');
@@ -54,6 +55,7 @@ app.use(new Sesion());
 
 app.use('/admin', admin);
 app.use('/agregarAdmin', agregarAdmin);
+app.use('/agregarSucursal', agregarSucursal);
 app.use('/editarAdmin', editarAdmin);
 app.use('/eliminarAdmin', eliminarAdmin);
 app.use('/recepcionista', recepcionista);
