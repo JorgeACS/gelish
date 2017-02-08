@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrador</title><!-- Nombre pestaña -->
+    <title>Administrador Sucursal</title><!-- Nombre pestaña -->
 
     <!-- Bootstrap Core CSS -->
    <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="admin">Gelish</a>
+                <a class="navbar-brand" href="index.html">Gelish</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -52,7 +52,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="login"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -65,36 +65,52 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="admin"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reportes <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Servicios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html"> Graficas </a>
+                                    <a href="agregarServicio">Agregar</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Reportes escritos</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Administrador de sucursal<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="agregarAdmin">Agregar</a>
+                                    <a href="editarServicio">Editar</a>
                                 </li>
                                 <li>
-                                    <a href="editarAdmin">Editar</a>
-                                </li>
-                                <li>
-                                    <a href="eliminarAdmin">Eliminar</a>
+                                    <a href="eliminarServicio">Eliminar</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Sucursales<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Productos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="agregarProducto">Agregar</a>
+                                </li>
+                                <li>
+                                    <a href="editarProducto">Editar</a>
+                                </li>
+                                <li>
+                                    <a href="eliminarProducto">Eliminar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Tecnicas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="agregarTecnica">Agregar</a>
+                                </li>
+                                <li>
+                                    <a href="editarTecnica">Editar</a>
+                                </li>
+                                <li>
+                                    <a href="eliminarTecnica">Eliminar</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Recepcionistas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#">Agregar</a>
@@ -120,9 +136,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Administrador</h1>
+                        <h1 class="page-header">Agregar Producto</h1>
                     </div>
-
+                    <!-- /.col-lg-12 -->
                     <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-9">
@@ -130,34 +146,20 @@
 
                                         <div class="form-group">
                                             <label>Nombre</label>
-                                            <input class="form-control" placeholder="Nombre">
+                                            <input class="form-control" placeholder="Escribir nombre...">
                                         </div>
                                         <div class="form-group">
-                                            <label>Apellido paterno</label>
-                                            <input class="form-control" placeholder="Primer apellido">
+                                            <label>Descripcion</label>
+                                            <input class="form-control" placeholder="Escribir descripcion...">
                                         </div>
                                         <div class="form-group">
-                                            <label>Apellido Materno</label>
-                                            <input class="form-control" placeholder="Segundo apellido">
+                                            <label>Precio</label>
+                                            <input class="form-control" placeholder="Insertar precio...">
                                         </div>
                                         <div class="form-group">
-                                            <label>Nombre de usuario</label>
-                                            <input class="form-control" placeholder="Usuario">
+                                            <label>Cantidad Inicial</label>
+                                            <input class="form-control" placeholder="Insertar cantidad...">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Contrseña</label>
-                                            <input class="form-control" placeholder="Contraseña">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Confirmar contrseña</label>
-                                            <input class="form-control" placeholder="Repetir contraseña">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label>Sucursal</label>
-                                            <input class="form-control" placeholder="Nombre de la sucursal">
-                                        </div>
-
                                         <button type="submit" class="btn btn-default">Agregar</button>
                                         <button type="reset" class="btn btn-default">Limpiar</button>
                                     </form>
@@ -181,7 +183,6 @@
                             <!-- /.row (nested) -->
                         </div>
                         <!-- /.panel-body -->
-                    <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
             </div>
