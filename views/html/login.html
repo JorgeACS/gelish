@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="uiLogin" ng-controller="myCtrl" >
 
 <head>
 
@@ -22,18 +22,12 @@
 
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="js/uiLogin.js"> </script>
 
 </head>
 
 <body>
-
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -52,7 +46,7 @@
                                     <input class="form-control" placeholder="Contraseña" id="input_password" type="password" name="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <button type="submit" id="button_login" class="btn btn-primary btn-lg btn-block">Iniciar sesión</button>
+                                <button type="submit" id="button_login" class="btn btn-primary btn-lg btn-block" ng-click="InicioSesion()">Iniciar sesión</button>
 
                             </fieldset>
                         </form>

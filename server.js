@@ -68,10 +68,11 @@ app.use('/\*.jade', jaderouter);
 app.get('/', function (req, res) {
   res.render('login', { title: 'Hey', message: 'Hello there!' })
 });
+
 /*app.get('/:nombre', function (req, res) {
   res.render("admin")
 });*/
 
-// Fire it up!
+
 app.listen(3000);
 console.log('Listening on port 3000');

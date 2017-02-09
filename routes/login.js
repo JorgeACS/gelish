@@ -23,7 +23,7 @@ class Sesion {
       if(value.length == 1){
         req.session.user = {
           id : value[0].id,
-          tipo : value[0].id,
+          tipo : value[0].tipo,
           nombre : value[0].nombre,
           apellidos : value[0].apellidos,
           correo : value[0].correo,
@@ -31,7 +31,7 @@ class Sesion {
         }
         //res.render('admin',{title: "Gelish",message:"Bienvenido"});
         res.send(req.session.user);
-       
+        
       }else res.sendStatus(404); //not found
     });
   }
