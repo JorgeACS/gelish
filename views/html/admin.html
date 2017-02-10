@@ -21,6 +21,8 @@
     <!-- Custom Fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -28,6 +30,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="js/logout.js"> </script>
+    <base href="http://localhost:3000/">
 </head>
 
 <body>
@@ -52,7 +59,8 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="login"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
+                        <li> <button type="button" id="button_login" class="btn btn-primary btn-lg btn-block" ng-click="cerrarSesion()">
+                        Salir
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
