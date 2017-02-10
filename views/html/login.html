@@ -37,13 +37,13 @@
                     </div>
                     <div class="panel-body">
                       <!-- metodo para pasar nformacion a routes/ login.js -->
-                        <form id="form_login" role="form" action="/login" method="post" enctype="application/json">
+                        <form id="form_login" role="form" >
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Correo electrónico o usuario" id="input_user" name="username" type="input" autofocus>
+                                    <input ng-model="username" class="form-control" placeholder="Correo electrónico o usuario" id="input_user" name="username" type="input" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Contraseña" id="input_password" type="password" name="password" value="">
+                                    <input ng-model="password" class="form-control" placeholder="Contraseña" id="input_password" type="password" name="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <button type="submit" id="button_login" class="btn btn-primary btn-lg btn-block" ng-click="InicioSesion()">Iniciar sesión</button>
