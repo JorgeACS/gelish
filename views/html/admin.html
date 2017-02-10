@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="logout">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,10 +59,10 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li> <button type="button" id="button_login" class="btn btn-primary btn-lg btn-block" ng-click="cerrarSesion()">
-                        Salir
-                        </li>
+                      <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
+                      </li>
                     </ul>
+                    <ng-view></ng-view> <!--Lo que va arriba de estas etiquetas es parte del .when del logout-->
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->

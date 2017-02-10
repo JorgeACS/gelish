@@ -2,9 +2,8 @@ var app = angular.module('uiLogin', ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 });
-app.controller('myCtrl', function($scope, $http, $location,$window) {
+app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
     $scope.InicioSesion = function() {
-      console.log("click");
       user={
         username: $scope.username,
         password:$scope.password
