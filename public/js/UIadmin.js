@@ -11,7 +11,25 @@ app.config(function($routeProvider, $locationProvider) {
         });
       }
     }).when("/agregarAdmin", {
-      templateUrl: "agregarAdmin"
-    });
+      templateUrl: 'agregarAdmin',
+      controller:function($scope,$location,$window, $http) {
+        $scope.agregarAdmin = function() {
+          user={
+            sucursal:$scope.sucursal,
+            username: $scope.username,
+            password:$scope.password,
+            nombre:$scope.nombre,
+            apellido:$scope.apellido,
+            correo:$scope.correo,
+            telefono:$scope.tel,
+            tipo:2,
+          };
+          $http.post('/usuario',user).then((res) => {
+            console.log(":)");
+          })
+
+        }
+      }
+    })
   $locationProvider.html5Mode(true);
 });
