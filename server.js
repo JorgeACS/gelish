@@ -23,6 +23,8 @@ var adminSuc = require('./routes/adminSuc');
 var Sesion = require('./routes/login');
 var login = require('./routes/login');
 var jaderouter = require('./routes/jaderouter');
+var usuario = require('./routes/usuario');
+
 
 var app = express();
 
@@ -61,6 +63,7 @@ app.use('/eliminarAdmin', eliminarAdmin);
 app.use('/recepcionista', recepcionista);
 app.use('/adminSuc', adminSuc);
 app.use('/login', login);
+app.use('/usuario', usuario);
 
 app.use('/\*.jade', jaderouter);
 

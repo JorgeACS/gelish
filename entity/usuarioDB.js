@@ -16,6 +16,7 @@ class UsuarioDB{
             return func(null,err);
           }
           if(data.tecnica && data.usuario.tipo == 3){
+            data.tecnica.usuario_id = usuario.insertId;
             db.query("INSERT INTO Tecnica SET ?",[data.tecnica],function(err, tecnica){
               if(err){
                 console.log(err);
