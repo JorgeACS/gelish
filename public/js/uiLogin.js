@@ -9,9 +9,10 @@ app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
         password:$scope.password
       };
       $http.post('/login',user).then((res) => {
-        if(res.data.tipo==1){
+
+        if(res.data.tipo==0){
           $window.location.href ="/admin";
-        }else if(res.data.tipo==2){
+        }else if(res.data.tipo==1){
           $window.location.href ="/adminSuc";
         }else{
           $window.location.href ="/recepcionista";
