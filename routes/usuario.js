@@ -2,7 +2,7 @@ const Router = require('./jaderouter');
 
 const UsuarioDB = require('../entity/UsuarioDB');
 class Usuario extends Router{
-  static get(req,res){
+  get(req,res){
     UsuarioDB.get(req.mysql,req.query.id,(values) => {
       if (value.length < 1){
         res.sendStatus(404);
@@ -11,7 +11,7 @@ class Usuario extends Router{
       }
     })
   }
-  static post(req,res){
+  post(req,res){
     var data = {};
     data.usuario = {
     	sucursal_id : req.body.sucursal_id,
@@ -31,7 +31,8 @@ class Usuario extends Router{
     }
     UsuarioDB.post(req.mysql,data,(insertID) =>{
       if(insertID){
-        res.send(insertID)
+        var values = {id : insertID}
+        res.send(values)
       }else{
         res.sendStatus(404)
       }

@@ -15,7 +15,7 @@ app.config(function($routeProvider, $locationProvider) {
       controller:function($scope,$location,$window, $http) {
         $scope.agregarAdmin = function() {
           user={
-            sucursal:$scope.sucursal,
+            sucursal_id:$scope.sucursal,
             username: $scope.username,
             password:$scope.password,
             nombre:$scope.nombre,
