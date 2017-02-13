@@ -3,7 +3,7 @@ const express = require('express');
 class Router {
   get(req, res){ res.status(404).end(); }
   getAll(req, res){ res.status(404),end(); }
-  post(req, res){ res.status(400).end(); }
+  post(req, res){ res.status(404).end(); }
   put(req, res){ res.status(404).end(); }
   delete(req, res){ res.status(404).end(); }
   express(){
