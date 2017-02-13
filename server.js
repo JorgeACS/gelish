@@ -23,7 +23,7 @@ var adminSuc = require('./routes/adminSuc');
 var Sesion = require('./routes/login');
 var login = require('./routes/login');
 var jaderouter = require('./routes/jaderouter');
-var usuario = require('./routes/usuario');
+var Usuario = require('./routes/usuario');
 
 
 var app = express();
@@ -54,7 +54,6 @@ app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(new Sesion());
-
 app.use('/admin', admin);
 app.use('/agregarAdmin', agregarAdmin);
 app.use('/agregarSucursal', agregarSucursal);
@@ -63,7 +62,7 @@ app.use('/eliminarAdmin', eliminarAdmin);
 app.use('/recepcionista', recepcionista);
 app.use('/adminSuc', adminSuc);
 app.use('/login', login);
-app.use('/usuario', usuario);
+app.use('/usuario', new Usuario());
 
 app.use('/\*.jade', jaderouter);
 
@@ -79,3 +78,4 @@ app.get('/', function (req, res) {
 
 app.listen(3000);
 console.log('Listening on port 3000');
+module.exports = app;

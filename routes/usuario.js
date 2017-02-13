@@ -1,4 +1,5 @@
-const Router = require('./jaderouter');
+const Router = require('router');
+
 const UsuarioDB = require('../entity/UsuarioDB');
 class Usuario extends Router{
   get(req,res){
@@ -39,4 +40,4 @@ class Usuario extends Router{
 
 }
 
-module.exports = UsuarioDB;
+module.exports = Usuario;
