@@ -24,6 +24,7 @@ app.config(function($routeProvider, $locationProvider) {
             telefono:$scope.tel,
             tipo:2,
           };
+          console.log("hola");
           $http.post('/usuario',user).then((res) => {
             console.log(":)");
           })

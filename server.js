@@ -62,7 +62,7 @@ app.use('/eliminarAdmin', eliminarAdmin);
 app.use('/recepcionista', recepcionista);
 app.use('/adminSuc', adminSuc);
 app.use('/login', login);
-app.use('/usuario', new Usuario());
+app.use('/usuario', new Usuario().express());
 
 app.use('/\*.jade', jaderouter);
 

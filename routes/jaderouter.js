@@ -1,17 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 
-/* GET login page.
-  login.html debe incluir public/javascripts/login.js
-  y no usar default submit() en el form
-*/
-router.get('/', function(req, res, next) {
-  //when route has ":param", req.params.param is available
-  var view = req.baseUrl;
-  var indexOfPoint = view.indexOf(".");
-  view = view.slice(1, indexOfPoint);
-  console.log(view);
-  res.render(view);
-});
+class Router {
+  get(req, res){ res.status(404).end(); }
+  getAll(req, res){ res.status(404),end(); }
+  post(req, res){ res.status(400).end(); }
+  put(req, res){ res.status(404).end(); }
+  delete(req, res){ res.status(404).end(); }
+  express(){
+    var router = express.Router();
+    router.get('/', (req, res) => this.get(req, res));
+    router.post('/', (req, res) => this.post(req, res));
+    router.put('/', (req, res) => this.put(req, res));
+    router.delete('/', (req, res) => this.delete(req, res));
+    return router;
+  }
+}
 
-module.exports = router;
+module.exports = Router
