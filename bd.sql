@@ -13,18 +13,55 @@ CREATE TABLE Usuario(
   apellido VARCHAR(100) NOT NULL,
   correo VARCHAR(100) NOT NULL,
   telefono VARCHAR(15) NOT NULL,
-  tipo INT(11) NOT NULL
+  tipo TINYINT(11) NOT NULL,
+  CONSTRAINT FOREIGN KEY
+    (sucursal_id) REFERENCES Sucursal(id)
 
 );
 
 CREATE TABLE Tecnica(
   id INT(11) PRIMARY KEY AUTO_INCREMENT,
   usuario_id INT(11) NOT NULL,
-  estado INT(11) NOT NULL,
+  estado TINYINT(11) NOT NULL,
   fecha_alta DATE NOT NULL,
   CONSTRAINT FOREIGN KEY
     (usuario_id) REFERENCES Usuario(id)
 );
+
+CREATE TABLE Sucursal(
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  plaza VARCHAR(50) NOT NULL,
+  ciudad VARCHAR(20) NOT NULL,
+  telefono VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE Servicios(
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(50) NOT NULL,
+  descripcion VARCHAR(255) NOT NULL,
+  precio INT(11) NOT NULL,
+);
+CREATE TABLE Productos(
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  categoria_id TINYINT(11) NOT NULL,
+  nombre VARCHAR(50) NOT NULL,
+  descripcion VARCHAR(255) NOT NULL,
+  precio INT(11) NOT NULL,
+  CONSTRAINT FOREIGN KEY
+    (categoria_id) REFERENCES Categoria(id)
+);
+
+CREATE TABLE Categoria(
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  nombre VARCHAR(200) NOT NULL
+);
+
+CREATE TABLE Nota(
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  fecha INT(11) NOT NULL,
+  
+);
+
 
 INSERT INTO Usuario(sucursal_id,username,password,nombre,apellido,correo,telefono,tipo)
 	VALUES(1,"admin","admin","Juan Pablo","Soto","jpsoto@gelish.com","6621010203",0);
@@ -37,4 +74,4 @@ INSERT INTO Usuario(sucursal_id,username,password,nombre,apellido,correo,telefon
   VALUES(1,"tecnica","tecnica","Maria","Gomez","maria@gelish.com","6622987654",3);
 
 INSERT INTO Tecnica(usuario_id,estado,fecha_alta)
-  VALUES(4,1,"2017-10-01 0:00:00")
+  VALUES(4,1,"2017-10-01 0:00:00");

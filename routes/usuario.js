@@ -13,6 +13,19 @@ class Usuario extends Router{
   }
   post(req,res){
     var data = {};
+    if( req.body.sucursal_id == null || 
+        req.body.username == null ||
+        req.body.password == null ||
+        req.body.nombre == null ||
+        req.body.apellido == null ||
+        req.body.correo == null ||
+        req.body.telefono == null ||
+        req.body.tipo == null ||
+        req.body.tipo < 0 ||
+        req.body.tipo > 4){
+        res.sendStatus(404);
+        return false;
+    }
     data.usuario = {
     	sucursal_id : req.body.sucursal_id,
     	username : req.body.username,
@@ -25,20 +38,19 @@ class Usuario extends Router{
     };
     if (data.tipo == 3){
     	data.tecnica = {
-    		estado : req.body.estado,
+    		estado : true,
     		fecha_alta : new Date()
     	};
     }
-    UsuarioDB.post(req.mysql,data,(insertID) =>{
-      if(insertID){
-        var values = {id : insertID}
-        res.send(values)
+    UsuarioDB.post(req.mysql,data,(insertValues) =>{
+      if(insertValues){
+        res.send(insertValues)
       }else{
         res.sendStatus(404)
       }
     });
   }
-
+  
 }
 
 module.exports = Usuario;

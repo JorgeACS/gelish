@@ -15,6 +15,9 @@ class UsuarioDB{
             db.release();
             return func(null,err);
           }
+          var insertValues = {
+            usuario_id : usuario.insertId
+          }
           if(data.tecnica && data.usuario.tipo == 3){
             data.tecnica.usuario_id = usuario.insertId;
             db.query("INSERT INTO Tecnica SET ?",[data.tecnica],function(err, tecnica){
@@ -26,14 +29,15 @@ class UsuarioDB{
               }else{
                 db.commit();
                 db.release();
-                return func([usuario.insertId,tecnica.insertId]);
+                insertValues.tecnica_id = tecnica.insertId;
+                return func(insertValues);
               }
 
             });
           }else{
             db.commit();
             db.release();
-            return func(usuario.insertId)
+            return func(insertValues)
           }
           db.release();
         });
