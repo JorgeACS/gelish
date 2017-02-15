@@ -37,4 +37,4 @@ INSERT INTO Usuario(sucursal_id,username,password,nombre,apellido,correo,telefon
   VALUES(1,"tecnica","tecnica","Maria","Gomez","maria@gelish.com","6622987654",3);
 
 INSERT INTO Tecnica(usuario_id,estado,fecha_alta)
-  VALUES(4,1,"2017-10-01 0:00:00")
+  VALUES(4,1,"2017-10-01 0:00:00");
