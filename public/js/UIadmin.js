@@ -31,6 +31,10 @@ app.config(function($routeProvider, $locationProvider) {
 
         }
       }
+    }).when("/editarAdmin", {
+      templateUrl: 'editarAdmin'
+    }).when("/eliminarAdmin", {
+      templateUrl: 'eliminarAdmin'
     }).when("/agregarSucursal", {
       templateUrl: 'agregarSucursal'
     }).when("/editarSucursal", {
