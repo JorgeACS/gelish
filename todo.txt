@@ -1,0 +1,9 @@
+TODO:
+
+Interfaces de :
+
+	Abrir Caja
+	Cerrar Caja
+	Insertar Nota
+	Editar Nota
+	Eliminar Nota

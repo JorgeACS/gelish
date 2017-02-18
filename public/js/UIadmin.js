@@ -31,6 +31,12 @@ app.config(function($routeProvider, $locationProvider) {
 
         }
       }
+    }).when("/agregarSucursal", {
+      templateUrl: 'agregarSucursal'
+    }).when("/editarSucursal", {
+      templateUrl: 'editarSucursal'
+    }).when("/eliminarSucursal", {
+      templateUrl: 'eliminarSucursal'
     })
   $locationProvider.html5Mode(true);
 });

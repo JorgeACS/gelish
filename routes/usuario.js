@@ -42,11 +42,12 @@ class Usuario extends Router{
     		fecha_alta : new Date()
     	};
     }
-    UsuarioDB.post(req.mysql,data,(insertValues) =>{
+    UsuarioDB.post(req.mysql,data,(insertValues,err) =>{
       if(insertValues){
         res.send(insertValues)
       }else{
-        res.sendStatus(404)
+        console.log(err);
+        res.sendStatus(404);
       }
     });
   }
