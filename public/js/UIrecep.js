@@ -1,4 +1,4 @@
-var app = angular.module('admin', ['ngRoute']);
+var app = angular.module('recepcionista', ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when("/logout", {
@@ -10,8 +10,8 @@ app.config(function($routeProvider, $locationProvider) {
           console.log('wtf', res);
         });
       }
-    }).when("/agregarAdmin", {
-      templateUrl: 'agregarAdmin',
+    }).when("/agregarCliente", {
+      templateUrl: 'AgregarCliente',
       controller:function($scope,$location,$window, $http) {
         $scope.agregarAdmin = function() {
           user={
@@ -31,8 +31,8 @@ app.config(function($routeProvider, $locationProvider) {
 
         }
       }
-    }).when("/editarAdmin", {
-      templateUrl: 'editarAdmin'
+    }).when("/editarCliente", {
+      templateUrl: 'editarCliente'
     }).when("/eliminarAdmin", {
       templateUrl: 'eliminarAdmin'
     }).when("/agregarSucursal", {

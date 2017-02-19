@@ -3,7 +3,7 @@ const Router = require('./jaderouter');
 const UsuarioDB = require('../entity/UsuarioDB');
 class Usuario extends Router{
   get(req,res){
-    UsuarioDB.get(req.mysql,req.query.id,(values) => {
+    UsuarioDB.get(req.mysql,req.body.tipo,(values) => {
       if (value.length < 1){
         res.sendStatus(404);
       }else{
@@ -13,7 +13,7 @@ class Usuario extends Router{
   }
   post(req,res){
     var data = {};
-    if( req.body.sucursal_id == null || 
+    if( req.body.sucursal_id == null ||
         req.body.username == null ||
         req.body.password == null ||
         req.body.nombre == null ||
@@ -42,15 +42,16 @@ class Usuario extends Router{
     		fecha_alta : new Date()
     	};
     }
-    UsuarioDB.post(req.mysql,data,(insertValues) =>{
+    UsuarioDB.post(req.mysql,data,(insertValues,err) =>{
       if(insertValues){
         res.send(insertValues)
       }else{
-        res.sendStatus(404)
+        console.log(err);
+        res.sendStatus(404);
       }
     });
   }
-  
+
 }
 
 module.exports = Usuario;

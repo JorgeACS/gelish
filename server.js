@@ -15,7 +15,13 @@ var pool = mysql.createPool({
 
 var admin = require('./routes/admin');
 var agregarSucursal = require('./routes/agregarSucursal');
+var editarSucursal = require('./routes/editarSucursal');
+var eliminarSucursal = require('./routes/eliminarSucursal');
 var recepcionista = require('./routes/recepcionista');
+var agregarCliente = require('./routes/agregarCliente');
+var editarCliente = require('./routes/editarCliente');
+var eliminarCliente = require('./routes/eliminarCliente');
+
 var agregarAdmin = require('./routes/agregarAdmin');
 var editarAdmin = require('./routes/editarAdmin');
 var eliminarAdmin = require('./routes/eliminarAdmin');
@@ -56,10 +62,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(new Sesion());
 app.use('/admin', admin);
 app.use('/agregarAdmin', agregarAdmin);
-app.use('/agregarSucursal', agregarSucursal);
 app.use('/editarAdmin', editarAdmin);
 app.use('/eliminarAdmin', eliminarAdmin);
+app.use('/agregarSucursal', agregarSucursal);
+app.use('/editarSucursal', editarSucursal);
+app.use('/eliminarSucursal', eliminarSucursal);
 app.use('/recepcionista', recepcionista);
+app.use('/agregarCliente', agregarCliente);
+app.use('/editarCliente', editarCliente);
+app.use('/eliminarCliente', eliminarCliente);
+
 app.use('/adminSuc', adminSuc);
 app.use('/login', login);
 app.use('/usuario', new Usuario().express());
