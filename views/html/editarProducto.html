@@ -1,7 +1,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Editar sucursal</h1>
+            <h1 class="page-header">Editar Producto</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -16,37 +16,31 @@
                     <div class="row">
                         <div class="col-lg-9">
                             <div class = "form-group">
-                                <label>Seleccionar Sucursal</label>
+                                <label>Seleccionar Producto</label>
                                 <select class="form-control" onchange="fillForm()">
                                     <option value="-1" disabled selected>Seleccione una sucursal</option>
-                                    <option value="1">Plaza Dila Hermosillo</option>
-                                    <option value="2">Plaza Galerias Hermosillo</option>
+                                    <option value="1">Producto X</option>
+                                    <option value="2">Producto Y</option>
+                                    <option value="3">Producto Z</option>
                                 </select>
                             </div>
                             <form role="form">  
                                 <fieldset id = "editFieldSet" disabled="enabled">
                                     <div class="form-group">
                                         <label>Nombre</label>
-                                        <input class="form-control" placeholder="Nombre">
+                                        <input class="form-control" placeholder="Escribir nombre...">
                                     </div>
                                     <div class="form-group">
-                                        <label>Direccion</label>
-                                        <input class="form-control" placeholder="Primer apellido">
+                                        <label>Descripcion</label>
+                                        <input class="form-control" placeholder="Escribir descripcion...">
                                     </div>
                                     <div class="form-group">
-                                        <label>Telefono</label>
-                                        <input class="form-control" placeholder="Segundo apellido">
+                                        <label>Precio</label>
+                                        <input class="form-control" placeholder="Insertar precio...">
                                     </div>
                                     <div class="form-group">
-                                        <label>Administrador de Sucursal</label>
-                                       <input list="administradores" name="administrador">
-                                          <datalist id="administradores">
-                                            <option value="Maria Soto">
-                                            <option value="Ana Garcia">
-                                            <option value="Jorge Carvjaal">
-                                            <option value="Erick Fimbres">
-                                            <option value="Juan Perez">
-                                          </datalist>
+                                        <label>Cantidad actual</label>
+                                        <input class="form-control" placeholder="Insertar cantidad...">
                                     </div>
                                 </fieldset>
 

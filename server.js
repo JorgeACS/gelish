@@ -14,9 +14,20 @@ var pool = mysql.createPool({
 });
 
 var admin = require('./routes/admin');
+
 var agregarSucursal = require('./routes/agregarSucursal');
 var editarSucursal = require('./routes/editarSucursal');
 var eliminarSucursal = require('./routes/eliminarSucursal');
+
+var agregarProducto = require('./routes/agregarProducto');
+var editarProducto = require('./routes/editarProducto');
+var eliminarProducto = require('./routes/eliminarProducto');
+
+var agregarServicio = require('./routes/agregarServicio');
+var editarServicio = require('./routes/editarServicio');
+var eliminarServicio = require('./routes/eliminarServicio');
+
+
 var recepcionista = require('./routes/recepcionista');
 var agregarCliente = require('./routes/agregarCliente');
 var editarCliente = require('./routes/editarCliente');
@@ -67,6 +78,18 @@ app.use('/eliminarAdmin', eliminarAdmin);
 app.use('/agregarSucursal', agregarSucursal);
 app.use('/editarSucursal', editarSucursal);
 app.use('/eliminarSucursal', eliminarSucursal);
+<<<<<<< HEAD
+=======
+
+app.use('/agregarProducto', agregarProducto);
+app.use('/editarProducto', editarProducto);
+app.use('/eliminarProducto', eliminarProducto);
+
+app.use('/agregarServicio', agregarServicio);
+app.use('/editarServicio', editarServicio);
+app.use('/eliminarServicio', eliminarServicio);
+
+>>>>>>> 319218b3d4d8ebb721c91ed4f9372ec110b0704b
 app.use('/recepcionista', recepcionista);
 app.use('/agregarCliente', agregarCliente);
 app.use('/editarCliente', editarCliente);
