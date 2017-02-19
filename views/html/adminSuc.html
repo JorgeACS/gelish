@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="logout">
+<html lang="en" ng-app="adminSuc">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
     <![endif]-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-    <script src="js/logout.js"> </script>
+    <script src="js/uiAdminSuc.js"> </script>
     <base href="http://localhost:3000/">
 </head>
 
@@ -58,7 +58,7 @@
                         <li><a href="logout"><i class="fa fa-sign-out fa-fw"></i> Salir</a>
                         </li>
                     </ul>
-                    <ng-view></ng-view>
+                    <!--<ng-view></ng-view> -->
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- /.dropdown -->
@@ -134,7 +134,7 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
-
+        <div ng-view></div>
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">

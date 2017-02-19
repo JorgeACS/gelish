@@ -3,6 +3,7 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
   res.render("admin");
+  return 0;
 });
 
 module.exports = router;
