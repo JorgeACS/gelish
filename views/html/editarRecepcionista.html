@@ -1,7 +1,7 @@
 <div id="page-wrapper">
   <div class="row">
       <div class="col-lg-12">
-          <h1 class="page-header">Editar administrdor de sucursal</h1>
+          <h1 class="page-header">Editar recepcionista</h1>
       </div>
       <!-- /.col-lg-12 -->
   </div>
@@ -16,8 +16,8 @@
                   <div class="row">
                       <div class="col-lg-9">
                         <div class = "form-group">
-                            <label>Seleccionar Admistrador de sucursal</label>
-                            <select class="form-control" ng-model="adminSeleccionado" ng-options="y.nombre for (x, y) in admins">
+                            <label>Seleccionar Recepcionista</label>
+                            <select class="form-control" ng-model="recepSeleccionado" ng-options="y.nombre for (x, y) in recepcionistas">
                             </select>
                         </div>
                          <form role="form">
@@ -27,19 +27,19 @@
                                 <div class="oculta">
                                   <div class="form-group">
                                       <label>Nombre</label>
-                                      <input class="form-control" placeholder="Nombre del empleado" ng-model="adminSeleccionado.nombre">
+                                      <input class="form-control" placeholder="Nombre del empleado" ng-model="recepSeleccionado.nombre">
                                   </div>
                                   <div class="form-group">
                                       <label>Apellido paterno</label>
-                                      <input class="form-control" placeholder="Primer apellido" ng-model="adminSeleccionado.apellido_paterno">
+                                      <input class="form-control" placeholder="Primer apellido" ng-model="recepSeleccionado.apellido_paterno">
                                   </div>
                                   <div class="form-group">
                                       <label>Apellido Materno</label>
-                                      <input class="form-control" placeholder="Segundo apellido" ng-model="adminSeleccionado.apellido_materno">
+                                      <input class="form-control" placeholder="Segundo apellido" ng-model="recepSeleccionado.apellido_materno">
                                   </div>
                                   <div class="form-group">
                                       <label>Celular</label>
-                                      <input class="form-control" placeholder="Número de teléfono celular" ng-model="adminSeleccionado.telefono">
+                                      <input class="form-control" placeholder="Número de teléfono celular" ng-model="recepSeleccionado.telefono">
                                   </div>
                                   <div class="form-group">
                                       <label>Sucursal</label>
