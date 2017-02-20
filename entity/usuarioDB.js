@@ -1,15 +1,15 @@
 class UsuarioDB{
-  static get(pool, username,password,func){
+  static get(pool,tipo,func){
     pool.getConnection(function (err, db) {
       if(err) {
         console.log(err);
         console.log("Error en la conexion");
-        return func();
+        return func(null,err);
       }
       db.query("SELECT * FROM Usuario where tipo = ?", [tipo], function (err, rows) {
         if(err) {
           console.log(err);
-          func();
+          func(null,err);
         }
         else func(rows);
         db.release();

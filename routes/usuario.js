@@ -3,11 +3,11 @@ const Router = require('./jaderouter');
 const UsuarioDB = require('../entity/UsuarioDB');
 class Usuario extends Router{
   get(req,res){
-    UsuarioDB.get(req.mysql,req.body.tipo,(values) => {
-      if (value.length < 1){
+    UsuarioDB.get(req.mysql,req.body.tipo,(rows,err) => {
+      if (rows == null || rows.length < 1){
         res.sendStatus(404);
       }else{
-        res.send(values)
+        res.send(rows)
       }
     })
   }
