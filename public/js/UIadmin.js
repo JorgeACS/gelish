@@ -39,11 +39,13 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'agregarSucursal'
     }).when("/editarSucursal", {
       templateUrl: 'editarSucursal',
-      $scope.sucursales = {
-          sucursal01 : {nombre : "Sucursal HMO", direccion : "Av. Sin numero", telefono : "2-11-33-12"},
-          sucursal02 : {nombre : "Sucursal Guaymas", direccion : "Av. Molino de Camu", telefono : "2-03-33-33"},
-          sucursal03 : {nombre : "Sucursal Nogales", direccion : "Av. Rebeico", telefono : "2-02-03-04"}
+      controller:function($scope){
+        $scope.sucursales = {
+            sucursal01 : {plaza : "Dila", ciudad : "Hermosillo", direccion : "Av. Sin numero", telefono : "2-11-33-12"},
+            sucursal02 : {plaza : "Girasol",ciudad : "Guaymas", direccion : "Av. Molino de Camu", telefono : "2-03-33-33"},
+            sucursal03 : {plaza : "Tierra Nueva",ciudad : "Nogales", direccion : "Av. Rebeico", telefono : "2-02-03-04"}
         }
+      }
     }).when("/eliminarSucursal", {
       templateUrl: 'eliminarSucursal'
     })

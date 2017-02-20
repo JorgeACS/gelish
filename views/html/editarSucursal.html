@@ -17,26 +17,31 @@
                         <div class="col-lg-9">
                             <div class = "form-group">
                                 <label>Seleccionar Sucursal</label>
-                                <select class="form-control" ng-model="sucursalSeleccionada" ng-options="y.nombre+' '+y.apellido for (x, y) in clients">
+                                <select class="form-control" ng-model="sucursalSeleccionada" ng-options="y.ciudad for (x, y) in sucursales">
                                 </select>
                             </div>
-                            <form role="form">  
+                            <form role="form">
                                 <!--<fieldset id = "editFieldSet" disabled="enabled">!-->
                                     <div class="form-group">
-                                        <label>Nombre</label>
-                                        <input class="form-control" placeholder="Nombre" ng-model="sucursalSeleccionada.nombre">
+                                        <label>Plaza</label>
+                                        <input class="form-control" placeholder="Plaza" ng-model="sucursalSeleccionada.plaza">
                                     </div>
                                     <div class="form-group">
-                                        <label>Direccion</label>
-                                        <input class="form-control" placeholder="Direccion" ng-model="sucursalSeleccionada.direccion" >
+                                        <label>Dirección</label>
+                                        <input class="form-control" placeholder="Dirección" ng-model="sucursalSeleccionada.direccion">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Ciudad</label>
+                                        <input class="form-control" placeholder="Direccion" ng-model="sucursalSeleccionada.ciudad" >
                                     </div>
                                     <div class="form-group">
                                         <label>Telefono</label>
                                         <input class="form-control" placeholder="Telefono" ng-model="sucursalSeleccionada.telefono">
                                     </div>
+
                                     <div class="form-group">
                                         <label>Administrador de Sucursal</label>
-                                       <input list="administradores" name="administrador">
+                                       <input class="form-control" list="administradores" name="administrador">
                                           <datalist id="administradores">
                                             <option value="Maria Soto">
                                             <option value="Ana Garcia">
@@ -46,7 +51,7 @@
                                           </datalist>
                                     </div>
                                 <!--</fieldset>!-->
-                                <button type="submit" class="btn btn-default">Cambiar</button>
+                                <button type="submit" class="btn btn-default">Actualizar</button>
                                 <button type="reset" class="btn btn-default">Limpiar</button>
                             </form>
                         </div>
