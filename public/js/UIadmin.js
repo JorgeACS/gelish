@@ -48,6 +48,11 @@ app.config(function($routeProvider, $locationProvider) {
       }
     }).when("/eliminarSucursal", {
       templateUrl: 'eliminarSucursal'
+    }).when("/reportesSucursales", {
+      templateUrl: 'reporteSucursales'
+    }).when("/reporteTecnicas", {
+      templateUrl: 'reporteTecnicas'
     })
+
   $locationProvider.html5Mode(true);
 });

@@ -37,6 +37,9 @@ var agregarAdmin = require('./routes/agregarAdmin');
 var editarAdmin = require('./routes/editarAdmin');
 var eliminarAdmin = require('./routes/eliminarAdmin');
 var adminSuc = require('./routes/adminSuc');
+
+var reporteSucursales = require('./routes/reporteSucursales');
+
 var Sesion = require('./routes/login');
 var login = require('./routes/login');
 var jaderouter = require('./routes/jaderouter');
@@ -95,6 +98,7 @@ app.use('/adminSuc', adminSuc);
 app.use('/login', login);
 app.use('/usuario', new Usuario().express());
 
+app.use('/reporteSucursales',reporteSucursales);
 app.use('/\*.jade', jaderouter);
 
 // Route for everything else.
