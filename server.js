@@ -31,7 +31,7 @@ var eliminarServicio = require('./routes/eliminarServicio');
 var recepcionista = require('./routes/recepcionista');
 var agregarCliente = require('./routes/agregarCliente');
 var editarCliente = require('./routes/editarCliente');
-var eliminarCliente = require('./routes/eliminarCliente');
+//var eliminarCliente = require('./routes/eliminarCliente');
 
 var agregarAdmin = require('./routes/agregarAdmin');
 var editarAdmin = require('./routes/editarAdmin');
@@ -78,9 +78,6 @@ app.use('/eliminarAdmin', eliminarAdmin);
 app.use('/agregarSucursal', agregarSucursal);
 app.use('/editarSucursal', editarSucursal);
 app.use('/eliminarSucursal', eliminarSucursal);
-<<<<<<< HEAD
-=======
-
 app.use('/agregarProducto', agregarProducto);
 app.use('/editarProducto', editarProducto);
 app.use('/eliminarProducto', eliminarProducto);
@@ -89,11 +86,10 @@ app.use('/agregarServicio', agregarServicio);
 app.use('/editarServicio', editarServicio);
 app.use('/eliminarServicio', eliminarServicio);
 
->>>>>>> 319218b3d4d8ebb721c91ed4f9372ec110b0704b
 app.use('/recepcionista', recepcionista);
 app.use('/agregarCliente', agregarCliente);
 app.use('/editarCliente', editarCliente);
-app.use('/eliminarCliente', eliminarCliente);
+//app.use('/eliminarCliente', eliminarCliente);
 
 app.use('/adminSuc', adminSuc);
 app.use('/login', login);

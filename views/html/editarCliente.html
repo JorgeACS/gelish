@@ -1,7 +1,7 @@
 <div id="page-wrapper">
   <div class="row">
       <div class="col-lg-12">
-          <h1 class="page-header">Editar administrdor de sucursal</h1>
+          <h1 class="page-header">Editar clientes</h1>
       </div>
       <!-- /.col-lg-12 -->
   </div>
@@ -17,48 +17,36 @@
                       <div class="col-lg-9">
                         <div class = "form-group">
                             <label>Seleccionar Cliente</label>
-                            <select class="form-control" onchange="fillForm();">
-                                <option value="-1" disabled selected>Seleccione un administrador de sucursal</option>
-                                <option value="1">Juan</option>
-                                <option value="2">Maria</option>
+                            <select class="form-control" ng-model="selectedClient" ng-options="y.nombre+' '+y.apellido for (x, y) in clients">
                             </select>
                         </div>
                          <form role="form">
-                            <fieldset id = "editFieldSet" disabled="enabled">
                               <div class="editA" style="display:block">
                               </div>
                                 <div class="oculta">
                                   <div class="form-group">
                                       <label>Nombre</label>
-                                      <input class="form-control" placeholder="Nombre del empleado">
+                                      <input class="form-control" placeholder="Nombre del cliente" ng-model="selectedClient.nombre">
                                   </div>
                                   <div class="form-group">
-                                      <label>Apellido paterno</label>
-                                      <input class="form-control" placeholder="Primer apellido">
+                                      <label>Apellidos</label>
+                                      <input class="form-control" placeholder="Apellidos" ng-model="selectedClient.apellido">
                                   </div>
                                   <div class="form-group">
-                                      <label>Apellido Materno</label>
-                                      <input class="form-control" placeholder="Segundo apellido">
+                                      <label>Dirección </label>
+                                      <input ng-model="selectedClient.direccion" class="form-control" placeholder="Dirección">
                                   </div>
                                   <div class="form-group">
-                                      <label>Nombre de usuario</label>
-                                      <input class="form-control" placeholder="Usuario">
+                                      <label>Correo electronico</label>
+                                      <input type="e-mail"ng-model="selectedClient.correo" class="form-control" placeholder="Correo electronico">
                                   </div>
                                   <div class="form-group">
-                                      <label>Celular</label>
-                                      <input class="form-control" placeholder="Número de teléfono celular">
-                                  </div>
-                                  <div class="form-group">
-                                      <label>Sucursal</label>
-                                      <select class="form-control" name="sucursal">
-                                        <option value="" disabled selected>Seleccione una sucursal</option>
-                                        <option value="" >Hermosillo</option>
-                                      </select>
+                                      <label>Teléfono</label>
+                                      <input ng-model = "selectedClient.telefono" class="form-control" placeholder="Número de teléfono celular">
                                   </div>
 
-                                  <button type="submit" class="btn btn-default">Guardar</button>
+                                  <button type="button" class="btn btn-default" ng-click="listo()">Actualizar</button>
                                 </div>
-                              </fieldset>
                           </form>
                       </div>
                           <!--<h1>Form Validation States</h1>

@@ -28,11 +28,20 @@ app.config(function($routeProvider, $locationProvider) {
           $http.post('/usuario',user).then((res) => {
             console.log(":)");
           })
-
         }
       }
     }).when("/editarCliente", {
-      templateUrl: 'editarCliente'
+      templateUrl: 'editarCliente',
+      controller:function($scope){
+        $scope.listo =function(){
+          console.log("yeahh");
+        },
+        $scope.clients = {
+          cliente01 : {nombre : "Ana", apellido : "Noriega", direccion : "Av. Sin numero", correo : "ana@hotmail.com", telefono : "2-11-33-12"},
+          cliente02 : {nombre : "Lucia", apellido : "Montoya", direccion : "Av. Molino de Camu", correo : "lucia@gmail.com", telefono : "2-12-00-21"},
+          cliente03 : {nombre : "Erick", apellido : "Lopez F.", direccion : "Av. Rebeico", correo : "erick@hotmail.com", telefono : "2-10-53-67"}
+        }
+      }
     }).when("/eliminarAdmin", {
       templateUrl: 'eliminarAdmin'
     }).when("/agregarSucursal", {
