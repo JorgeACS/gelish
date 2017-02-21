@@ -74,10 +74,36 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/eliminarSucursal", {
       templateUrl: 'eliminarSucursal'
     }).when("/reportesSucursales", {
-      templateUrl: 'reporteSucursales'
+      templateUrl: 'reporteSucursales',
+      controller:function($scope){
+        $scope.loadScript = function(url, type, charset) {
+            if (type===undefined) type = 'text/javascript';
+            if (url) {
+                var script = document.querySelector("script[src*='"+url+"']");
+                if (!script) {
+                    var heads = document.getElementsByTagName("head");
+                    if (heads && heads.length) {
+                        var head = heads[0];
+                        if (head) {
+                            script = document.createElement('script');
+                            script.setAttribute('src', url);
+                            script.setAttribute('type', type);
+                            if (charset) script.setAttribute('charset', charset);
+                            head.appendChild(script);
+                        }
+                    }
+                }
+                return script;
+            }
+        };
+        $scope.loadScript('data/morris-data.js', 'text/javascript', 'utf-8');
+      }
     }).when("/reporteTecnicas", {
       templateUrl: 'reporteTecnicas'
     })
 
   $locationProvider.html5Mode(true);
+});
+app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
+
 });

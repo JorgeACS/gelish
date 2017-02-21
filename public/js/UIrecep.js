@@ -42,10 +42,13 @@ app.config(function($routeProvider, $locationProvider) {
           cliente03 : {nombre : "Erick", apellido : "Lopez F.", direccion : "Av. Rebeico", correo : "erick@hotmail.com", telefono : "2-10-53-67"}
         }
       }
-    }).when("/eliminarAdmin", {
-      templateUrl: 'eliminarAdmin'
-    }).when("/agregarSucursal", {
-      templateUrl: 'agregarSucursal'
+    }).when("/eliminarCliente", {
+      templateUrl: 'eliminarCliente'
+    }).when("/crearNota", {
+      templateUrl: 'crearNota',
+      controller:function() {
+        
+      }
     }).when("/editarSucursal", {
       templateUrl: 'editarSucursal'
     }).when("/eliminarSucursal", {

@@ -47,7 +47,7 @@ var eliminarAdmin = require('./routes/eliminarAdmin');
 var adminSuc = require('./routes/adminSuc');
 
 var reporteSucursales = require('./routes/reporteSucursales');
-
+var crearNota = require('./routes/crearNota');
 var Sesion = require('./routes/login');
 var login = require('./routes/login');
 var jaderouter = require('./routes/jaderouter');
@@ -110,6 +110,7 @@ app.use('/recepcionista', recepcionista);
 app.use('/agregarCliente', agregarCliente);
 app.use('/editarCliente', editarCliente);
 //app.use('/eliminarCliente', eliminarCliente);
+app.use('/crearNota', crearNota);
 
 app.use('/adminSuc', adminSuc);
 app.use('/login', login);
