@@ -46,8 +46,43 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'eliminarCliente'
     }).when("/crearNota", {
       templateUrl: 'crearNota',
-      controller:function() {
-        
+      controller:function($scope) {
+        $scope.servicios = {
+          cliente01 : {nombre : "Aplicacion de uñas", costo : "100"},
+          cliente02 : {nombre : "Aplicacion de mascarilla", costo : "150"},
+          cliente03 : {nombre : "Masaje", costo : "200"}
+        }
+        $scope.productos = {
+          cli01 : {nombre : "Lima", costo : "80"},
+          cli02 : {nombre : "Tinte", costo : "100"},
+          cli03 : {nombre : "Jabon", costo : "20"}
+        }
+        $scope.products = [];
+        $scope.addItemP = function () {
+          $scope.errortext = "";
+          //if (!$scope.addMe) {return;}
+              $scope.products.push($scope.selectProd.nombre);
+        }
+        $scope.removeItemP = function (x) {
+            $scope.errortext = "";
+            $scope.products.splice(x, 1);
+        }
+        $scope.serv = [];
+        $scope.addItemS = function () {
+          $scope.errortext = "";
+          //if (!$scope.addMe) {return;}
+              $scope.serv.push($scope.selectServ.nombre);
+        }
+        $scope.removeItemS = function (x) {
+            $scope.errortext = "";
+            $scope.serv.splice(x, 1);
+        }
+        $scope.nota = [{
+            "servicio": "Aplicación de uñas",
+            "tecnica": "Ana Laura",
+            "costo": "100 "
+          }
+        ];
       }
     }).when("/editarSucursal", {
       templateUrl: 'editarSucursal'
