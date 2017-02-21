@@ -47,6 +47,7 @@ var eliminarAdmin = require('./routes/eliminarAdmin');
 var adminSuc = require('./routes/adminSuc');
 
 var interfazCaja = require('./routes/interfazCaja');
+//var abrirCaja = require('./routes/abrirCaja');
 
 var reporteSucursales = require('./routes/reporteSucursales');
 var crearNota = require('./routes/crearNota');
@@ -115,6 +116,7 @@ app.use('/editarCliente', editarCliente);
 app.use('/crearNota', crearNota);
 
 app.use('/interfazCaja', interfazCaja);
+//app.use('/abrirCaja', recepcionista);
 
 app.use('/adminSuc', adminSuc);
 app.use('/login', login);

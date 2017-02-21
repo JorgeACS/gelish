@@ -77,17 +77,14 @@ app.config(function($routeProvider, $locationProvider) {
             $scope.errortext = "";
             $scope.serv.splice(x, 1);
         }
-        $scope.nota = [{
-            "servicio": "Aplicación de uñas",
-            "tecnica": "Ana Laura",
-            "costo": "100 "
-          }
-        ];
       }
-    }).when("/editarSucursal", {
-      templateUrl: 'editarSucursal'
-    }).when("/eliminarSucursal", {
-      templateUrl: 'eliminarSucursal'
+    }).when("/abrirCaja", {
+      templateUrl: '',
+      controller:function($scope){
+        console.log("jola")
+        //var lista =  document.getElementById(notaVenta).style;
+        //lista.display = 'block';
+      }
     }).when("/interfazCaja",{
       templateUrl: 'interfazCaja',
       controller:function($scope){
