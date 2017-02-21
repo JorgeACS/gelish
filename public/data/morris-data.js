@@ -3,59 +3,134 @@ $(function() {
     Morris.Area({
         element: 'morris-area-chart',
         data: [{
-            period: '2010 Q1',
-            iphone: 2666,
-            ipad: null,
-            itouch: 2647
+            month: '2016-01',
+            x : 1,
+            hermosillo: 2666,
+            guaymas: null,
+            nogales: 2647
         }, {
-            period: '2010 Q2',
-            iphone: 2778,
-            ipad: 2294,
-            itouch: 2441
+            month: '2016-02',
+            x : 2,
+            hermosillo: 2778,
+            guaymas: 2294,
+            nogales: 2441
         }, {
-            period: '2010 Q3',
-            iphone: 4912,
-            ipad: 1969,
-            itouch: 2501
+            month: '2016-03',
+            x : 3,
+            hermosillo: 4912,
+            guaymas: 1969,
+            nogales: 2501
         }, {
-            period: '2010 Q4',
-            iphone: 3767,
-            ipad: 3597,
-            itouch: 5689
+            month: '2016-04',
+            x : 4,
+            hermosillo: 3767,
+            guaymas: 3597,
+            nogales: 5689
         }, {
-            period: '2011 Q1',
-            iphone: 6810,
-            ipad: 1914,
-            itouch: 2293
+            month: '2016-05',
+            x : 5,
+            hermosillo: 6810,
+            guaymas: 1914,
+            nogales: 2293
         }, {
-            period: '2011 Q2',
-            iphone: 5670,
-            ipad: 4293,
-            itouch: 1881
+            month: '2016-06',
+            x : 6,
+            hermosillo: 5670,
+            guaymas: 4293,
+            nogales: 1881
         }, {
-            period: '2011 Q3',
-            iphone: 4820,
-            ipad: 3795,
-            itouch: 1588
+            month: '2016-07',
+            x : 7,
+            hermosillo: 4820,
+            guaymas: 3795,
+            nogales: 1588
         }, {
-            period: '2011 Q4',
-            iphone: 15073,
-            ipad: 5967,
-            itouch: 5175
+            month: '2016-08',
+            x : 8,
+            hermosillo: 15073,
+            guaymas: 5967,
+            nogales: 5175
         }, {
-            period: '2012 Q1',
-            iphone: 10687,
-            ipad: 4460,
-            itouch: 2028
+            month: '2016-09',
+            x : 9,
+            hermosillo: 10687,
+            guaymas: 4460,
+            nogales: 2028
         }, {
-            period: '2012 Q2',
-            iphone: 8432,
-            ipad: 5713,
-            itouch: 1791
+            month: '2016-10',
+            x : 10,
+            hermosillo: 8432,
+            guaymas: 5713,
+            nogales: 1791
+        }, {
+            month: '2016-11',
+            x : 11,
+            hermosillo: 5291,
+            guaymas: 3159,
+            nogales: 2514
+        }, {
+            month: '2016-12',
+            x : 12,
+            hermosillo: 10929,
+            guaymas: 7102,
+            nogales: 1204
         }],
-        xkey: 'period',
-        ykeys: ['iphone', 'ipad', 'itouch'],
-        labels: ['iPhone', 'iPad', 'iPod Touch'],
+        xkey: 'month',
+        ykeys: ['hermosillo', 'guaymas', 'nogales'],
+        labels: ['Hermosillo', 'Guaymas', 'Nogales'],
+        pointSize: 2,
+        hideHover: 'auto',
+        resize: true
+    });
+
+     Morris.Area({
+        element: 'morris-bar-chart',
+        data: [{
+            year: '2016',
+            x : 1,
+            hermosillo: 26660,
+            guaymas: null,
+            nogales: 52010
+        }, {
+            year: '2015',
+            x : 2,
+            hermosillo: 52778,
+            guaymas: 12294,
+            nogales: 32441
+        }, {
+            year: '2014',
+            x : 3,
+            hermosillo: 24912,
+            guaymas: 11969,
+            nogales: 52501
+        }, {
+            year: '2013',
+            x : 4,
+            hermosillo: 32767,
+            guaymas: 23597,
+            nogales: 25689
+        }, {
+            year: '2012',
+            x : 5,
+            hermosillo: 46810,
+            guaymas: 21914,
+            nogales: 12293
+        }, {
+            year: '2011',
+            x : 6,
+            hermosillo: 15670,
+            guaymas: 24293,
+            nogales: 31881
+        }, {
+            year: '2010',
+            x : 12,
+            hermosillo: 10929,
+            guaymas: 37102,
+            nogales: 31204
+        }],
+        xkey: 'year',
+        ykeys: ['hermosillo', 'guaymas', 'nogales'],
+        labels: ['Hermosillo', 'Guaymas', 'Nogales'],
         pointSize: 2,
         hideHover: 'auto',
         resize: true
@@ -64,52 +139,52 @@ $(function() {
     Morris.Donut({
         element: 'morris-donut-chart',
         data: [{
-            label: "Download Sales",
-            value: 12
+            label: "Maria",
+            value: 1500
         }, {
-            label: "In-Store Sales",
-            value: 30
+            label: "Fernanda",
+            value: 1200
         }, {
-            label: "Mail-Order Sales",
-            value: 20
+            label: "Barbara",
+            value: 800
         }],
         resize: true
     });
 
     Morris.Bar({
-        element: 'morris-bar-chart',
+        element: 'morris-line-chart',
         data: [{
-            y: '2006',
-            a: 100,
-            b: 90
+            y: 'Maria',
+            enero: 100,
+            febrero: 90
         }, {
-            y: '2007',
-            a: 75,
-            b: 65
+            y: 'Julia',
+            enero: 75,
+            febrero: 65
         }, {
-            y: '2008',
-            a: 50,
-            b: 40
+            y: 'Barbara',
+            enero: 50,
+            febrero: 40
         }, {
-            y: '2009',
-            a: 75,
-            b: 65
+            y: 'Fernanda',
+            enero: 75,
+            febrero: 65
         }, {
-            y: '2010',
-            a: 50,
-            b: 40
+            y: 'Ana',
+            enero: 50,
+            febrero: 40
         }, {
-            y: '2011',
-            a: 75,
-            b: 65
+            y: 'Athena',
+            enero: 75,
+            febrero: 65
         }, {
-            y: '2012',
-            a: 100,
-            b: 90
+            y: 'Alejandra',
+            enero: 100,
+            febrero: 90
         }],
         xkey: 'y',
-        ykeys: ['a', 'b'],
-        labels: ['Series A', 'Series B'],
+        ykeys: ['enero', 'febrero'],
+        labels: ['Enero', 'Febrero'],
         hideHover: 'auto',
         resize: true
     });
