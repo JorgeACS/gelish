@@ -84,6 +84,11 @@ app.set('view engine', 'jade');
 // Serve static files css javascript imagenes
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next){
+  res.locals.user = req.session.user;
+  next();
+});
+
 app.use(new Sesion());
 app.use('/admin', admin);
 app.use('/agregarAdmin', agregarAdmin);

@@ -19,6 +19,4 @@ app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
         }
       })
     };
-
 });
- 
