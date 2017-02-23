@@ -50,6 +50,7 @@ var interfazCaja = require('./routes/interfazCaja');
 //var abrirCaja = require('./routes/abrirCaja');
 
 var reporteSucursales = require('./routes/reporteSucursales');
+var reporteTecnicas = require('./routes/reporteTecnicas');
 var crearNota = require('./routes/crearNota');
 var Sesion = require('./routes/login');
 var login = require('./routes/login');
@@ -128,6 +129,8 @@ app.use('/login', login);
 app.use('/usuario', new Usuario().express());
 
 app.use('/reporteSucursales',reporteSucursales);
+app.use('/reporteTecnicas',reporteTecnicas);
+
 app.use('/\*.jade', jaderouter);
 
 // Route for everything else.

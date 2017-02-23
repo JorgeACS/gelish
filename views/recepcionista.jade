@@ -1,1 +1,125 @@
-include html/recepcionista.html
+doctype html
+html(lang='en', ng-app='recepcionista')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Recepcionista
+    // Nombre pestaña
+    link(rel='stylesheet', href='https://www.w3schools.com/lib/w3.css')
+    // Bootstrap Core CSS
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    // MetisMenu CSS
+    link(href='css/metisMenu.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='css/sb-admin-2.css', rel='stylesheet')
+    // Custom Fonts
+    link(href='css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js')
+    script(src='js/UIrecep.js')
+    base(href='http://localhost:3000/')
+  body
+    #wrapper
+      // Navigation
+      nav.navbar.navbar-default.navbar-static-top(role='navigation', style='margin-bottom: 0')
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            // para cuando se hace la pantalla chica
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='admin') Gelish
+          img(src='imagen/logo.png', alt='Gelish', style='width:5em;height:3em;margin-top=10em')
+        // /.navbar-header
+        // /.ul.nav.navbar-top-links.navbar-left
+          
+        ul.nav.navbar-top-links.navbar-right
+          li.dropdown
+            // data-toggle son efectos visuales al dar click
+            a.dropdown-toggle(data-toggle='dropdown', href='#') #{user.nombre + ' ' + user.apellidos + ' '}
+              i.fa.fa-user.fa-fw
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-user
+              li
+                a(href='logout')
+                  i.fa.fa-sign-out.fa-fw
+                  |  Salir
+            // /.dropdown-user
+          // /.dropdown
+        // /.navbar-top-links
+        .navbar-default.sidebar(role='navigation')
+          .sidebar-nav.navbar-collapse
+            ul#side-menu.nav
+              li
+                a(href='recepcionista')
+                  i.fa.fa-dashboard.fa-fw
+                  |  Inicio
+              li
+                a(href='#')
+                  i.fa.fa-wrench.fa-fw
+                  |  Clientes
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='agregarCliente') Nuevo
+                  li
+                    a(href='editarCliente') Editar
+                  li
+                    a(href='eliminarCliente') Eliminar
+              li#notaVenta(style='display:none')
+                a(href='#')
+                  i.fa.fa-sitemap.fa-fw
+                  |  Notas
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='crearNota')  Crear
+                  li
+                    a(href='editarSucursal')  Editar
+                  li
+                    a(href='eliminarSucursal')  Eliminar
+                // /.nav-second-level
+              li
+                a(href='interfazCaja')
+                  i.fa.fa-lock
+                  |  Caja
+                //
+                  <ul class="nav nav-second-level">
+                  <li id= "ver" >
+                  <a href="Ver"> Ver</a>
+                  </li>
+                  <li>
+                  <a href="abrirCaja"> Abrir</a>
+                  </li>
+                  <li>
+                  <a href="cerrar"> Cerrar</a>
+                  </li>
+                  </ul>
+          // /.sidebar-collapse
+        // /.navbar-static-side
+      div(ng-view='')
+      // Lo que va arriba de estas etiquetas es parte del .when del logout
+      // Page Content
+      #page-wrapper
+        .container-fluid
+          .row
+            .col-lg-12
+              h1.page-header Recepcionista
+            // /.col-lg-12
+          // /.row
+        // /.container-fluid
+      // /#page-wrapper
+    // /#wrapper
+    // jQuery
+    script(src='js/jquery/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='js/bootstrap/js/bootstrap.min.js')
+    // Metis Menu Plugin JavaScript
+    script(src='js/metisMenu/metisMenu.min.js')
+    // Custom Theme JavaScript
+    script(src='js/sb-admin-2.js')

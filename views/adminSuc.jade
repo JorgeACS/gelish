@@ -1,1 +1,144 @@
-include html/adminSuc.html
+doctype html
+html(lang='en', ng-app='adminSuc')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Administrador Sucursal
+    // Nombre pestaña
+    // Bootstrap Core CSS
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    // MetisMenu CSS
+    link(href='css/metisMenu.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='css/sb-admin-2.css', rel='stylesheet')
+    // Custom Fonts
+    link(href='css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js')
+    script(src='js/uiAdminSuc.js')
+    base(href='http://localhost:3000/')
+  body
+    #wrapper
+      // Navigation
+      nav.navbar.navbar-default.navbar-static-top(role='navigation', style='margin-bottom: 0')
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            // para cuando se hace la pantalla chica
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='index.html') Gelish
+          img(src='imagen/logo.png', alt='Gelish', style='width:5em;height:3em;margin-top=10em')
+        // /.navbar-header
+        ul.nav.navbar-top-links.navbar-right 
+          li.dropdown
+            // data-toggle son efectos visuales al dar click
+            a.dropdown-toggle(data-toggle='dropdown', href='#') #{user.nombre + ' ' + user.apellidos + ' '}
+              i.fa.fa-caret-down
+            ul.dropdown-menu.dropdown-user
+              li
+                a(href='logout')
+                  i.fa.fa-sign-out.fa-fw
+                  |  Salir
+            // <ng-view></ng-view>
+            // /.dropdown-user
+          // /.dropdown
+        // /.navbar-top-links
+        .navbar-default.sidebar(role='navigation')
+          .sidebar-nav.navbar-collapse
+            ul#side-menu.nav
+              li
+                a(href='index.html')
+                  i.fa.fa-dashboard.fa-fw
+                  |  Inicio
+              li
+                a(href='#')
+                  i.fa.fa-bar-chart-o.fa-fw
+                  |  Reportes 
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='reporteTecnicas')   Sucursales
+                    // <a href="flot.html"> Graficas </a>
+              li
+                a(href='#')
+                  i.fa.fa-wrench.fa-fw
+                  |  Servicios
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='agregarServicio') Agregar
+                  li
+                    a(href='editarServicio') Editar
+                  li
+                    a(href='eliminarServicio') Eliminar
+              li
+                a(href='#')
+                  i.fa.fa-wrench.fa-fw
+                  |  Productos
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='agregarProducto') Agregar
+                  li
+                    a(href='editarProducto') Editar
+                  li
+                    a(href='eliminarProducto') Eliminar
+              li
+                a(href='#')
+                  i.fa.fa-wrench.fa-fw
+                  |  Tecnicas
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='agregarTecnica') Agregar
+                  li
+                    a(href='editarTecnica') Editar
+                  li
+                    a(href='eliminarTecnica') Eliminar
+              li
+                a(href='#')
+                  i.fa.fa-sitemap.fa-fw
+                  |  Recepcionistas
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='agregarRecepcionista') Agregar
+                  li
+                    a(href='editarRecepcionista') Editar
+                  li
+                    a(href='eliminarRecepcionista') Eliminar
+                // /.nav-second-level
+          // /.sidebar-collapse
+        // /.navbar-static-side
+      div(ng-view='')
+      // Page Content
+      #page-wrapper
+        .container-fluid
+          .row
+            .col-lg-12
+              h1.page-header Administrador de sucursal 
+            // /.col-lg-12
+          // /.row
+        // /.container-fluid
+      // /#page-wrapper
+    // /#wrapper
+    // jQuery
+    script(src='js/jquery/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='js/bootstrap/js/bootstrap.min.js')
+    // Metis Menu Plugin JavaScript
+    script(src='js/metisMenu/metisMenu.min.js')
+    // Custom Theme JavaScript
+    script(src='js/sb-admin-2.js')
+    script(src='js/raphael/raphael.min.js')
+    script(src='js/morrisjs/morris.min.js')

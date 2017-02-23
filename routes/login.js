@@ -25,7 +25,7 @@ class Sesion {
           id : value[0].id,
           tipo : value[0].tipo,
           nombre : value[0].nombre,
-          apellidos : value[0].apellidos,
+          apellidos : value[0].apellido,
           correo : value[0].correo,
           telefono : value[0].telefono
         }

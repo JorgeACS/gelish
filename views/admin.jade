@@ -35,11 +35,12 @@ html(lang='en', ng-app='admin')
             span.icon-bar
             span.icon-bar
           a.navbar-brand(href='admin') Gelish
+          img(src='imagen/logo.png', alt='Gelish', style='width:5em;height:3em;padding=1em 0em 0em 0em')
         // /.navbar-header
         ul.nav.navbar-top-links.navbar-right
           li.dropdown
             // data-toggle son efectos visuales al dar click
-            a.dropdown-toggle(data-toggle='dropdown', href='#')
+            a.dropdown-toggle(data-toggle='dropdown', href='#') #{user.nombre + ' ' + user.apellidos + ' '}
               i.fa.fa-user.fa-fw
               i.fa.fa-caret-down
             ul.dropdown-menu.dropdown-user

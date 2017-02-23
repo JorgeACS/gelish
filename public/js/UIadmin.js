@@ -61,7 +61,32 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/eliminarAdmin", {
       templateUrl: 'eliminarAdmin'
     }).when("/agregarSucursal", {
-      templateUrl: 'agregarSucursal'
+      templateUrl: 'agregarSucursal',
+      controller:function($scope){
+        $scope.admins = {
+            admin01 : {
+              nombre : "Jorge",
+              apellido_paterno : "Carvajal",
+              apellido_materno : "Siller",
+              telefono : "2-11-33-12",
+              sucursal : "Hermosillo"
+             },
+            admin02 : {
+              nombre : "Juan",
+              apellido_paterno : "Soto",
+              apellido_materno : "Cruz",
+              telefono : "2-03-33-33",
+              sucursal : "Guaymas"
+            },
+            admin03 : {
+              nombre : "Erick",
+              apellido_paterno : "Lopez",
+              apellido_materno : "Fimbres",
+              telefono : "2-02-03-04",
+              sucursal : "Nogales"
+            }
+        }
+      }
     }).when("/editarSucursal", {
       templateUrl: 'editarSucursal',
       controller:function($scope){
