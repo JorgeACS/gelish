@@ -47,6 +47,7 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/crearNota", {
       templateUrl: 'crearNota',
       controller:function($scope) {
+        $scope.fecha=new Date();
         $scope.servicios = {
           cliente01 : {nombre : "Aplicacion de uñas", costo : "100"},
           cliente02 : {nombre : "Aplicacion de mascarilla", costo : "150"},

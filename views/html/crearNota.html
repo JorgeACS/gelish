@@ -1,10 +1,80 @@
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+<style>
+.marco{
+  background: #ccc;
+  box-shadow: 3px 3px 50px #888888;
+  font-family: "Roboto";
+}
+.encabezado{
+  font-size: 25px;
+  padding-top: 10px;
+  border-bottom: 3px solid #000;
+}
+.encabezado p{
+  margin-top: 5px;
+  background: #ccc;
+  display: inline-block;
+}
+.fecha{
+  float: right;
+  margin-right: 25px;
+  font-weight: bold;
+}
+.folio{
+  font-weight: bold;
+  margin-left: 20px;
+}
+.cuerpo p{
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.cuerpo{
+  margin-left: 5%;
+}
+.total{
+  border-top: 3px solid #000;
+  margin-left: 80%;
+  margin-right: 5%;
+}
+.costo{
+float: right;
+margin-right: 10%;
+}
+.producto{
+
+}
+.servicio{
+  margin-left: 100px;
+}
+</style>
 <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Nota de ventas</h1>
                 </div>
-                <!-- /.col-lg-12 -->
             </div>
+
+            <div class="marco">
+              <div class="encabezado">
+                <p class="folio">Folio:105</p>
+                <p class="fecha"> {{fecha | date:'dd-MM-yyyy'}}</p>
+              </div>
+
+              <div class="cuerpo">
+                <p>Cantidad</p>
+                <p class="servicio">servicios</p>
+                <p class="producto">productos</p>
+                <p class="costo">Costo</p>
+              </div>
+              <div >
+                <p class="total">Total: </p>
+              </div>
+
+            </div>
+
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-6">
