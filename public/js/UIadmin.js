@@ -118,10 +118,14 @@ app.config(function($routeProvider, $locationProvider) {
                         }
                     }
                 }
+                console.log(1);
                 return script;
             }
         };
         $scope.loadScript('data/morris-data.js', 'text/javascript', 'utf-8');
+          console.log(2);
+        cargarGraficas();
+        console.log(3);
       }
     }).when("/reporteTecnicas", {
       templateUrl: 'reporteTecnicas'

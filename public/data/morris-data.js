@@ -1,5 +1,4 @@
-$(function() {
-
+function cargarGraficas() {
     Morris.Area({
         element: 'morris-area-chart',
         data: [{
@@ -135,7 +134,7 @@ $(function() {
         hideHover: 'auto',
         resize: true
     });
-
+/*
     Morris.Donut({
         element: 'morris-donut-chart',
         data: [{
@@ -188,5 +187,5 @@ $(function() {
         hideHover: 'auto',
         resize: true
     });
-    
-});
+*/
+};
