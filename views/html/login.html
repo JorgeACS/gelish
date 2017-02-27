@@ -40,17 +40,26 @@
                     <div class="panel-body">
                       <!-- metodo para pasar nformacion a routes/ login.js -->
                         <form id="form_login" role="form" >
-                            <fieldset>
-                                <div class="form-group">
-                                    <input ng-model="username" class="form-control" placeholder="Correo electrónico o usuario" id="input_user" name="username" type="input" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input ng-model="password" class="form-control" placeholder="Contraseña" id="input_password" type="password" name="password" value="">
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <button type="submit" id="button_login" class="btn btn-primary btn-lg btn-block" ng-click="InicioSesion()">Iniciar sesión</button>
+
+                          <div >
+                            <img src="imagen/logo.png" width="100%">
+                          </div>
+
+                              <div class="form-group input-group">
+                                  <span class="input-group-addon"><i class="fa fa-user "></i>
+                                  </span>
+                                  <input ng-model="username" type="text" class="form-control" placeholder="Usuario" id="input_user" name="username" type="input" autofocus>
+                              </div>
+
+                              <div class="form-group input-group">
+                                  <span class="input-group-addon"><i class="fa fa-lock "></i>
+                                  </span>
+                                  <input  ng-model="password" class="form-control" placeholder="Contraseña" id="input_password" type="password" name="password">
+                              </div>
+                              <br>
+                              <button type="submit" id="button_login" class="btn btn-primary btn-lg btn-block" ng-click="InicioSesion()">Iniciar sesión</button>
                                 <!--<button type="submit" id="button_login" class="btn btn-primary btn-lg btn-block" ng-click="Verificar()">Iniciar sesión</button>-->
-                            </fieldset>
+
                         </form>
                     </div>
                 </div>

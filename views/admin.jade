@@ -48,15 +48,12 @@ html(lang='en', ng-app='admin')
                 a(href='logout')
                   i.fa.fa-sign-out.fa-fw
                   |  Salir
-            // /.dropdown-user
-          // /.dropdown
-        // /.navbar-top-links
         .navbar-default.sidebar(role='navigation')
           .sidebar-nav.navbar-collapse
             ul#side-menu.nav
               li
                 a(href='admin')
-                  i.fa.fa-dashboard.fa-fw
+                  i.fa.fa-home.fa-fw
                   |  Inicio
               li
                 a(href='#')
@@ -67,13 +64,9 @@ html(lang='en', ng-app='admin')
                   li
                     a(href='reportesSucursales')   Sucursales
                     // <a href="flot.html"> Graficas </a>
-                  li
-                    a(href='reporteTecnicas')  Técnicas 
-                    // <a href="morris.html">Reportes escritos</a>
-                // /.nav-second-level
               li
                 a(href='#')
-                  i.fa.fa-wrench.fa-fw
+                  i.fa.fa-users.fa-fw
                   |  Administrador de sucursal
                   span.fa.arrow
                 ul.nav.nav-second-level
@@ -85,7 +78,7 @@ html(lang='en', ng-app='admin')
                     a(href='eliminarAdmin') Eliminar
               li
                 a(href='#')
-                  i.fa.fa-sitemap.fa-fw
+                  i.fa.fa-building-o.fa-fw
                   |  Sucursales
                   span.fa.arrow
                 ul.nav.nav-second-level
@@ -95,23 +88,21 @@ html(lang='en', ng-app='admin')
                     a(href='editarSucursal') Editar
                   li
                     a(href='eliminarSucursal') Eliminar
-                // /.nav-second-level
-          // /.sidebar-collapse
-        // /.navbar-static-side
+              li
+                a(href='#')
+                  i.fa.fa-book.fa-fw   
+                  |  Bitacora
+                  span.fa.arrow
+                ul.nav.nav-second-level
+                  li
+                    a(href='#') Administradores
+                  li
+                    a(href='#') Recepcionistas
+                  li
+                    a(href='#') Productos
+                  li
+                    a(href='#') Servicios
       div(ng-view='')
-      // Lo que va arriba de estas etiquetas es parte del .when del logout
-      // Page Content
-      #page-wrapper
-        .container-fluid
-          .row
-            .col-lg-12
-              h1.page-header Administrador #{user.nombre}
-            // /.col-lg-12
-          // /.row
-        // /.container-fluid
-      // /#page-wrapper
-    // /#wrapper
-    // jQuery
     script(src='js/jquery/jquery.min.js')
     // Bootstrap Core JavaScript
     script(src='js/bootstrap/js/bootstrap.min.js')
