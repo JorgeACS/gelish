@@ -1,1 +1,59 @@
-include html/login.html
+doctype html
+html(lang='en', ng-app='uiLogin', ng-controller='myCtrl')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title Inicio de sesión
+    // Bootstrap Core CSS
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    // MetisMenu CSS
+    link(href='css/metisMenu.min.css', rel='stylesheet')
+    // Custom CSS
+    link(href='css/sb-admin-2.css', rel='stylesheet')
+    // Custom Fonts
+    link(href='css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js')
+    script(src='js/uiLogin.js')
+    base(href='http://localhost:3000/')
+  body
+    .container
+      .row
+        .col-md-4.col-md-offset-4
+          .login-panel.panel.panel-default
+            .panel-heading
+              h3.panel-title Inicio de sesión
+            .panel-body
+              // metodo para pasar nformacion a routes/ login.js
+              form#form_login(role='form', name='form')
+                div
+                  img(src='imagen/logo.png', width='100%')
+                  br
+                  br
+                .form-group.input-group
+                  span.input-group-addon
+                    i.fa.fa-user
+                  input#input_user.form-control(ng-model='username', type='text', placeholder='Usuario', name='username', autofocus='', required='')
+                span(style='color:red', ng-show='form.username.$touched && form.username.$invalid') El nombre de usuario es requerido.
+                br
+                br
+                .form-group.input-group
+                  span.input-group-addon
+                    i.fa.fa-lock
+                  input#input_password.form-control(ng-model='password', placeholder='Contraseña', type='password', name='password', required='')
+                span(style='color:red', ng-show='form.password.$touched && form.password.$invalid') La contraseña es requerida.
+                br
+                br
+                button#button_login.btn.btn-primary.btn-lg.btn-block(ng-disabled='form.password.$invalid || form.username.$invalid', type='submit', ng-click='InicioSesion()') Iniciar sesión
+                // <button type="submit" id="button_login" class="btn btn-primary btn-lg btn-block" ng-click="Verificar()">Iniciar sesión</button>
+    // jQuery
+    script(src='js/jquery/jquery.min.js')
+    // Bootstrap Core JavaScript
+    script(src='js/bootstrap/js/bootstrap.min.js')
+    // Metis Menu Plugin JavaScript
+    script(src='js/metisMenu/metisMenu.min.js')
+    // Custom Theme JavaScript
+    script(src='js/sb-admin-2.js')
