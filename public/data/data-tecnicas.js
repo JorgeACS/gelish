@@ -1,4 +1,4 @@
-$(function() {
+function cargarGraficas() {
     Morris.Donut({
         element: 'morris-donut-chart',
         data: [{
@@ -51,4 +51,4 @@ $(function() {
         hideHover: 'auto',
         resize: true
     });
-})
+};

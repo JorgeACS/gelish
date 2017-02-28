@@ -101,31 +101,9 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/reportesSucursales", {
       templateUrl: 'reporteSucursales',
       controller:function($scope){
-        $scope.loadScript = function(url, type, charset) {
-            if (type===undefined) type = 'text/javascript';
-            if (url) {
-                var script = document.querySelector("script[src*='"+url+"']");
-                if (!script) {
-                    var heads = document.getElementsByTagName("head");
-                    if (heads && heads.length) {
-                        var head = heads[0];
-                        if (head) {
-                            script = document.createElement('script');
-                            script.setAttribute('src', url);
-                            script.setAttribute('type', type);
-                            if (charset) script.setAttribute('charset', charset);
-                            head.appendChild(script);
-                        }
-                    }
-                }
-                console.log(1);
-                return script;
-            }
-        };
-        $scope.loadScript('data/morris-data.js', 'text/javascript', 'utf-8');
-          console.log(2);
-        cargarGraficas();
-        console.log(3);
+        angular.element(document).ready(function () {
+          cargarGraficas();
+        });
       }
     }).when("/reporteTecnicas", {
       templateUrl: 'reporteTecnicas'
@@ -133,6 +111,6 @@ app.config(function($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
 });
-app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
+//app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
 
-});
+//});
