@@ -4,79 +4,67 @@ function cargarGraficas() {
         data: [{
             month: '2016-01',
             x : 1,
-            hermosillo: 2666,
-            guaymas: null,
-            nogales: 2647
+            Dila: 2666,
+            Cantabria: null
         }, {
             month: '2016-02',
             x : 2,
-            hermosillo: 2778,
-            guaymas: 2294,
-            nogales: 2441
+            Dila: 2778,
+            Cantabria: 2294
         }, {
             month: '2016-03',
             x : 3,
-            hermosillo: 4912,
-            guaymas: 1969,
-            nogales: 2501
+            Dila: 4912,
+            Cantabria: 1969
         }, {
             month: '2016-04',
             x : 4,
-            hermosillo: 3767,
-            guaymas: 3597,
-            nogales: 5689
+            Dila: 3767,
+            Cantabria: 3597
         }, {
             month: '2016-05',
             x : 5,
-            hermosillo: 6810,
-            guaymas: 1914,
-            nogales: 2293
+            Dila: 6810,
+            Cantabria: 1914
         }, {
             month: '2016-06',
             x : 6,
-            hermosillo: 5670,
-            guaymas: 4293,
-            nogales: 1881
+            Dila: 5670,
+            Cantabria: 4293
         }, {
             month: '2016-07',
             x : 7,
-            hermosillo: 4820,
-            guaymas: 3795,
-            nogales: 1588
+            Dila: 4820,
+            Cantabria: 3795
         }, {
             month: '2016-08',
             x : 8,
-            hermosillo: 15073,
-            guaymas: 5967,
-            nogales: 5175
+            Dila: 15073,
+            Cantabria: 5967
         }, {
             month: '2016-09',
             x : 9,
-            hermosillo: 10687,
-            guaymas: 4460,
-            nogales: 2028
+            Dila: 10687,
+            Cantabria: 4460
         }, {
             month: '2016-10',
             x : 10,
-            hermosillo: 8432,
-            guaymas: 5713,
-            nogales: 1791
+            Dila: 8432,
+            Cantabria: 5713
         }, {
             month: '2016-11',
             x : 11,
-            hermosillo: 5291,
-            guaymas: 3159,
-            nogales: 2514
+            Dila: 5291,
+            Cantabria: 3159
         }, {
             month: '2016-12',
             x : 12,
-            hermosillo: 10929,
-            guaymas: 7102,
-            nogales: 1204
+            Dila: 10929,
+            Cantabria: 7102
         }],
         xkey: 'month',
-        ykeys: ['hermosillo', 'guaymas', 'nogales'],
-        labels: ['Hermosillo', 'Guaymas', 'Nogales'],
+        ykeys: ['Dila', 'Cantabria'],
+        labels: ['Dila', 'Cantabria'],
         pointSize: 2,
         hideHover: 'auto',
         resize: true
@@ -87,49 +75,42 @@ function cargarGraficas() {
         data: [{
             year: '2016',
             x : 1,
-            hermosillo: 26660,
-            guaymas: null,
-            nogales: 52010
+            Dila: 26660,
+            Cantabria: null
         }, {
             year: '2015',
             x : 2,
-            hermosillo: 52778,
-            guaymas: 12294,
-            nogales: 32441
+            Dila: 52778,
+            Cantabria: 12294
         }, {
             year: '2014',
             x : 3,
-            hermosillo: 24912,
-            guaymas: 11969,
-            nogales: 52501
+            Dila: 24912,
+            Cantabria: 11969
         }, {
             year: '2013',
             x : 4,
-            hermosillo: 32767,
-            guaymas: 23597,
-            nogales: 25689
+            Dila: 32767,
+            Cantabria: 23597
         }, {
             year: '2012',
             x : 5,
-            hermosillo: 46810,
-            guaymas: 21914,
-            nogales: 12293
+            Dila: 46810,
+            Cantabria: 21914
         }, {
             year: '2011',
             x : 6,
-            hermosillo: 15670,
-            guaymas: 24293,
-            nogales: 31881
+            Dila: 15670,
+            Cantabria: 24293
         }, {
             year: '2010',
             x : 12,
-            hermosillo: 10929,
-            guaymas: 37102,
-            nogales: 31204
+            Dila: 10929,
+            Cantabria: 37102
         }],
         xkey: 'year',
-        ykeys: ['hermosillo', 'guaymas', 'nogales'],
-        labels: ['Hermosillo', 'Guaymas', 'Nogales'],
+        ykeys: ['Dila', 'Cantabria'],
+        labels: ['Dila', 'Cantabria'],
         pointSize: 2,
         hideHover: 'auto',
         resize: true
