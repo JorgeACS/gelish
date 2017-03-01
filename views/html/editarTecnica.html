@@ -49,14 +49,9 @@
                                         <option value="" >Inactivo</option>
                                       </select>
                                   </div>
-                                  <div class="form-group">
-                                      <label>Sucursal</label>
-                                      <select class="form-control" name="sucursal">
-                                        <option value="" disabled selected>Seleccione una sucursal</option>
-                                        <option value="" >Hermosillo</option>
-                                        <option value="" >Guaymas</option>
-                                        <option value="" >Nogales</option>
-                                        <option value="" >Caborca</option>
+                                  <div class = "form-group">
+                                      <label>Seleccionar Sucursal</label>
+                                      <select class="form-control" ng-model="sucursalSeleccionada" ng-options="y.plaza for (x, y) in sucursales">
                                       </select>
                                   </div>
 

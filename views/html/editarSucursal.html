@@ -17,7 +17,7 @@
                         <div class="col-lg-9">
                             <div class = "form-group">
                                 <label>Seleccionar Sucursal</label>
-                                <select class="form-control" ng-model="sucursalSeleccionada" ng-options="y.ciudad for (x, y) in sucursales">
+                                <select class="form-control" ng-model="sucursalSeleccionada" ng-options="y.plaza for (x, y) in sucursales">
                                 </select>
                             </div>
                             <form role="form">
@@ -38,18 +38,12 @@
                                         <label>Telefono</label>
                                         <input class="form-control" placeholder="Telefono" ng-model="sucursalSeleccionada.telefono">
                                     </div>
-
                                     <div class="form-group">
                                         <label>Administrador de Sucursal</label>
-                                       <input class="form-control" list="administradores" name="administrador" ng-model="sucursalSeleccionada.admin">
-                                          <datalist id="administradores">
-                                            <option value="Maria Soto">
-                                            <option value="Ana Garcia">
-                                            <option value="Jorge Carvjaal">
-                                            <option value="Erick Fimbres">
-                                            <option value="Juan Perez">
-                                          </datalist>
+                                        <select class="form-control" ng-options="y.nombre + ' ' + y.apellido_paterno for (x, y) in admins" ng-model="sucursalSeleccionada.admin">
+                                        </select>
                                     </div>
+                                    
                                 <!--</fieldset>!-->
                                 <button type="button" class="btn btn-default" >Actualizar</button>
                                 <button type="reset" class="btn btn-default">Limpiar</button>

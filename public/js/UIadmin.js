@@ -36,25 +36,18 @@ app.config(function($routeProvider, $locationProvider) {
       controller:function($scope){
         $scope.admins = {
             admin01 : {
-              nombre : "Jorge",
-              apellido_paterno : "Carvajal",
-              apellido_materno : "Siller",
-              telefono : "2-11-33-12",
-              sucursal : "Hermosillo"
+              nombre : "Lourdes",
+              apellido_paterno : "Archuleta",
+              apellido_materno : "",
+              telefono : "2-00-00-00",
+              sucursal : "Cantabria"
              },
             admin02 : {
-              nombre : "Juan",
-              apellido_paterno : "Soto",
-              apellido_materno : "Cruz",
-              telefono : "2-03-33-33",
-              sucursal : "Guaymas"
-            },
-            admin03 : {
-              nombre : "Erick",
-              apellido_paterno : "Lopez",
-              apellido_materno : "Fimbres",
-              telefono : "2-02-03-04",
-              sucursal : "Nogales"
+              nombre : "Dunia",
+              apellido_paterno : "Morales",
+              apellido_materno : "",
+              telefono : "2-11-11-11",
+              sucursal : "Dila"
             }
         }
       }
@@ -65,25 +58,16 @@ app.config(function($routeProvider, $locationProvider) {
       controller:function($scope){
         $scope.admins = {
             admin01 : {
-              nombre : "Jorge",
-              apellido_paterno : "Carvajal",
-              apellido_materno : "Siller",
-              telefono : "2-11-33-12",
-              sucursal : "Hermosillo"
+              nombre : "Lourdes",
+              apellido_paterno : "Archuleta",
+              apellido_materno : "",
+              telefono : "2-00-00-00"
              },
             admin02 : {
-              nombre : "Juan",
-              apellido_paterno : "Soto",
-              apellido_materno : "Cruz",
-              telefono : "2-03-33-33",
-              sucursal : "Guaymas"
-            },
-            admin03 : {
-              nombre : "Erick",
-              apellido_paterno : "Lopez",
-              apellido_materno : "Fimbres",
-              telefono : "2-02-03-04",
-              sucursal : "Nogales"
+              nombre : "Dunia",
+              apellido_paterno : "Morales",
+              apellido_materno : "",
+              telefono : "2-11-11-11"
             }
         }
       }
@@ -91,9 +75,22 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'editarSucursal',
       controller:function($scope){
         $scope.sucursales = {
-            sucursal01 : {plaza : "Dila", ciudad : "Hermosillo", direccion : "Av. Sin numero", telefono : "2-11-33-12",admin : "Juan"},
-            sucursal02 : {plaza : "Girasol",ciudad : "Guaymas", direccion : "Av. Molino de Camu", telefono : "2-03-33-33",admin : "Jorge"},
-            sucursal03 : {plaza : "Tierra Nueva",ciudad : "Nogales", direccion : "Av. Rebeico", telefono : "2-02-03-04", admin : "Erick"}
+            sucursal01 : {plaza : "Dila", ciudad : "Hermosillo", direccion : "Plaza Dila", telefono : "2-11-33-12",admin : "Dunia Morales"},
+            sucursal02 : {plaza : "Cantabria",ciudad : "Hermosillo", direccion : "Cantabria", telefono : "2-03-33-33",admin : "Lourdes Archuleta"}
+        }
+        $scope.admins = {
+            admin01 : {
+              nombre : "Lourdes",
+              apellido_paterno : "Archuleta",
+              apellido_materno : "",
+              telefono : "2-00-00-00"
+             },
+            admin02 : {
+              nombre : "Dunia",
+              apellido_paterno : "Morales",
+              apellido_materno : "",
+              telefono : "2-11-11-11"
+            }
         }
       }
     }).when("/eliminarSucursal", {

@@ -17,23 +17,41 @@ app.config(function($routeProvider, $locationProvider) {
       controller:function($scope){
         $scope.productos = {
           producto01 : {
-            nombre : "Esmalte Rojo",
-            descripcion : "Esmalte de color rojo",
-            precio : "50",
-            cantidad : "100"
+            nombre : "Foundation",
+            descripcion : "15ml",
+            precio : "490",
+            cantidad : "100",
+            categoria : "Gelish"
            },
           producto02 : {
-            nombre : "Esmalte Rosa",
-            descripcion : "Esmalte de color rosa",
-            precio : "60",
-            cantidad : "40"
+            nombre : "Mascarilla humectante",
+            descripcion : "250gr",
+            precio : "350",
+            cantidad : "40",
+            categoria : "S2"
           },
           producto03 : {
-            nombre : "Esmalte Morado",
+            nombre : "Pestañas J .15 #10",
             descripcion : "Esmalte de color morado",
-            precio : "70",
-            cantidad : "6"
+            precio : "250",
+            cantidad : "6",
+            categoria : "Jdenis"
+          },
+          producto04 : {
+            nombre : "Top it off",
+            descripcion : "15ml",
+            precio : "315",
+            cantidad : "20",
+            categoria : "Gelish"
+          },
+          producto05 : {
+            nombre : "Sheek White",
+            descripcion : "15ml",
+            precio : "250",
+            cantidad : "70",
+            categoria : "Gelish"
           }
+
         }
       }
     }).when("/eliminarProducto", {
@@ -45,19 +63,29 @@ app.config(function($routeProvider, $locationProvider) {
       controller:function($scope){
         $scope.servicios = {
           servicio01 : {
-            nombre : "Manicure",
-            descripcion : "Servicio de manicure",
-            precio : "150"
+            nombre : "Gelish Manos",
+            descripcion : "",
+            precio : "120"
            },
           servicio02 : {
-            nombre : "Pedicure",
-            descripcion : "Servicio de pedicure",
-            precio : "200"
+            nombre : "U\u00f1as acrilicas",
+            descripcion : "",
+            precio : "260"
           },
           servicio03 : {
-            nombre : "Gelish",
-            descripcion : "Servicio de gelish",
-            precio : "100"
+            nombre : "Manicura",
+            descripcion : "",
+            precio : "150"
+          },
+          servicio04 : {
+            nombre : "Pedicura Spa",
+            descripcion : "",
+            precio : "300"
+          },
+          servicio05 : {
+            nombre : "Pedicura Brasile\u00f1o",
+            descripcion : "",
+            precio : "200"
           }
         }
       }
@@ -75,27 +103,31 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/editarRecepcionista", {
       templateUrl: 'editarRecepcionista',
       controller:function($scope){
+        $scope.sucursales = {
+            sucursal01 : {plaza : "Dila", ciudad : "Hermosillo", direccion : "Plaza Dila", telefono : "2-11-33-12",admin : "Dunia Morales"},
+            sucursal02 : {plaza : "Cantabria",ciudad : "Hermosillo", direccion : "Cantabria", telefono : "2-03-33-33",admin : "Lourdes Archuleta"}
+        }
         $scope.recepcionistas = {
             recepcionista01 : {
-              nombre : "Jorge",
-              apellido_paterno : "Carvajal",
-              apellido_materno : "Siller",
-              telefono : "2-11-33-12",
-              sucursal : "Hermosillo"
+              nombre : "Yadira",
+              apellido_paterno : "Rodriguez",
+              apellido_materno : "",
+              telefono : "2-00-00-00",
+              sucursal : "Dila"
              },
             recepcionista02 : {
-              nombre : "Juan",
-              apellido_paterno : "Soto",
-              apellido_materno : "Cruz",
-              telefono : "2-03-33-33",
-              sucursal : "Guaymas"
+              nombre : "Berenice",
+              apellido_paterno : "Vega",
+              apellido_materno : "",
+              telefono : "2-11-11-11",
+              sucursal : "Dila"
             },
             recepcionista03 : {
-              nombre : "Erick",
-              apellido_paterno : "Lopez",
-              apellido_materno : "Fimbres",
-              telefono : "2-02-03-04",
-              sucursal : "Nogales"
+              nombre : "Irma",
+              apellido_paterno : "Navarro",
+              apellido_materno : "",
+              telefono : "2-22-22-22",
+              sucursal : "Cantabria"
             }
         }
       }
@@ -106,27 +138,52 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/editarTecnica", {
       templateUrl: 'editarTecnica',
       controller:function($scope){
+        $scope.sucursales = {
+            sucursal01 : {plaza : "Dila", ciudad : "Hermosillo", direccion : "Plaza Dila", telefono : "2-11-33-12",admin : "Dunia Morales"},
+            sucursal02 : {plaza : "Cantabria",ciudad : "Hermosillo", direccion : "Cantabria", telefono : "2-03-33-33",admin : "Lourdes Archuleta"}
+        }
         $scope.tecnicas = {
             tecnica01 : {
-              nombre : "Jorge",
-              apellido_paterno : "Carvajal",
-              apellido_materno : "Siller",
-              telefono : "2-11-33-12",
-              sucursal : "Hermosillo"
+              nombre : "Giovana",
+              apellido_paterno : "Flores",
+              apellido_materno : "",
+              telefono : "2-44-44-44",
+              sucursal : "Dila"
              },
             tecnica02 : {
-              nombre : "Juan",
-              apellido_paterno : "Soto",
-              apellido_materno : "Cruz",
-              telefono : "2-03-33-33",
-              sucursal : "Guaymas"
+              nombre : "Miriam",
+              apellido_paterno : "Lagarda",
+              apellido_materno : "",
+              telefono : "2-55-55-55",
+              sucursal : "Dila"
             },
             tecnica03 : {
-              nombre : "Erick",
-              apellido_paterno : "Lopez",
-              apellido_materno : "Fimbres",
-              telefono : "2-02-03-04",
-              sucursal : "Nogales"
+              nombre : "Norma",
+              apellido_paterno : "Ramirez",
+              apellido_materno : "",
+              telefono : "2-66-66-66",
+              sucursal : "Cantabria"
+            },
+            tecnica04 : {
+              nombre : "Mayela",
+              apellido_paterno : "Lagarda",
+              apellido_materno : "",
+              telefono : "2-77-77-77",
+              sucursal : "Cantabria"
+            },
+            tecnica05 : {
+              nombre : "Adriana",
+              apellido_paterno : "Morales",
+              apellido_materno : "",
+              telefono : "2-88-88-88",
+              sucursal : "Cantabria"
+            },
+            tecnica06 : {
+              nombre : "Karla",
+              apellido_paterno : "Ripalda",
+              apellido_materno : "",
+              telefono : "2-99-99-99",
+              sucursal : "Dila"
             }
         }
       }
