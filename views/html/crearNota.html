@@ -2,9 +2,10 @@
 
 <style>
 .marco{
-  background: #ccc;
+  background: #fff;
   box-shadow: 3px 3px 50px #888888;
   font-family: "Roboto";
+  border-radius: 10px;
 }
 .encabezado{
   font-size: 25px;
@@ -13,7 +14,6 @@
 }
 .encabezado p{
   margin-top: 5px;
-  background: #ccc;
   display: inline-block;
 }
 .fecha{
@@ -29,10 +29,7 @@
   display: inline-block;
   font-size: 20px;
   font-weight: bold;
-  margin-left: 10px;
-}
-.cuerpo{
-  margin-left: 5%;
+  padding: 10px;
 }
 .total{
   border-top: 3px solid #000;
@@ -44,10 +41,16 @@ float: right;
 margin-right: 10%;
 }
 .producto{
+  padding-left: 10%;
+  background-color: red;
+  min-width: 400px;
+  text-align: center;
 
 }
 .servicio{
-  margin-left: 100px;
+  min-width: 400px;
+  background-color: green;
+  text-align: center;
 }
 </style>
 <div id="page-wrapper">
@@ -93,7 +96,6 @@ margin-right: 10%;
                             <select class="form-control" ng-model="selectServ" ng-options="y.nombre for (x, y) in servicios">
                             </select>
                             <button ng-click="addItemS()" class="w3-btn w3-padding w3-green">Agregar</button>
-
                         </div>
                         <!-- /.panel-body -->
                     </div>
