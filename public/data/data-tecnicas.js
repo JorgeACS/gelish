@@ -1,14 +1,14 @@
-$(function() {
+function cargarGraficas() {
     Morris.Donut({
         element: 'morris-donut-chart',
         data: [{
-            label: "Maria",
+            label: "Giovana",
             value: 1500
         }, {
-            label: "Fernanda",
+            label: "Miriam",
             value: 1200
         }, {
-            label: "Barbara",
+            label: "Karla",
             value: 800
         }],
         resize: true
@@ -17,31 +17,31 @@ $(function() {
     Morris.Bar({
         element: 'morris-line-chart',
         data: [{
-            y: 'Maria',
+            y: 'Giovana',
             enero: 100,
             febrero: 90
         }, {
-            y: 'Julia',
+            y: 'Miriam',
             enero: 75,
             febrero: 65
         }, {
-            y: 'Barbara',
+            y: 'Norma',
             enero: 50,
             febrero: 40
         }, {
-            y: 'Fernanda',
+            y: 'Miriam',
             enero: 75,
             febrero: 65
         }, {
-            y: 'Ana',
+            y: 'Mayela',
             enero: 50,
             febrero: 40
         }, {
-            y: 'Athena',
+            y: 'Adriana',
             enero: 75,
             febrero: 65
         }, {
-            y: 'Alejandra',
+            y: 'Karla',
             enero: 100,
             febrero: 90
         }],
@@ -51,4 +51,4 @@ $(function() {
         hideHover: 'auto',
         resize: true
     });
-})
+};
