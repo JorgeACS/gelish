@@ -47,37 +47,91 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/crearNota", {
       templateUrl: 'crearNota',
       controller:function($scope) {
-        $scope.fecha=new Date();
         $scope.servicios = {
-          cliente01 : {nombre : "Aplicacion de uñas", costo : "100"},
-          cliente02 : {nombre : "Aplicacion de mascarilla", costo : "150"},
-          cliente03 : {nombre : "Masaje", costo : "200"}
+          servicio01 : {
+            nombre : "Gelish Manos",
+            descripcion : "",
+            precio : "120"
+           },
+          servicio02 : {
+            nombre : "U\u00f1as acrilicas",
+            descripcion : "",
+            precio : "260"
+          },
+          servicio03 : {
+            nombre : "Manicura",
+            descripcion : "",
+            precio : "150"
+          },
+          servicio04 : {
+            nombre : "Pedicura Spa",
+            descripcion : "",
+            precio : "300"
+          },
+          servicio05 : {
+            nombre : "Pedicura Brasile\u00f1o",
+            descripcion : "",
+            precio : "200"
+          }
         }
         $scope.productos = {
-          cli01 : {nombre : "Lima", costo : "80"},
-          cli02 : {nombre : "Tinte", costo : "100"},
-          cli03 : {nombre : "Jabon", costo : "20"}
+          producto01 : {
+            nombre : "Foundation",
+            descripcion : "15ml",
+            precio : "490",
+            cantidad : "100",
+            categoria : "Gelish"
+           },
+          producto02 : {
+            nombre : "Mascarilla humectante",
+            descripcion : "250gr",
+            precio : "350",
+            cantidad : "40",
+            categoria : "S2"
+          },
+          producto03 : {
+            nombre : "Pestañas J .15 #10",
+            descripcion : "Esmalte de color morado",
+            precio : "250",
+            cantidad : "6",
+            categoria : "Jdenis"
+          },
+          producto04 : {
+            nombre : "Top it off",
+            descripcion : "15ml",
+            precio : "315",
+            cantidad : "20",
+            categoria : "Gelish"
+          },
+          producto05 : {
+            nombre : "Sheek White",
+            descripcion : "15ml",
+            precio : "250",
+            cantidad : "70",
+            categoria : "Gelish"
+          }
         }
-        $scope.products = [];
-        $scope.addItemP = function () {
-          $scope.errortext = "";
-          //if (!$scope.addMe) {return;}
-              $scope.products.push($scope.selectProd.nombre);
+        $scope.clients = {
+            cliente01 : {
+              nombre : "Ana",apellido: "Noriega"
+             },
+            cliente02 : {
+              nombre : "Fernanda",apellido : "Serrano"
+            },
+            cliente03 : {
+              nombre : "Alex",apellido : "Torres"
+            }
         }
-        $scope.removeItemP = function (x) {
-            $scope.errortext = "";
-            $scope.products.splice(x, 1);
-        }
-        $scope.serv = [];
-        $scope.addItemS = function () {
-          $scope.errortext = "";
-          //if (!$scope.addMe) {return;}
-              $scope.serv.push($scope.selectServ.nombre);
-        }
-        $scope.removeItemS = function (x) {
-            $scope.errortext = "";
-            $scope.serv.splice(x, 1);
-        }
+        $scope.fecha=new Date();
+        $scope.listaNota = [{id: 'choice1'}];
+        $scope.addNewChoice = function() {
+          var newItemNo = $scope.listaNota.length+1;
+          $scope.listaNota.push({'id':'choice'+newItemNo});
+        };
+        $scope.removeChoice = function() {
+          var lastItem = $scope.listaNota.length-1;
+          $scope.listaNota.splice(lastItem);
+        };
       }
     }).when("/abrirCaja", {
       templateUrl: '',

@@ -42,15 +42,86 @@ margin-right: 10%;
 }
 .producto{
   padding-left: 10%;
-  background-color: red;
-  min-width: 400px;
+  min-width: 300px;
   text-align: center;
 
 }
 .servicio{
-  min-width: 400px;
-  background-color: green;
+  margin-left: 20px;
+  min-width: 300px;
   text-align: center;
+}
+.prod{
+  margin-left: 20px;
+  min-width: 300px;
+  max-width: 300px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+}
+.cant{
+  margin-left: 10px;
+  min-width: 80px;
+  max-width: 80px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.tot{
+  margin-top: 30px;
+}
+.renglonLista{
+  margin-bottom: 10px;
+}
+.clien-form{
+  margin-top: 15px;
+}
+.clien-form label{
+  margin-left: 2%;
+  font-size: 14px;
+  font-weight: bold;
+}
+.clien-form input{
+  margin-left: 2%;
+  min-width: 30%;
+  max-width: 30%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 </style>
 <div id="page-wrapper">
@@ -65,87 +136,43 @@ margin-right: 10%;
                 <p class="folio">Folio:105</p>
                 <p class="fecha"> {{fecha | date:'dd-MM-yyyy'}}</p>
               </div>
-
+              <div>
+                <div class="clien-form">
+                    <label>Nombre</label>
+                    <input list="clientes" name="clientes" ng-model="clientes" class="form-control" placeholder="Nombre del cliente">
+                </div>
+                  <datalist id="clientes">
+                    <option ng-repeat="x1 in clients" value="{{x1.nombre+' '+x1.apellido}}">
+                  </datalist>
+              </div>
               <div class="cuerpo">
                 <p>Cantidad</p>
-                <p class="servicio">servicios</p>
-                <p class="producto">productos</p>
+                <p class="producto">Productos</p>
+                <p class="servicio">Servicios</p>
                 <p class="costo">Costo</p>
               </div>
-              <div>
 
+              <div class="lista">
+                 <fieldset  data-ng-repeat="renglon in listaNota">
+                   <div class="renglonLista">
+                     <input class="cant" type="text" ng-model="renglon.cantidad" name="" placeholder="#">
+                     <input list="productos" class="prod" type="text" ng-model="renglon.producto" name="" placeholder="Producto">
+                     <datalist id="productos">
+                       <option ng-repeat="x1 in productos" value="{{x1.nombre}}">
+                     </datalist>
+                     <input list="servicios" class="prod" type="text" ng-model="renglon.servicio" name="" placeholder="Servicio">
+                     <datalist id="servicios">
+                       <option ng-repeat="x1 in servicios" value="{{x1.nombre}}">
+                     </datalist>
+                     <button style="margin-left:10px;"class="btn btn-success btn-circle" ng-show="$last" ng-click="addNewChoice()">+</button>
+                     <button class="btn btn-danger btn-circle" ng-show="$last" ng-click="removeChoice()">-</button>
+                   </div>
+                 </fieldset>
               </div>
-              <div >
+              <div class="tot">
                 <p class="total">Total: </p>
               </div>
-
             </div>
-
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Productos y Servicios
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <h4>Productos</h4>
-                            <select class="form-control" ng-model="selectProd" ng-options="y.nombre for (x, y) in productos">
-                            </select>
-                            <button ng-click="addItemP()" class="w3-btn w3-padding w3-green">Agregar</button>
-                            <br>
-                            <h4>Servicios</h4>
-                            <select class="form-control" ng-model="selectServ" ng-options="y.nombre for (x, y) in servicios">
-                            </select>
-                            <button ng-click="addItemS()" class="w3-btn w3-padding w3-green">Agregar</button>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-6 -->
-                <div class="col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Nota
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                          <div  ng-cloak  class="w3-card-2 w3-margin" style="max-width:400px;">
-                            <header class="w3-container w3-light-grey w3-padding-16">
-                              <h3>Lista de servicios</h3>
-                            </header>
-                            <ul class="w3-ul">
-                              <li ng-repeat="x in serv" class="w3-padding-16">{{x}}<span ng-click="removeItemS($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
-                            </ul>
-                            <div class="w3-container w3-light-grey w3-padding-16">
-                              <div class="w3-row w3-margin-top">
-                              </div>
-                              <p class="w3-padding-left w3-text-red">{{errortext}}</p>
-                            </div>
-                            <header class="w3-container w3-light-grey w3-padding-16">
-                              <h3>Lista de productos</h3>
-                            </header>
-                            <ul class="w3-ul">
-                              <li ng-repeat="x in products" class="w3-padding-16">{{x}}<span ng-click="removeItemP($index)" style="cursor:pointer;" class="w3-right w3-margin-right">×</span></li>
-                            </ul>
-                            <div class="w3-container w3-light-grey w3-padding-16">
-                              <div class="w3-row w3-margin-top">
-                              </div>
-                              <p class="w3-padding-left w3-text-red">{{errortext}}</p>
-                            </div>
-                          </div>
-
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-
-                </div>
-                <!-- /.col-lg-6 -->
-            </div>
-            <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
 
