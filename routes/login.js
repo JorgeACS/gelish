@@ -27,7 +27,8 @@ class Sesion {
           nombre : value[0].nombre,
           apellidos : value[0].apellido,
           correo : value[0].correo,
-          telefono : value[0].telefono
+          telefono : value[0].telefono,
+          sucursal_id : value[0].sucursal_id
         }
         //res.render('admin',{title: "Gelish",message:"Bienvenido"});
         res.send(req.session.user);

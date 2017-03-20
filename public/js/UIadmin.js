@@ -15,7 +15,6 @@ app.config(function($routeProvider, $locationProvider) {
       controller:function($scope,$location,$window, $http) {
         $scope.agregarAdmin = function() {
           user={
-            sucursal_id:$scope.sucursal,
             username: $scope.username,
             password:$scope.password,
             nombre:$scope.nombre,
@@ -98,8 +97,8 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/reportesSucursales", {
       templateUrl: 'reporteSucursales',
       controller:function($scope){
-<<<<<<< HEAD
-        $scope.loadScript = function(url, type, charset) {
+//<<<<<<< HEAD
+        /*$scope.loadScript = function(url, type, charset) {
             if (type===undefined) type = 'text/javascript';
             if (url) {
                 var script = document.querySelector("script[src*='"+url+"']");
@@ -119,12 +118,12 @@ app.config(function($routeProvider, $locationProvider) {
                 return script;
             }
         };
-        $scope.loadScript('data/morris-data.js', 'text/javascript', 'utf-8');
-=======
+        $scope.loadScript('data/morris-data.js', 'text/javascript', 'utf-8');*/
+//=======
         angular.element(document).ready(function () {
           cargarGraficas();
         });
->>>>>>> f28de5ff8ea799eebc5890ff2d135567a4c91cf2
+//>>>>>>> f28de5ff8ea799eebc5890ff2d135567a4c91cf2
       }
     }).when("/reporteTecnicas", {
       templateUrl: 'reporteTecnicas'

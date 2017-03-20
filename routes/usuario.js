@@ -12,9 +12,9 @@ class Usuario extends Router{
     })
   }
   post(req,res){
+    console.log("hola");
     var data = {};
-    if( req.body.sucursal_id == null ||
-        req.body.username == null ||
+    if( req.body.username == null ||
         req.body.password == null ||
         req.body.nombre == null ||
         req.body.apellido == null ||
@@ -23,7 +23,7 @@ class Usuario extends Router{
         req.body.tipo == null ||
         req.body.tipo < 0 ||
         req.body.tipo > 4){
-        res.sendStatus(404);
+        res.sendStatus(400);
         return false;
     }
     data.usuario = {

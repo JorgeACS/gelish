@@ -4,17 +4,30 @@ CREATE DATABASE GELISH;
 
 USE GELISH;
 
-CREATE TABLE Sucursal(
+CREATE TABLE Caja(
   id INT(11) PRIMARY KEY AUTO_INCREMENT,
-  plaza VARCHAR(50) NOT NULL,
-  ciudad VARCHAR(20) NOT NULL,
-  telefono VARCHAR(20) NOT NULL
+  recepcionista_id INT(11) NOT NULL,
+  fecha_apertura DATE NOT NULL,
+  fecha_cierre DATE,
+  sucursal_id INT(11) NOT NULL
 );
 
+CREATE TABLE Sucursal(
+  id INT(11) PRIMARY KEY AUTO_INCREMENT,
+  caja_id INT(11),
+  plaza VARCHAR(50) NOT NULL,
+  ciudad VARCHAR(20) NOT NULL,
+  telefono VARCHAR(20) NOT NULL,
+  CONSTRAINT FOREIGN KEY
+    (caja_id) REFERENCES Caja(id)
+
+);
+
+ALTER TABLE Caja ADD FOREIGN KEY (sucursal_id) REFERENCES Sucursal(id);
 
 CREATE TABLE Usuario(
   id INT(11) PRIMARY KEY AUTO_INCREMENT,
-  sucursal_id INT(11) NOT NULL,
+  sucursal_id INT(11),
   username VARCHAR(55),
   password VARCHAR(55),
   nombre VARCHAR(60) NOT NULL,
@@ -69,14 +82,6 @@ CREATE TABLE Nota(
     (usuario_id) REFERENCES Usuario(id)
 );
 
-CREATE TABLE Caja(
-  id INT(11) PRIMARY KEY AUTO_INCREMENT,
-  recepcionista_id INT(11) NOT NULL,
-  fecha_apertura DATE NOT NULL,
-  fecha_cierre DATE,
-  CONSTRAINT FOREIGN KEY
-    (recepcionista_id) REFERENCES Usuario(id)
-);
 
 CREATE TABLE Venta_productos_Servicios(
   id INT(11) PRIMARY KEY AUTO_INCREMENT,
@@ -92,6 +97,8 @@ CREATE TABLE Venta_productos_Servicios(
 
 INSERT INTO Sucursal(plaza,ciudad,telefono)
   VALUES("Dila","Hermosillo","6622012345");
+INSERT INTO Sucursal(plaza,ciudad,telefono)
+  VALUES("Cantabria","Hermosillo","6622678941");
 
 INSERT INTO Usuario(sucursal_id,username,password,nombre,apellido,correo,telefono,tipo)
 	VALUES(1,"admin","admin","Gabriela Gricelda","Trujillo Creado","GabrielaT@gelish.com","6621010203",0);

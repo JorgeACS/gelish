@@ -54,6 +54,7 @@ var reporteTecnicas = require('./routes/reporteTecnicas');
 var crearNota = require('./routes/crearNota');
 var Sesion = require('./routes/login');
 var login = require('./routes/login');
+var Sucursal = require('./routes/sucursal');
 var jaderouter = require('./routes/jaderouter');
 var Usuario = require('./routes/usuario');
 
@@ -87,6 +88,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
   res.locals.user = req.session.user;
+  res.locals.caja_id = req.session.caja_id;
   next();
 });
 
@@ -126,6 +128,7 @@ app.use('/interfazCaja', interfazCaja);
 
 app.use('/adminSuc', adminSuc);
 app.use('/login', login);
+app.use('/sucursal',new Sucursal().express())
 app.use('/usuario', new Usuario().express());
 
 app.use('/reporteSucursales',reporteSucursales);

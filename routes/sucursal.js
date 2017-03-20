@@ -1,16 +1,19 @@
 const Router = require('./jaderouter');
 
-const CajaDB = require('../entity/CajaDB');
-class Caja extends Router{
+const SucursalDB = require('../entity/SucursalDB');
+class Sucursal extends Router{
   get(req,res){
-    CajaDB.get(req.mysql,req.query.id,(values,err) => {
-      if (err || values.length < 1){
-        res.sendStatus(404);
+    SucursalDB.get(req.mysql,req.query.sucursal_id,(values,err) => {
+      if (err){
+        res.sendStatus(500);
       }else{
-        res.send(values)
+        req.session.caja_id = values[0].caja_id
+        console.log(values[0].caja_id);
+        res.send(values[0]);
       }
     })
   }
+  /*
   post(req,res){
     var data = {};
     if( req.body.recepcionista_id == null){
@@ -21,7 +24,7 @@ class Caja extends Router{
       recepcionista_id : req.body.recepcionista_id,
       fecha_apertura : new Date()
     }
-    CajaDB.post(req.mysql,data,(insertId,err) =>{
+    SucursalDB.post(req.mysql,data,(insertId,err) =>{
       if(insertId){
         res.send(insertId)
       }else{
@@ -29,8 +32,8 @@ class Caja extends Router{
         res.sendStatus(404)
       }
     });
-  }
+  }*/
   
 }
 
-module.exports = Caja;
+module.exports = Sucursal;

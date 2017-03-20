@@ -39,7 +39,7 @@ html(lang='en', ng-app='recepcionista')
         ul.nav.navbar-top-links.navbar-right
           li.dropdown
             // data-toggle son efectos visuales al dar click
-            a.dropdown-toggle(data-toggle='dropdown', href='#') #{user.nombre + ' ' + user.apellidos + ' '}
+            a.dropdown-toggle(data-toggle='dropdown', href='#') #{user.nombre + ' ' + user.apellidos + ' ' + ' ' + caja_id}
               i.fa.fa-user.fa-fw
               i.fa.fa-caret-down
             ul.dropdown-menu.dropdown-user

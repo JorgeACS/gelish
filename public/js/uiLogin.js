@@ -15,8 +15,19 @@ app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
         }else if(res.data.tipo==1){
           $window.location.href ="/adminSuc";
         }else{
+          $http.get('/sucursal',{params: { sucursal_id: res.data.sucursal_id }}).then((res) =>{
+            console.log(":o")
+            /*if(res2.data.caja_id == null){
+              console.log("nay")
+            }else{
+              console.log("yay")
+            }*/
+          });
           $window.location.href ="/recepcionista";
+          
+          
         }
+
       })
     };
 });
