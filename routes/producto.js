@@ -1,15 +1,13 @@
 const Router = require('./jaderouter');
 
-const SucursalDB = require('../entity/SucursalDB');
-class Sucursal extends Router{
+const ProductoDB = require('../entity/ProductoDB');
+class Producto extends Router{
   get(req,res){
-    SucursalDB.get(req.mysql,req.query.sucursal_id,(values,err) => {
+    ProductoDB.get(req.mysql,(productos,err) => {
       if (err){
         res.sendStatus(500);
       }else{
-        req.caja.caja_id = values[0].caja_id
-        console.log(values[0].caja_id);
-        res.send(values[0]);
+        res.send(productos);
       }
     })
   }
@@ -24,7 +22,7 @@ class Sucursal extends Router{
       recepcionista_id : req.body.recepcionista_id,
       fecha_apertura : new Date()
     }
-    SucursalDB.post(req.mysql,data,(insertId,err) =>{
+    ProductoDB.post(req.mysql,data,(insertId,err) =>{
       if(insertId){
         res.send(insertId)
       }else{
@@ -36,4 +34,4 @@ class Sucursal extends Router{
   
 }
 
-module.exports = Sucursal;
+module.exports = Producto;

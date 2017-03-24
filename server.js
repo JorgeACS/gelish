@@ -41,6 +41,8 @@ var agregarCliente = require('./routes/agregarCliente');
 var editarCliente = require('./routes/editarCliente');
 //var eliminarCliente = require('./routes/eliminarCliente');
 
+
+
 var agregarAdmin = require('./routes/agregarAdmin');
 var editarAdmin = require('./routes/editarAdmin');
 var eliminarAdmin = require('./routes/eliminarAdmin');
@@ -52,11 +54,14 @@ var interfazCaja = require('./routes/interfazCaja');
 var reporteSucursales = require('./routes/reporteSucursales');
 var reporteTecnicas = require('./routes/reporteTecnicas');
 var crearNota = require('./routes/crearNota');
-var Sesion = require('./routes/login');
+
 var login = require('./routes/login');
 var Sucursal = require('./routes/sucursal');
-var jaderouter = require('./routes/jaderouter');
+var Sesion = require('./routes/login');
+var Categoria = require('./routes/categoria');
 var Usuario = require('./routes/usuario');
+
+var jaderouter = require('./routes/jaderouter');
 
 
 var app = express();
@@ -128,6 +133,8 @@ app.use('/interfazCaja', interfazCaja);
 
 app.use('/adminSuc', adminSuc);
 app.use('/login', login);
+
+app.use('/categoria',new Categoria().express())
 app.use('/sucursal',new Sucursal().express())
 app.use('/usuario', new Usuario().express());
 

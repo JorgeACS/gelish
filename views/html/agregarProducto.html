@@ -24,12 +24,9 @@
                                     <input class="form-control" placeholder="Insertar precio...">
                                 </div>
 
-                                <label>Categoria de Producto</label>
-                                <select class="form-control">
-                                    <option value="-1" disabled selected>Seleccione una categoria</option>
-                                    <option value="1">Categoria 1</option>
-                                    <option value="2">Categoria 2</option>
-                                    <option value="3">Categoria 3</option>
+                                <div class = "form-group">
+                                <label>Seleccionar Categoria</label>
+                                <select class="form-control" ng-model="categoriaSeleccionada" ng-options="y.nombre for (x, y) in categorias">
                                 </select>
 
                                 <div class="form-group">
