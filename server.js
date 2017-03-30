@@ -145,7 +145,24 @@ app.use('/\*.jade', jaderouter);
 
 // Route for everything else.
 app.get('/', function (req, res) {
-  res.render('login', { title: 'Hey', message: 'Hello there!' })
+  if(req.session && req.session.user){
+    switch(req.session.user.tipo){
+      case 0:
+        res.render('admin',{title: 'Gelish',message: 'Bienvenido'})
+        break;
+      case 1:
+        res.render('adminSuc',{title: 'Gelish',message: 'Bienvenido'})
+        break;
+      case 2:
+        res.render('recepcionista',{title: 'Gelish',message: 'Bienvenido'})
+        break;
+      default:
+        res.sendStatus(404);
+    }
+  }
+  else{
+    res.render('login', { title: 'Hey', message: 'Hello there!' })
+  }
 });
 
 /*app.get('/:nombre', function (req, res) {

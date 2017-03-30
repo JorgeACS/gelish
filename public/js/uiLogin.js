@@ -10,6 +10,7 @@ app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
         password:$scope.password
       };
       $http.post('/login',user).then((res) => {
+        //$cookies.put('user', user);
         if(res.data.tipo==0){
           $window.location.href ="/admin";
         }else if(res.data.tipo==1){
@@ -33,3 +34,12 @@ app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
       })
     };
 });
+
+
+var cookieModule = angular.module('cookiesExample', ['ngCookies'])
+.controller('CookieController', ['$cookies', function($cookies) {
+  // Retrieving a cookie
+  var favoriteCookie = $cookies.get('myFavorite');
+  // Setting a cookie
+  $cookies.put('myFavorite', 'oatmeal');
+}]);
