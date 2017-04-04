@@ -19,14 +19,11 @@
                             <form role="form">
                                 <div class = "form-group">
                                     <label>Nombre del Administrador</label>
-                                    <select class="form-control">
-                                        <option value="-1" disabled selected>Seleccione un administrador de sucursal</option>
-                                        <option value="1">Juan</option>
-                                        <option value="2">Maria</option>
+                                    <select class="form-control" ng-model="adminSeleccionado" ng-options="y.nombre for (x, y) in admins">
                                     </select>
                                 </div>
 
-                                <button type="submit" class="btn btn-default">Eliminar</button>
+                                <button type="submit" class="btn btn-default" ng-click="eliminarAdmin()">Eliminar</button>
                             </form>
                         </div>
                             <!--<h1>Form Validation States</h1>

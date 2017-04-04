@@ -4,15 +4,64 @@ class UsuarioDB{
       if(err) {
         console.log(err);
         console.log("Error en la conexion");
+        db.release();
         return func(null,err);
       }
       db.query("SELECT * FROM Usuario where tipo = ?", [tipo], function (err, rows) {
         if(err) {
           console.log(err);
+          db.release();
           func(null,err);
         }
-        else func(rows);
+        else {
+          db.release();
+          func(rows);
+        }
+      });
+    });
+  }
+
+  static put(pool,data,func){
+    pool.getConnection(function (err, db) {
+      if(err) {
+        console.log(err);
+        console.log("Error en la conexion");
         db.release();
+        return func(null,err);
+      }
+      db.query("UPDATE Usuario SET ? WHERE id = ?", [data.usuario,data.id], function (err, insertId) {
+        if(err) {
+          console.log(err);
+          db.release();
+          func(null,err);
+        }
+        else {
+          db.release();
+          func(insertId);
+        }
+        
+      });
+    });
+  }
+  static delete(pool,id,func){
+    pool.getConnection(function (err, db) {
+      if(err) {
+        console.log(err);
+        console.log("Error en la conexion");
+        db.release();
+        return func(null,err);
+      }
+      db.query("DELETE FROM Usuario WHERE id = ?", [id], function (err, deleteId) {
+        if(err) {
+          console.log(err);
+          db.release();
+          func(null,err);
+        }
+        else {
+          db.release();
+          func(deleteId);
+        }
+        
       });
     });
   }

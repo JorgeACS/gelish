@@ -30,30 +30,19 @@
                                       <input class="form-control" placeholder="Nombre del empleado" ng-model="adminSeleccionado.nombre">
                                   </div>
                                   <div class="form-group">
-                                      <label>Apellido paterno</label>
-                                      <input class="form-control" placeholder="Primer apellido" ng-model="adminSeleccionado.apellido_paterno">
+                                      <label>Apellidos</label>
+                                      <input class="form-control" placeholder="Primer apellido" ng-model="adminSeleccionado.apellido">
                                   </div>
+
                                   <div class="form-group">
-                                      <label>Apellido Materno</label>
-                                      <input class="form-control" placeholder="Segundo apellido" ng-model="adminSeleccionado.apellido_materno">
+                                      <label>Correo</label>
+                                      <input class="form-control" placeholder="Direccion de correo electronico" ng-model="adminSeleccionado.correo">
                                   </div>
                                   <div class="form-group">
                                       <label>Celular</label>
                                       <input class="form-control" placeholder="Número de teléfono celular" ng-model="adminSeleccionado.telefono">
                                   </div>
-                                  <!--
-                                  <div class="form-group">
-                                      <label>Sucursal</label>
-                                      <select class="form-control" name="sucursal">
-                                        <option value="" disabled selected>Seleccione una sucursal</option>
-                                        <option value="" >Hermosillo</option>
-                                        <option value="" >Guaymas</option>
-                                        <option value="" >Nogales</option>
-                                        <option value="" >Caborca</option>
-                                      </select>
-                                  </div>
-                                  !-->
-                                  <button type="submit" class="btn btn-default">Guardar</button>
+                                  <button type="submit" class="btn btn-default" ng-click="editarAdmin()">Guardar</button>
                                 </div>
                              <!--</fieldset>!-->
                           </form>

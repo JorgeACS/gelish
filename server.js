@@ -146,22 +146,32 @@ app.use('/\*.jade', jaderouter);
 // Route for everything else.
 app.get('/', function (req, res) {
   if(req.session && req.session.user){
+    //si ya hay una sesion activa en el servidor, hacemos el redireccionamiento correspondiente
     switch(req.session.user.tipo){
       case 0:
+        //redireccionamiento para admin
         res.render('admin',{title: 'Gelish',message: 'Bienvenido'})
         break;
       case 1:
+        //redireccionamiento para administrador de sucursal
         res.render('adminSuc',{title: 'Gelish',message: 'Bienvenido'})
         break;
       case 2:
+        //redireccionamiento para recepcionista
         res.render('recepcionista',{title: 'Gelish',message: 'Bienvenido'})
         break;
+        //NOTA
+        //Este caso no deberia de pasar, ya que indica que hubo login con un tipo de cuenta no valida.
+        //Por lo pronto borro la sesion para que vuelva a login, pero hay que ver si esto tiene cambios
+        //inesperados
       default:
-        res.sendStatus(404);
+        req.session.user == null;
+        req.session.caja_id == null;
+        res.render('login',{title: 'Gelish',message: 'Ingrese sus datos'})
     }
   }
   else{
-    res.render('login', { title: 'Hey', message: 'Hello there!' })
+    res.render('login', { title: 'Gelish', message: 'Ingrese sus datos' })
   }
 });
 
