@@ -21,7 +21,7 @@ app.config(function($routeProvider, $locationProvider) {
             apellido:$scope.apellido,
             correo:$scope.correo,
             telefono:$scope.tel,
-            tipo:2
+            tipo:1
           };
           //console.log($locals.user);
           $http.post('/usuario',user).then((res) => {
@@ -37,9 +37,13 @@ app.config(function($routeProvider, $locationProvider) {
       controller:function($scope,$http,$window){
         $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
           $scope.admins = res.data;
+          $scope.originalAdmins = res.data;
         });
-        
+        $scope.enableFieldset = function(){
+           document.getElementById("editFieldset").disabled = false;
+        }
         $scope.editarAdmin = function() {
+          document.getElementById("editFieldset").disabled = true;
           data = {
             usuario : {
               nombre : $scope.adminSeleccionado.nombre,
@@ -76,24 +80,87 @@ app.config(function($routeProvider, $locationProvider) {
 
     }).when("/agregarSucursal", {
       templateUrl: 'agregarSucursal',
-      controller:function($scope,$http){
+      controller:function($scope,$http,$window){
         $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
           $scope.admins = res.data;
         });
+        $scope.agregarSucursal = function() {
+
+          if($scope.adminSeleccionado == null){
+            alert("Seleccione un administrador de sucursal.");
+            return;
+          }
+          var suc={
+            plaza:$scope.plaza,
+            ciudad:$scope.ciudad,
+            telefono:$scope.telefono,
+          };
+          var data ={
+            sucursal : suc,
+            admin_id : $scope.adminSeleccionado.id
+          }
+          $http.post('/sucursal',data).then((res) => {
+            alert("Sucursal insertada exitosamente");
+            console.log("Sucursal insertada correctamente");
+            $window.location.href = "/";
+          })
+
+        }
       }
     }).when("/editarSucursal", {
       templateUrl: 'editarSucursal',
-      controller:function($scope,$http){
-        $scope.sucursales = {
-            sucursal01 : {plaza : "Dila", ciudad : "Hermosillo", direccion : "Plaza Dila", telefono : "2-11-33-12",admin : "Dunia Morales"},
-            sucursal02 : {plaza : "Cantabria",ciudad : "Hermosillo", direccion : "Cantabria", telefono : "2-03-33-33",admin : "Lourdes Archuleta"}
+      controller:function($scope,$http,$window){
+        $scope.enableFieldset = function(){
+           document.getElementById("editFieldset").disabled = false;
         }
+        $http.get('/sucursal').then((res) =>{
+          $scope.sucursales = res.data;
+        })
+        
         $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
           $scope.admins = res.data;
         });
+
+        $scope.editarSucursal = function() {
+          
+          if($scope.adminSeleccionado == null){
+            alert("Seleccione un administrador de sucursal.");
+            return;
+          }
+          document.getElementById("editFieldset").disabled = true;
+          data = {
+            sucursal : {
+              plaza : $scope.sucursalSeleccionada.plaza,
+              ciudad : $scope.sucursalSeleccionada.ciudad,
+              telefono : $scope.sucursalSeleccionada.telefono
+            },
+            sucursal_id : $scope.sucursalSeleccionada.id,
+            admin_id : $scope.adminSeleccionado.id
+          }
+          $http.put("/sucursal", data)
+           .then((res)=>{
+            alert("Sucursal editada exitosamente");
+            console.log("Sucursal editada exitosamente");
+            $window.location.href = "/";
+          });
+        }
       }
     }).when("/eliminarSucursal", {
-      templateUrl: 'eliminarSucursal'
+      templateUrl: 'eliminarSucursal',
+      controller:function($scope,$http,$window){
+        $http.get('/sucursal',{params:{tipo:1}}).then((res)=>{
+          $scope.sucursales = res.data;
+        });
+        
+        $scope.eliminarSucursal = function() {
+          var sucursal_id = $scope.sucursalSeleccionada.id;
+          $http.delete("/sucursal", {params:{id:sucursal_id}}).then((res)=>{
+            alert("Sucursal eliminada exitosamente");
+            console.log("Sucursal eliminada correctamente");
+            $window.location.href = "/";
+           });
+        }
+      }
     }).when("/reportesSucursales", {
       templateUrl: 'reporteSucursales',
       controller:function($scope){

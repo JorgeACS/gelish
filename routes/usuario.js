@@ -3,17 +3,30 @@ const Router = require('./jaderouter');
 const UsuarioDB = require('../entity/UsuarioDB');
 class Usuario extends Router{
   get(req,res){
+    if(req.query.tipo == null ||
+        isNaN(req.query.tipo) ||
+        req.query.tipo < 0 || 
+        req.query.tipo > 4){
+      res.sendStatus(400);
+    }
     UsuarioDB.get(req.mysql,req.query.tipo,(usuarios,err) => {
-      if (usuarios == null || usuarios.length < 1){
-        res.sendStatus(404);
+      if (err){
+        res.sendStatus(500);
       }else{
-        res.send(usuarios)
+        if(usuarios.length < 1)
+        {
+          res.sendStatus(200);
+        }else{
+          res.send(usuarios);
+        }
+        
       }
     })
   }
 
   put(req,res){
     if( req.body.id == null ||
+        isNaN(req.body.id) ||
         req.body.usuario.nombre == null ||
         req.body.usuario.apellido == null ||
         req.body.usuario.correo == null ||
@@ -36,7 +49,8 @@ class Usuario extends Router{
   }
 
   delete(req,res){
-    if( req.query.id == null){
+    if( req.query.id == null||
+        isNaN(req.query.id)){
         res.sendStatus(400);
         return false;
     }
@@ -50,15 +64,19 @@ class Usuario extends Router{
     });
   }
   post(req,res){
-    console.log("hola");
     var data = {};
     if( req.body.username == null ||
         req.body.password == null ||
         req.body.nombre == null ||
+        !validateName(req.body.nombre) ||
         req.body.apellido == null ||
+        !validateName(req.body.apellido) || 
         req.body.correo == null ||
+        !validateEmail(req.body.correo) || 
         req.body.telefono == null ||
+        isNaN(req.body.telefono) || 
         req.body.tipo == null ||
+        isNaN(req.body.tipo) ||
         req.body.tipo < 0 ||
         req.body.tipo > 4){
         res.sendStatus(400);
@@ -92,4 +110,12 @@ class Usuario extends Router{
 
 }
 
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+function validateName(name){
+    var regex = /^[A-Za-z\s]+$/;
+    return regex.test(name);
+}
 module.exports = Usuario;

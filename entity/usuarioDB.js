@@ -72,40 +72,44 @@ class UsuarioDB{
           return func(null,err);
         }
         db.beginTransaction(function (err){
-          if(err) return func(null,err)
-        });
-        db.query("INSERT INTO Usuario SET ?", [data.usuario], function (err, usuario) {
           if(err) {
-            console.log(err);
-            db.rollback();
             db.release();
             return func(null,err);
           }
-          var insertValues = {
-            usuario_id : usuario.insertId
-          }
-          if(data.tecnica && data.usuario.tipo == 3){
-            data.tecnica.usuario_id = usuario.insertId;
-            db.query("INSERT INTO Tecnica SET ?",[data.tecnica],function(err, tecnica){
-              if(err){
-                console.log(err);
-                db.rollback();
-                db.release();
-                return func(null,err);
-              }else{
-                db.commit();
-                db.release();
-                insertValues.tecnica_id = tecnica.insertId;
-                return func(insertValues);
-              }
+        
+          db.query("INSERT INTO Usuario SET ?", [data.usuario], function (err, usuario) {
+            if(err) {
+              console.log(err);
+              db.rollback();
+              db.release();
+              return func(null,err);
+            }
+            var insertValues = {
+              usuario_id : usuario.insertId
+            }
+            if(data.tecnica && data.usuario.tipo == 3){
+              data.tecnica.usuario_id = usuario.insertId;
+              db.query("INSERT INTO Tecnica SET ?",[data.tecnica],function(err, tecnica){
+                if(err){
+                  console.log(err);
+                  db.rollback();
+                  db.release();
+                  return func(null,err);
+                }else{
+                  db.commit();
+                  db.release();
+                  insertValues.tecnica_id = tecnica.insertId;
+                  return func(insertValues);
+                }
 
-            });
-          }else{
-            db.commit();
+              });
+            }else{
+              db.commit();
+              db.release();
+              return func(insertValues)
+            }
             db.release();
-            return func(insertValues)
-          }
-          db.release();
+          });
         });
       });
     }
