@@ -221,6 +221,10 @@ app.config(function($routeProvider, $locationProvider) {
         //var lista =  document.getElementById(notaVenta).style;
         //lista.display = 'block';
       }
+    }).when("/recepcionista",{
+        controller:function($scope){
+          console.log("holi");
+        }
     }).when("/interfazCaja",{
       templateUrl: 'interfazCaja',
       controller:function($scope){

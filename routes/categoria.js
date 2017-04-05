@@ -1,16 +1,17 @@
 const Router = require('./jaderouter');
 
-const CajaDB = require('../entity/CajaDB');
-class Caja extends Router{
+const CategoriaDB = require('../entity/CategoriaDB');
+class Categoria extends Router{
   get(req,res){
-    CajaDB.get(req.mysql,req.query.id,(values,err) => {
-      if (err || values.length < 1){
-        res.sendStatus(404);
+    CategoriaDB.get(req.mysql,(categorias,err) => {
+      if (err){
+        res.sendStatus(500);
       }else{
-        res.send(values)
+        res.send(categorias);
       }
     })
   }
+  /*
   post(req,res){
     var data = {};
     if( req.body.recepcionista_id == null){
@@ -21,7 +22,7 @@ class Caja extends Router{
       recepcionista_id : req.body.recepcionista_id,
       fecha_apertura : new Date()
     }
-    CajaDB.post(req.mysql,data,(insertId,err) =>{
+    CategoriaDB.post(req.mysql,data,(insertId,err) =>{
       if(insertId){
         res.send(insertId)
       }else{
@@ -29,8 +30,8 @@ class Caja extends Router{
         res.sendStatus(404)
       }
     });
-  }
+  }*/
   
 }
 
-module.exports = Caja;
+module.exports = Categoria;

@@ -7,124 +7,166 @@ app.config(function($routeProvider, $locationProvider) {
         $http.delete('/logout').then(function (res) {
           $window.location.href = '/'
         }).catch(function (res) {
-          console.log('wtf', res);
+          console.log('Error', res);
         });
       }
     }).when("/agregarAdmin", {
       templateUrl: 'agregarAdmin',
-      controller:function($scope,$location,$window, $http) {
+      controller:function($scope,$window, $http) {
         $scope.agregarAdmin = function() {
           user={
-            sucursal_id:$scope.sucursal,
             username: $scope.username,
             password:$scope.password,
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             correo:$scope.correo,
             telefono:$scope.tel,
-            tipo:2,
+            tipo:1
           };
-          console.log("hola");
+          //console.log($locals.user);
           $http.post('/usuario',user).then((res) => {
-            console.log(":)");
+            alert("Administrador de sucursal insertado exitosamente");
+            console.log("Administrador de sucursal insertado correctamente");
+            $window.location.href = "/";
           })
 
         }
       }
     }).when("/editarAdmin", {
       templateUrl: 'editarAdmin',
-      controller:function($scope){
-        $scope.admins = {
-            admin01 : {
-              nombre : "Lourdes",
-              apellido_paterno : "Archuleta",
-              apellido_materno : "",
-              telefono : "2-00-00-00",
-              sucursal : "Cantabria"
-             },
-            admin02 : {
-              nombre : "Dunia",
-              apellido_paterno : "Morales",
-              apellido_materno : "",
-              telefono : "2-11-11-11",
-              sucursal : "Dila"
-            }
+      controller:function($scope,$http,$window){
+        $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
+          $scope.admins = res.data;
+          $scope.originalAdmins = res.data;
+        });
+        $scope.enableFieldset = function(){
+           document.getElementById("editFieldset").disabled = false;
+        }
+        $scope.editarAdmin = function() {
+          document.getElementById("editFieldset").disabled = true;
+          data = {
+            usuario : {
+              nombre : $scope.adminSeleccionado.nombre,
+              apellido : $scope.adminSeleccionado.apellido,
+              telefono : $scope.adminSeleccionado.telefono,
+              correo : $scope.adminSeleccionado.correo
+            },
+            id : $scope.adminSeleccionado.id
+          }
+          $http.put("/usuario", data)
+           .then((res)=>{
+            alert("Administrador de sucursal editado exitosamente");
+            console.log("Administrador de sucursal editado correctamente");
+            $window.location.href = "/";
+           });
         }
       }
     }).when("/eliminarAdmin", {
-      templateUrl: 'eliminarAdmin'
+      templateUrl: 'eliminarAdmin',
+      controller:function($scope,$http,$window){
+        $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
+          $scope.admins = res.data;
+        });
+        
+        $scope.eliminarAdmin = function() {
+          var user_id = $scope.adminSeleccionado.id;
+          $http.delete("/usuario", {params:{id:user_id}}).then((res)=>{
+            alert("Administrador de sucursal eliminado exitosamente");
+            console.log("Administrador de sucursal  eliminado correctamente");
+            $window.location.href = "/";
+           });
+        }
+      }
+
     }).when("/agregarSucursal", {
       templateUrl: 'agregarSucursal',
-      controller:function($scope){
-        $scope.admins = {
-            admin01 : {
-              nombre : "Lourdes",
-              apellido_paterno : "Archuleta",
-              apellido_materno : "",
-              telefono : "2-00-00-00"
-             },
-            admin02 : {
-              nombre : "Dunia",
-              apellido_paterno : "Morales",
-              apellido_materno : "",
-              telefono : "2-11-11-11"
-            }
+      controller:function($scope,$http,$window){
+        $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
+          $scope.admins = res.data;
+        });
+        $scope.agregarSucursal = function() {
+
+          if($scope.adminSeleccionado == null){
+            alert("Seleccione un administrador de sucursal.");
+            return;
+          }
+          var suc={
+            plaza:$scope.plaza,
+            ciudad:$scope.ciudad,
+            telefono:$scope.telefono,
+          };
+          var data ={
+            sucursal : suc,
+            admin_id : $scope.adminSeleccionado.id
+          }
+          $http.post('/sucursal',data).then((res) => {
+            alert("Sucursal insertada exitosamente");
+            console.log("Sucursal insertada correctamente");
+            $window.location.href = "/";
+          })
+
         }
       }
     }).when("/editarSucursal", {
       templateUrl: 'editarSucursal',
-      controller:function($scope){
-        $scope.sucursales = {
-            sucursal01 : {plaza : "Dila", ciudad : "Hermosillo", direccion : "Plaza Dila", telefono : "2-11-33-12",admin : "Dunia Morales"},
-            sucursal02 : {plaza : "Cantabria",ciudad : "Hermosillo", direccion : "Cantabria", telefono : "2-03-33-33",admin : "Lourdes Archuleta"}
+      controller:function($scope,$http,$window){
+        $scope.enableFieldset = function(){
+           document.getElementById("editFieldset").disabled = false;
         }
-        $scope.admins = {
-            admin01 : {
-              nombre : "Lourdes",
-              apellido_paterno : "Archuleta",
-              apellido_materno : "",
-              telefono : "2-00-00-00"
-             },
-            admin02 : {
-              nombre : "Dunia",
-              apellido_paterno : "Morales",
-              apellido_materno : "",
-              telefono : "2-11-11-11"
-            }
+        $http.get('/sucursal').then((res) =>{
+          $scope.sucursales = res.data;
+        })
+        
+        $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
+          $scope.admins = res.data;
+        });
+
+        $scope.editarSucursal = function() {
+          
+          if($scope.adminSeleccionado == null){
+            alert("Seleccione un administrador de sucursal.");
+            return;
+          }
+          document.getElementById("editFieldset").disabled = true;
+          data = {
+            sucursal : {
+              plaza : $scope.sucursalSeleccionada.plaza,
+              ciudad : $scope.sucursalSeleccionada.ciudad,
+              telefono : $scope.sucursalSeleccionada.telefono
+            },
+            sucursal_id : $scope.sucursalSeleccionada.id,
+            admin_id : $scope.adminSeleccionado.id
+          }
+          $http.put("/sucursal", data)
+           .then((res)=>{
+            alert("Sucursal editada exitosamente");
+            console.log("Sucursal editada exitosamente");
+            $window.location.href = "/";
+          });
         }
       }
     }).when("/eliminarSucursal", {
-      templateUrl: 'eliminarSucursal'
+      templateUrl: 'eliminarSucursal',
+      controller:function($scope,$http,$window){
+        $http.get('/sucursal',{params:{tipo:1}}).then((res)=>{
+          $scope.sucursales = res.data;
+        });
+        
+        $scope.eliminarSucursal = function() {
+          var sucursal_id = $scope.sucursalSeleccionada.id;
+          $http.delete("/sucursal", {params:{id:sucursal_id}}).then((res)=>{
+            alert("Sucursal eliminada exitosamente");
+            console.log("Sucursal eliminada correctamente");
+            $window.location.href = "/";
+           });
+        }
+      }
     }).when("/reportesSucursales", {
       templateUrl: 'reporteSucursales',
       controller:function($scope){
-<<<<<<< HEAD
-        $scope.loadScript = function(url, type, charset) {
-            if (type===undefined) type = 'text/javascript';
-            if (url) {
-                var script = document.querySelector("script[src*='"+url+"']");
-                if (!script) {
-                    var heads = document.getElementsByTagName("head");
-                    if (heads && heads.length) {
-                        var head = heads[0];
-                        if (head) {
-                            script = document.createElement('script');
-                            script.setAttribute('src', url);
-                            script.setAttribute('type', type);
-                            if (charset) script.setAttribute('charset', charset);
-                            head.appendChild(script);
-                        }
-                    }
-                }
-                return script;
-            }
-        };
-        $scope.loadScript('data/morris-data.js', 'text/javascript', 'utf-8');
-=======
         angular.element(document).ready(function () {
           cargarGraficas();
         });
->>>>>>> f28de5ff8ea799eebc5890ff2d135567a4c91cf2
       }
     }).when("/reporteTecnicas", {
       templateUrl: 'reporteTecnicas'
@@ -132,6 +174,3 @@ app.config(function($routeProvider, $locationProvider) {
 
   $locationProvider.html5Mode(true);
 });
-//app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
-
-//});

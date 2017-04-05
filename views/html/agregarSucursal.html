@@ -18,16 +18,16 @@
                             <form role="form">
 
                                 <div class="form-group">
-                                    <label>Nombre</label>
-                                    <input class="form-control" placeholder="Nombre">
+                                    <label>Plaza</label>
+                                    <input ng-model="plaza" class="form-control" placeholder="Plaza">
                                 </div>
                                 <div class="form-group">
-                                    <label>Direccion</label>
-                                    <input class="form-control" placeholder="Direccion">
+                                    <label>Ciudad</label>
+                                    <input ng-model="ciudad" class="form-control" placeholder="Ciudad">
                                 </div>
                                 <div class="form-group">
                                     <label>Telefono</label>
-                                    <input class="form-control" placeholder="Numero de telfono">
+                                    <input ng-model="telefono" class="form-control" placeholder="Numero de telfono">
                                 </div>
                                 <div class="form-group">
                                     <label>Administrador de Sucursal</label>
@@ -37,7 +37,7 @@
 
                                 
                                 <button type="reset" class="btn btn-default">Limpiar</button>
-                                <button type="submit" class="btn btn-default">Agregar</button>
+                                <button type="submit" class="btn btn-default" ng-click="agregarSucursal()">Agregar</button>
                             </form>
                         </div>
                             <!--<h1>Form Validation States</h1>

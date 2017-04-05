@@ -39,7 +39,7 @@ html(lang='en', ng-app='recepcionista')
         ul.nav.navbar-top-links.navbar-right
           li.dropdown
             // data-toggle son efectos visuales al dar click
-            a.dropdown-toggle(data-toggle='dropdown', href='#') #{user.nombre + ' ' + user.apellidos + ' '}
+            a.dropdown-toggle(data-toggle='dropdown', href='#') #{user.nombre + ' ' + user.apellidos}
               i.fa.fa-user.fa-fw
               i.fa.fa-caret-down
             ul.dropdown-menu.dropdown-user
@@ -66,22 +66,27 @@ html(lang='en', ng-app='recepcionista')
                     a(href='editarCliente') Editar
                   li
                     a(href='eliminarCliente') Eliminar
-              li#notaVenta(style='display:none')
-                a(href='#')
-                  i.fa.fa-list-alt.fa-fw
-                  |  Notas
-                  span.fa.arrow
-                ul.nav.nav-second-level
-                  li
-                    a(href='crearNota')  Crear
-                  li
-                    a(href='editarSucursal')  Editar
-                  li
-                    a(href='eliminarSucursal')  Eliminar
-                // /.nav-second-level
+              if(caja_id)
+
+                li
+                  a(href='#')
+                    i.fa.fa-list-alt.fa-fw
+                    |  Notas
+                    span.fa.arrow
+                  ul.nav.nav-second-level
+                    li
+                      a(href='crearNota')  Crear
+                    li
+                      a(href='editarSucursal')  Editar
+                    li
+                      a(href='eliminarSucursal')  Eliminar
+                  // /.nav-second-level
               li
                 a(href='interfazCaja')
-                  i#cajaI.fa.fa-lock
+                  if(caja_id)
+                    i#cajaI.fa.fa-unlock
+                  else
+                    i#cajaI.fa.fa-lock
                   |  Caja
                 //
                   <ul class="nav nav-second-level">

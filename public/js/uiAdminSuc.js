@@ -11,7 +11,24 @@ app.config(function($routeProvider, $locationProvider) {
         });
       }
     }).when("/agregarProducto", {
-      templateUrl: 'agregarProducto'
+      templateUrl: 'agregarProducto',
+      controller:function($scope,$http){
+
+        $scope.categorias = {
+          categoria01 : {
+            nombre: "Foundation"
+          }
+        }
+       $http.get('/categoria').then((res) =>{
+          $scope.categorias = res.data
+          console.log(res.data.categorias);
+          /*if(res2.data.caja_id == null){
+            console.log("nay")
+          }else{
+            console.log("yay")
+          }*/
+        });
+      }
     }).when("/editarProducto", {
       templateUrl: 'editarProducto',
       controller:function($scope){

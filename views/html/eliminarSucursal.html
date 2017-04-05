@@ -19,14 +19,11 @@
                             <form role="form">  
                                 <div class = "form-group">
                                     <label>Seleccionar Sucursal</label>
-                                    <select class="form-control">
-                                        <option value="-1" disabled selected>Seleccione una sucursal</option>
-                                        <option value="1">Plaza Dila Hermosillo</option>
-                                        <option value="2">Plaza Galerias Hermosillo</option>
+                                    <select class="form-control" ng-model="sucursalSeleccionada" ng-options="'plaza ' + y.plaza for (x, y) in sucursales">
                                     </select>
                                 </div>
 
-                                <button type="submit" class="btn btn-default">Eliminar</button>
+                                <button type="submit" class="btn btn-default" ng-click="eliminarSucursal()">Eliminar</button>
                             </form>
                         </div>
                             <!--<h1>Form Validation States</h1>

@@ -1,4 +1,4 @@
-class CajaDB{
+class ProductoDB{
   static post(pool,data,func){
     pool.getConnection(function (err, db) {
       if(err) {
@@ -6,14 +6,13 @@ class CajaDB{
         db.release();
         return func(null,err);
       }
-      db.query("INSERT INTO Caja SET ?", [data], function (err, caja) {
+      db.query("INSERT INTO Producto SET ?", [data], function (err, producto) {
         if(err) {
           console.log(err);
-          db.rollback();
           db.release();
           return func(null,err);
         }
-        var insertId = caja.insertId;
+        var insertId = producto.insertId;
        
           db.commit();
           db.release();
@@ -22,35 +21,36 @@ class CajaDB{
     });
   }
   static get(pool,id,func){
-    pool.getConnnection(function(err,db){
+    pool.getConnection(function(err,db){
       if(err){
         console.log("error en la conexion");
         db.release();
         return func(null,err);
       }
       if(id != null){
-        db.query("SELECT * FROM Caja WHERE id = ?",[id],function(err,caja){
+        db.query("SELECT * FROM Producto WHERE id = ?",[id],function(err,producto){
           if(err){
             console.log(err);
             db.release();
             return func(null,err);
 
           }
-          return func(caja);
+          return func(producto);
         })
       }else{
-        db.query("SELECT * FROM Caja",function(err,rows){
+        db.query("SELECT * FROM Producto",function(err,rows){
           if(err){
             console.log(err);
             db.release();
-
+            return func(null,err)
+          }else{
+            db.release();
+            return func(rows);
           }
-          db.release();
-          return func(rows);
         });
       }
     }); 
   }
 }
 
-module.exports = CajaDB;
+module.exports = ProductoDB;
