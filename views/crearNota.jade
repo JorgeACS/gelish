@@ -1,1 +1,202 @@
-include html/crearNota.html
+link(href='https://fonts.googleapis.com/css?family=Roboto', rel='stylesheet', type='text/css')
+style.
+  .marco{
+  background: #fff;
+  box-shadow: 3px 3px 50px #888888;
+  font-family: "Roboto";
+  border-radius: 10px;
+  position: relative;
+  }
+  .encabezado{
+  font-size: 25px;
+  padding-top: 10px;
+  border-bottom: 3px solid #000;
+  }
+  .encabezado p{
+  margin-top: 5px;
+  display: inline-block;
+  }
+  .fecha{
+  float: right;
+  margin-right: 25px;
+  font-weight: bold;
+  }
+  .folio{
+  font-weight: bold;
+  margin-left: 20px;
+  }
+  .cuerpo p{
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  }
+  .total{
+  border-top: 3px solid #000;
+  margin-left: 80%;
+  margin-right: 5%;
+  }
+  .tot{
+    font-size:1.5em;
+    font-weight:bold;
+  }
+  .costo{
+  float: right;
+  margin-right: 10%;
+  }
+  .tecnica{
+  float: right;
+  margin-right: 10%;
+  min-width: 300px;
+  max-width: 300px;
+  font-size: 20px;
+  }
+  .producto{
+  padding-left: 10%;
+  min-width: 300px;
+  text-align: center;
+  }
+  .servicio{
+  margin-left: 20px;
+  min-width: 300px;
+  text-align: center;
+  }
+  .prod{
+  margin-left: 20px;
+  min-width: 300px;
+  max-width: 300px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
+  .cant{
+  margin-left: 10px;
+  min-width: 80px;
+  max-width: 80px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
+  .tot{
+  margin-top: 30px;
+  }
+  .renglonLista{
+  margin-bottom: 10px;
+  }
+  .nombreRep{
+    float:right;
+    margin-right:5%;
+    font-weight:bold;
+    font-size:1em;
+  }
+  .clien-form{
+  margin-top: 15px;
+  }
+  .clien-form label{
+  margin-left: 2%;
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  }
+  .clien-form input{
+  display: inline;
+  margin-left: 2%;
+  min-width: 30%;
+  max-width: 30%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Nota de ventas
+  .marco
+    .encabezado
+      p.folio Folio:105
+      p.fecha  {{fecha | date:'dd-MM-yyyy'}}
+    form
+      div
+        .nombreRep
+          p Recepcionista: #{user.nombre + ' ' + user.apellidos + ' '}
+      div
+        .clien-form
+          label Nombre del cliente 
+          input.form-control(list='clientes', name='clientes', ng-model='clientes', placeholder='Nombre: ')
+          button.btn.btn-success.btn-circle(ng-click='addNewCliente()') +
+          button#cancelCliente.btn.btn-danger.btn-circle(style='display:none', ng-click='cancelCliente()') -
+        datalist#clientes
+          option(ng-repeat='x1 in clients', value="{{x1.nombre+' '+x1.apellido}}")
+        #infoCliente.agregarC(style='display:none')
+          .clien-form
+            label Nombre
+            input.form-control(ng-model='nombreC', placeholder='Nombre')
+          .clien-form
+            label Apellidos 
+            input.form-control(ng-model='apellidoC', placeholder='Apellidos')
+          .clien-form
+            label Dirección 
+            input.form-control(ng-model='dirC', placeholder='Dirección')
+          .clien-form
+            label Correo electronico
+            input.form-control(type='e-mail', ng-model='correoC', placeholder='Correo electronico')
+          .clien-form
+            label Télefono
+            input.form-control(ng-model='telC', placeholder='Número de teléfono o celular')
+          .clien-form
+            label Fecha
+            input.form-control(type='Date', ng-model='fechaC')
+          br
+          button.btn.btn-default(style='margin-left:2%' type='button', ng-click='saveNewCliente()') Agregar
+      .cuerpo
+        p Cantidad
+        p.producto Productos y servicios
+        p.servicio Tecnica
+        p.costo Costo
+      .lista
+        fieldset(data-ng-repeat='renglon in listaNota')
+          .renglonLista
+            input.cant(type='text', ng-model='cantidad', placeholder='#', autofocus='')
+            input.prod(list='productos', type='text', ng-model='producto', name='', placeholder='Producto', ng-blur='addCosto(producto,renglon.id,cantidad)')
+            datalist#productos
+              option(ng-repeat='x in productos', value='{{x.nombre}}')
+            button.btn.btn-success.btn-circle(style='margin-left:10px;', ng-show='$last', ng-click='addNewChoice()') +
+            button.btn.btn-danger.btn-circle(ng-show='$last', ng-click='removeChoice()') -
+            p.costo {{listaCostosProd[renglon.id-1].precio * cantidad}}
+            p.tecnica {{listaCostosProd[renglon.id-1].tecnica}}
+      .tot
+        p.total Total: {{total}}
+// /#page-wrapper

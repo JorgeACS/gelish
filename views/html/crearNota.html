@@ -6,6 +6,7 @@
   box-shadow: 3px 3px 50px #888888;
   font-family: "Roboto";
   border-radius: 10px;
+  position: relative;
 }
 .encabezado{
   font-size: 25px;
@@ -39,6 +40,13 @@
 .costo{
 float: right;
 margin-right: 10%;
+}
+.tecnica{
+float: right;
+margin-right: 10%;
+min-width: 300px;
+max-width: 300px;
+font-size: 20px;
 }
 .producto{
   padding-left: 10%;
@@ -103,8 +111,10 @@ margin-right: 10%;
   margin-left: 2%;
   font-size: 14px;
   font-weight: bold;
+  display: block;
 }
 .clien-form input{
+  display: inline;
   margin-left: 2%;
   min-width: 30%;
   max-width: 30%;
@@ -136,43 +146,73 @@ margin-right: 10%;
                 <p class="folio">Folio:105</p>
                 <p class="fecha"> {{fecha | date:'dd-MM-yyyy'}}</p>
               </div>
-              <div>
-                <div class="clien-form">
-                    <label>Nombre</label>
-                    <input list="clientes" name="clientes" ng-model="clientes" class="form-control" placeholder="Nombre del cliente">
-                </div>
+              <form>
+                <div>
+                  <div class="clien-form">
+                      <label>Nombre del cliente </label>
+                      <input list="clientes" name="clientes" ng-model="clientes" class="form-control" placeholder="Nombre: "/>
+                      <button class="btn btn-success btn-circle" ng-click="addNewCliente()" >+</button>
+                      <button style="display:none" class="btn btn-danger btn-circle" ng-click="cancelCliente()" id="cancelCliente">-</button>
+                  </div>
                   <datalist id="clientes">
                     <option ng-repeat="x1 in clients" value="{{x1.nombre+' '+x1.apellido}}">
                   </datalist>
+                  <div id = "infoCliente" class="agregarC" style="display:none">
+                    <div class="clien-form">
+                        <label>Nombre</label>
+                        <input ng-model="nombreC" class="form-control" placeholder="Nombre" >
+                    </div>
+                    <div class="clien-form">
+                        <label>Apellidos </label>
+                        <input ng-model="apellidoC" class="form-control" placeholder="Apellidos">
+                    </div>
+                    <div class="clien-form">
+                        <label>Dirección </label>
+                        <input ng-model="dirC" class="form-control" placeholder="Dirección">
+                    </div>
+                    <div class="clien-form">
+                        <label>Correo electronico</label>
+                        <input type="e-mail"ng-model="correoC" class="form-control" placeholder="Correo electronico">
+                    </div>
+                    <div class="clien-form">
+                        <label>Télefono</label>
+                        <input ng-model="telC" class="form-control" placeholder="Número de teléfono o celular">
+                    </div>
+                    <div class="clien-form">
+                        <label>Fecha</label>
+                        <input type="Date"ng-model="fechaC" class="form-control" >
+                    </div>
+                    <br>
+                    <button type="button" class="btn btn-default" ng-click="saveNewCliente()">Agregar</button>
+                  </div>
+                </div>
+                <div class="cuerpo">
+                  <p>Cantidad</p>
+                  <p class="producto">Productos y servicios</p>
+                  <p class="servicio">Tecnica</p>
+                  <p class="costo">Costo</p>
+                </div>
+                <div class="lista">
+                   <fieldset  data-ng-repeat="renglon in listaNota">
+                     <div class="renglonLista">
+                       <input class="cant" type="text" ng-model="cantidad" placeholder="#" autofocus=''>
+                       <input list="productos" class="prod" type="text" ng-model="producto" name="" placeholder="Producto" ng-blur="addCosto(producto,renglon.id)">
+                       <datalist id="productos">
+                         <option ng-repeat="x in productos" value="{{x.nombre}}">
+                       </datalist>
+                       <button style="margin-left:10px;"class="btn btn-success btn-circle" ng-show="$last" ng-click="addNewChoice()">+</button>
+                       <button class="btn btn-danger btn-circle" ng-show="$last" ng-click="removeChoice()">-</button>
+                       <p class="costo">{{listaCostosProd[renglon.id-1].precio * cantidad}}</p>
+                       <p class="tecnica">{{listaCostosProd[renglon.id-1].tecnica}}</p>
+                       <input type="hidden" ng-model="total" ng-change="obtenerTotal()" value='{{listaCostosProd[renglon.id-1].precio * cantidad}}'>
+                     </div>
+                   </fieldset>
+                </div>
+                <div class="tot">
+                  <p class="total">Total: {{total}}</p>
+                </div>
               </div>
-              <div class="cuerpo">
-                <p>Cantidad</p>
-                <p class="producto">Productos</p>
-                <p class="servicio">Servicios</p>
-                <p class="costo">Costo</p>
-              </div>
-
-              <div class="lista">
-                 <fieldset  data-ng-repeat="renglon in listaNota">
-                   <div class="renglonLista">
-                     <input class="cant" type="text" ng-model="renglon.cantidad" name="" placeholder="#">
-                     <input list="productos" class="prod" type="text" ng-model="renglon.producto" name="" placeholder="Producto">
-                     <datalist id="productos">
-                       <option ng-repeat="x1 in productos" value="{{x1.nombre}}">
-                     </datalist>
-                     <input list="servicios" class="prod" type="text" ng-model="renglon.servicio" name="" placeholder="Servicio">
-                     <datalist id="servicios">
-                       <option ng-repeat="x1 in servicios" value="{{x1.nombre}}">
-                     </datalist>
-                     <button style="margin-left:10px;"class="btn btn-success btn-circle" ng-show="$last" ng-click="addNewChoice()">+</button>
-                     <button class="btn btn-danger btn-circle" ng-show="$last" ng-click="removeChoice()">-</button>
-                   </div>
-                 </fieldset>
-              </div>
-              <div class="tot">
-                <p class="total">Total: </p>
-              </div>
-            </div>
+            </form>
         </div>
         <!-- /#page-wrapper -->
 

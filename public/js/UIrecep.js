@@ -47,33 +47,6 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/crearNota", {
       templateUrl: 'crearNota',
       controller:function($scope) {
-        $scope.servicios = {
-          servicio01 : {
-            nombre : "Gelish Manos",
-            descripcion : "",
-            precio : "120"
-           },
-          servicio02 : {
-            nombre : "U\u00f1as acrilicas",
-            descripcion : "",
-            precio : "260"
-          },
-          servicio03 : {
-            nombre : "Manicura",
-            descripcion : "",
-            precio : "150"
-          },
-          servicio04 : {
-            nombre : "Pedicura Spa",
-            descripcion : "",
-            precio : "300"
-          },
-          servicio05 : {
-            nombre : "Pedicura Brasile\u00f1o",
-            descripcion : "",
-            precio : "200"
-          }
-        }
         $scope.productos = {
           producto01 : {
             nombre : "Foundation",
@@ -109,29 +82,137 @@ app.config(function($routeProvider, $locationProvider) {
             precio : "250",
             cantidad : "70",
             categoria : "Gelish"
+          },
+          servicio01 : {
+            nombre : "Gelish Manos",
+            descripcion : "",
+            precio : "120",
+            tecnica:"Ana Lopez"
+           },
+          servicio02 : {
+            nombre : "U\u00f1as acrilicas",
+            descripcion : "",
+            precio : "260",
+            tecnica:"Karla Sofía Rivas"
+          },
+          servicio03 : {
+            nombre : "Manicura",
+            descripcion : "",
+            precio : "150",
+            tecnica:"Ariana Patricia"
+          },
+          servicio04 : {
+            nombre : "Pedicura Spa",
+            descripcion : "",
+            precio : "300",
+            tecnica:"Renee Jimenez"
+          },
+          servicio05 : {
+            nombre : "Pedicura Brasile\u00f1o",
+            descripcion : "",
+            precio : "200",
+            tecnica:"Laura Sierra"
           }
         }
-        $scope.clients = {
-            cliente01 : {
-              nombre : "Ana",apellido: "Noriega"
-             },
-            cliente02 : {
-              nombre : "Fernanda",apellido : "Serrano"
-            },
-            cliente03 : {
-              nombre : "Alex",apellido : "Torres"
-            }
+        $scope.clients = [
+          {nombre : "Ana",apellido: "Noriega"},
+          {nombre : "Florencia",apellido: "Sau"}
+        ];
+
+        $scope.addNewCliente = function(){
+            var lista = document.getElementById("infoCliente").style;
+		        lista.display = "block";
+            var menos = document.getElementById("cancelCliente").style;
+		        menos.display = "inline";
+            $scope.nombreC=$scope.clientes
         }
+
+        $scope.saveNewCliente = function(){
+          $scope.clients.push({'nombre':$scope.nombreC,
+          'apellido':$scope.apellidoC,'direccion':$scope.dirC,
+          'correo':$scope.correoC,'telefono':$scope.telC,'fecha':$scope.fechaC});
+          var lista = document.getElementById("infoCliente").style;
+          lista.display = "none";
+          var menos = document.getElementById("cancelCliente").style;
+          menos.display = "none";
+          $scope.nombreC="";
+          $scope.apellidoC="";
+          $scope.dirC="";
+          $scope.correoC="";
+          $scope.telC="";
+          $scope.fechaC="";
+          console.log($scope.clients);
+        }
+        $scope.total=0;
+        $scope.addCosto = function (producto,id,cantidad){
+          console.log(producto);
+          var costo;
+          var tecnica="";
+          var contador=0;
+          for (var i in $scope.productos) {//buscamos el costo del producto
+            if(producto === $scope.productos[i].nombre){
+                console.log($scope.productos[i].precio);
+                costo=$scope.productos[i].precio;
+                if($scope.productos[i].tecnica){
+                  console.log("existe tecnica")
+                  tecnica=$scope.productos[i].tecnica;
+                  console.log(tecnica)
+                }
+                break;
+            }
+            contador++;
+          }
+          console.log(contador +"==" +$scope.productos.length);
+          if($scope.listaCostosProd.length >0 ){
+            for (var j in $scope.listaCostosProd) {
+              if(id == $scope.listaCostosProd[j].id){
+                $scope.listaCostosProd[j].precio=costo;
+                $scope.listaCostosProd[j].nombre=producto;
+                $scope.listaCostosProd[j].tecnica=tecnica;
+                $scope.listaCostosProd[j].cantidad=cantidad;
+                break;
+              }else{
+                $scope.listaCostosProd.push({'id':id,'nombre':producto,'precio':costo,'tecnica':tecnica,
+                                              'cantidad':cantidad});
+                break;
+              }
+            }
+          }else if($scope.listaCostosProd.length==0 && contador != $scope.productos.length){
+            $scope.listaCostosProd.push({'id':id,'nombre':producto,'precio':costo,'tecnica':tecnica,
+                                          'cantidad':cantidad});
+          }
+          console.log($scope.listaCostosProd);
+          $scope.total=0;
+          for (var j in $scope.listaCostosProd) {
+            $scope.total=$scope.total+($scope.listaCostosProd[j].precio*$scope.listaCostosProd[j].cantidad)
+          }
+        };
         $scope.fecha=new Date();
-        $scope.listaNota = [{id: 'choice1'}];
+        $scope.listaNota = [{id: '1'}];
+        $scope.listaCostosProd =[];
         $scope.addNewChoice = function() {
           var newItemNo = $scope.listaNota.length+1;
-          $scope.listaNota.push({'id':'choice'+newItemNo});
+          $scope.listaNota.push({'id':newItemNo});
         };
         $scope.removeChoice = function() {
+          $scope.listaCostosProd.splice(lastItem)
           var lastItem = $scope.listaNota.length-1;
           $scope.listaNota.splice(lastItem);
         };
+        $scope.obtenerTotal = function(cantidad,precio){
+          console.log(cantidad*precio)
+          /*for (var j in $scope.listaCostosProd) {
+            total=total+$scope.listaCostosProd[j].precio;
+          }*/
+        }
+        $scope.cancelCliente = function(){
+          var lista = document.getElementById("infoCliente").style;
+          lista.display = "none";
+          var menos = document.getElementById("cancelCliente").style;
+          menos.display = "none";
+        }
+
+
       }
     }).when("/abrirCaja", {
       templateUrl: '',
