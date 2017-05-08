@@ -6,11 +6,11 @@ var bodyParser = require('body-parser');//leer de los post
 var session = require("express-session");
 
 var pool = mysql.createPool({
-  connectionLimit: 100,
-  host: "localhost",
-  user: "root",
-  password: '',
-  database: "GELISH"
+  connectionLimit: 10,
+  host: "us-cdbr-iron-east-03.cleardb.net",
+  user: "bfbe2eb2913282",
+  password: '0f2f5fef',
+  database: "heroku_fba8509a4371bd7"
 });
 
 var admin = require('./routes/admin');
