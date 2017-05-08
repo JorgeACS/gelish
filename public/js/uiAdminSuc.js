@@ -20,6 +20,9 @@ app.config(function($routeProvider, $locationProvider) {
           }
         }
         $scope.agregarProducto = function(){
+          console.log($scope.user.id);
+          alert($scope.user.id);
+          return;
           var producto = {
               nombre : $scope.nombre,
               descripcion : $scope.descripcion,
