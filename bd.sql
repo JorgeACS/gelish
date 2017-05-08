@@ -68,6 +68,7 @@ CREATE TABLE Producto(
   nombre VARCHAR(50) NOT NULL,
   descripcion VARCHAR(255) NOT NULL,
   precio INT(11) NOT NULL,
+  cantidad INT(11) DEFAULT 0,
   CONSTRAINT FOREIGN KEY
     (categoria_id) REFERENCES Categoria(id)
 );

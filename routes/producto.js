@@ -1,6 +1,6 @@
 const Router = require('./jaderouter');
 
-const ProductoDB = require('../entity/ProductoDB');
+const ProductoDB = require('../entity/productoDB');
 class Producto extends Router{
   get(req,res){
     ProductoDB.get(req.mysql,(productos,err) => {
@@ -11,18 +11,22 @@ class Producto extends Router{
       }
     })
   }
-  /*
+  
   post(req,res){
-    var data = {};
-    if( req.body.recepcionista_id == null){
-        res.sendStatus(404);
-        return false;
+    var sucursal = req.body.sucursal;
+    if( sucursal.nombre == null ||
+        sucursal.descripcion == null ||
+        sucursal.cantidad == null || 
+        isNaN(sucursal.cantidad) ||
+        sucursal.precio == null ||
+        isNaN(sucursal.precio) ||
+        sucursal.categoria_id == null ||
+        isNaN(sucursal.categoria_id))
+    {
+      res.sendStatus(400);
+      return false;
     }
-    data = {
-      recepcionista_id : req.body.recepcionista_id,
-      fecha_apertura : new Date()
-    }
-    ProductoDB.post(req.mysql,data,(insertId,err) =>{
+    ProductoDB.post(req.mysql,sucursal,(insertId,err) =>{
       if(insertId){
         res.send(insertId)
       }else{
@@ -30,7 +34,7 @@ class Producto extends Router{
         res.sendStatus(404)
       }
     });
-  }*/
+  }
   
 }
 

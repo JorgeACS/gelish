@@ -1,6 +1,6 @@
 const Router = require('./jaderouter');
 
-const CategoriaDB = require('../entity/CategoriaDB');
+const CategoriaDB = require('../entity/categoriaDB');
 class Categoria extends Router{
   get(req,res){
     CategoriaDB.get(req.mysql,(categorias,err) => {

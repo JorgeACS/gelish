@@ -1,8 +1,8 @@
-var app = angular.module('uiLogin', ['ngRoute']);
-app.config(function($routeProvider, $locationProvider) {
+var loginApp = angular.module('uiLogin', ['ngRoute']);
+loginApp.config(function($routeProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 });
-app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
+loginApp.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
     //array = [];
     $scope.InicioSesion = function() {
       user={
@@ -11,6 +11,7 @@ app.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
       };
       $http.post('/login',user).then((res) => {
         //$cookies.put('user', user);
+        loginApp.value('sucursal_id',res.data.sucursal_id);
         if(res.data.tipo==0){
           $window.location.href ="/admin";
         }else if(res.data.tipo==1){

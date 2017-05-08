@@ -1,6 +1,6 @@
 const Router = require('./jaderouter');
 
-const UsuarioDB = require('../entity/UsuarioDB');
+const UsuarioDB = require('../entity/usuarioDB');
 class Usuario extends Router{
   get(req,res){
     if(req.query.tipo == null ||

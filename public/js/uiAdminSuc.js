@@ -12,12 +12,26 @@ app.config(function($routeProvider, $locationProvider) {
       }
     }).when("/agregarProducto", {
       templateUrl: 'agregarProducto',
-      controller:function($scope,$http){
+      controller:function($scope,$http,$window){
 
         $scope.categorias = {
           categoria01 : {
             nombre: "Foundation"
           }
+        }
+        $scope.agregarProducto = function(){
+          var producto = {
+              nombre : $scope.nombre,
+              descripcion : $scope.descripcion,
+              cantidad : $scope.cantidad,
+              precio : $scope.precio,
+              categoria : $scope.categoriaSeleccionada.id
+          }
+          $http.post('/producto').then((res) =>{
+            console.log(res.data);
+            alert("Producto '"+producto.nombre+"' insertado correctamente.")
+            $window.location.href = "/";
+          })
         }
        $http.get('/categoria').then((res) =>{
           $scope.categorias = res.data

@@ -3,8 +3,6 @@ class LoginDB{
       pool.getConnection(function (err, db) {
         if(err) {
           console.log(err);
-          console.log("Error en la conexion");
-           db.release();
           return func(null,err);
         }
         db.query("SELECT * FROM Usuario where username = ? AND password = ?", [username,password], function (err, users) {

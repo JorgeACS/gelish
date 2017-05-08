@@ -1,4 +1,8 @@
-var app = angular.module('admin', ['ngRoute']);
+
+
+var app = angular.module('admin', ['ngRoute','ngMessages']);
+//angular.module('admin', ['ngMessages']);
+
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider
     .when("/logout", {
@@ -30,7 +34,8 @@ app.config(function($routeProvider, $locationProvider) {
             $window.location.href = "/";
           })
 
-        }
+        };
+        $scope.regex = '/[0-9]+$/';
       }
     }).when("/editarAdmin", {
       templateUrl: 'editarAdmin',

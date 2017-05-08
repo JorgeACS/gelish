@@ -2,8 +2,7 @@ class SucursalDB{
   static post(pool,data,func){
     pool.getConnection(function (err, db) {
       if(err) {
-        console.log("Error en la conexion");
-        db.release();
+        console.log(err);
         return func(null,err);
       }
       db.beginTransaction(function (err){

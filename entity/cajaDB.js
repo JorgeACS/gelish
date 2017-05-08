@@ -2,8 +2,7 @@ class CajaDB{
   static post(pool,data,func){
     pool.getConnection(function (err, db) {
       if(err) {
-        console.log("Error en la conexion");
-        db.release();
+        console.log(err);
         return func(null,err);
       }
       db.query("INSERT INTO Caja SET ?", [data], function (err, caja) {

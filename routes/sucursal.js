@@ -1,6 +1,6 @@
 const Router = require('./jaderouter');
 
-const SucursalDB = require('../entity/SucursalDB');
+const SucursalDB = require('../entity/sucursalDB');
 class Sucursal extends Router{
   get(req,res){
     SucursalDB.get(req.mysql,req.query.sucursal_id,(values,err) => {

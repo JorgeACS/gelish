@@ -1,6 +1,6 @@
 const Router = require('./jaderouter');
 
-const CajaDB = require('../entity/CajaDB');
+const CajaDB = require('../entity/cajaDB');
 class Caja extends Router{
   get(req,res){
     CajaDB.get(req.mysql,req.query.id,(values,err) => {
