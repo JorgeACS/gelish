@@ -86,12 +86,12 @@ app.use(function (req,res,next) {
 // Log the requests
 app.use(logger('dev'));
 
-//app.set('views', path.join(__dirname, 'views'));
-app.set('views', __dirname + '/views')
+app.set('views', path.join(__dirname, 'views'));
+//app.set('views', __dirname + '/views')
 app.set('view engine', 'jade');
 // Serve static files css javascript imagenes
-//app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(__dirname, '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(__dirname, '/public'));
 app.use(function(req, res, next){
   res.locals.user = req.session.user;
   res.locals.caja_id = req.session.caja_id;
