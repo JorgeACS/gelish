@@ -67,6 +67,7 @@ var jaderouter = require('./routes/jaderouter');
 
 var app = express();
 
+app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());//leer parametros de peticion JSON
 app.use(bodyParser.urlencoded({ extended: false }));//leer de la url los parametros que se envian
 
@@ -85,13 +86,12 @@ app.use(function (req,res,next) {
 // Log the requests
 app.use(logger('dev'));
 
-//app.set('views', path.join(__dirname, '/views'));
-app.set('views', path.join(__dirname, 'views'));
-//app.set('views', __dirname + '/views')
+//app.set('views', path.join(__dirname, 'views'));
+app.set('views', __dirname + '/views')
 app.set('view engine', 'jade');
 // Serve static files css javascript imagenes
-app.use(express.static(path.join(__dirname, 'public')));
-
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname, '/public'));
 app.use(function(req, res, next){
   res.locals.user = req.session.user;
   res.locals.caja_id = req.session.caja_id;
@@ -177,11 +177,16 @@ app.get('/', function (req, res) {
   }
 });
 
+
 /*app.get('/:nombre', function (req, res) {
   res.render("admin")
 });*/
 
 
-app.listen(3000);
-console.log('Listening on port 3000');
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
+
+//app.listen(3000);
+//console.log('Listening on port 3000');
 module.exports = app;
