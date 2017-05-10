@@ -116,8 +116,8 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl: 'editarServicio',
       controller:function($scope){
        
-        $http.get('/producto').then((res)=>{
-          $scope.productos = res.data;
+        $http.get('/servicio').then((res)=>{
+          $scope.servicios = res.data;
         });
 
 
