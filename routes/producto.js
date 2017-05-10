@@ -76,7 +76,22 @@ class Producto extends Router{
       }
     });
   }
-  
+ 
+  delete(req,res){
+    if( req.query.id == null||
+        isNaN(req.query.id)){
+        res.sendStatus(400);
+        return false;
+    }
+    ProductoDB.delete(req.mysql,req.query.id,(deleteId,err) =>{
+      if(deleteId){
+        res.send(deleteId);
+      }else{
+        console.log(err);
+        res.sendStatus(404);
+      }
+    });
+  } 
 }
 
 module.exports = Producto;

@@ -19,15 +19,11 @@
                             <form role="form">  
                                 <div class = "form-group">
                                     <label>Seleccionar Producto</label>
-                                    <select class="form-control">
-                                        <option value="-1" disabled selected>Seleccione un producto</option>
-                                        <option value="1">Producto X</option>
-                                        <option value="2">Producto Y</option>
-                                        <option value="2">Producto Z</option>
+                                    <select class="form-control" ng-model="productoSeleccionado" ng-options="y.nombre for (x, y) in productos">
                                     </select>
                                 </div>
 
-                                <button type="submit" class="btn btn-default">Eliminar</button>
+                                <button type="submit" class="btn btn-default" ng-click="eliminarProducto()">Eliminar</button>
                             </form>
                         </div>
                             <!--<h1>Form Validation States</h1>

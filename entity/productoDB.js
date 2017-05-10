@@ -41,6 +41,29 @@ class ProductoDB{
       });
     });
   }
+
+  static delete(pool,id,func){
+    pool.getConnection(function (err, db) {
+      if(err) {
+        console.log(err);
+        console.log("Error en la conexion");
+        db.release();
+        return func(null,err);
+      }
+      db.query("DELETE FROM Producto WHERE id = ?", [id], function (err, deleteId) {
+        if(err) {
+          console.log(err);
+          db.release();
+          func(null,err);
+        }
+        else {
+          db.release();
+          func(deleteId);
+        }
+        
+      });
+    });
+  }
   static get(pool,id,func){
     pool.getConnection(function(err,db){
       if(err){

@@ -78,47 +78,24 @@ app.config(function($routeProvider, $locationProvider) {
             $window.location.href = "/";
            });
         }
-        /*$scope.productos = {
-          producto01 : {
-            nombre : "Foundation",
-            descripcion : "15ml",
-            precio : "490",
-            cantidad : "100",
-            categoria : "Gelish"
-           },
-          producto02 : {
-            nombre : "Mascarilla humectante",
-            descripcion : "250gr",
-            precio : "350",
-            cantidad : "40",
-            categoria : "S2"
-          },
-          producto03 : {
-            nombre : "Pestañas J .15 #10",
-            descripcion : "Esmalte de color morado",
-            precio : "250",
-            cantidad : "6",
-            categoria : "Jdenis"
-          },
-          producto04 : {
-            nombre : "Top it off",
-            descripcion : "15ml",
-            precio : "315",
-            cantidad : "20",
-            categoria : "Gelish"
-          },
-          producto05 : {
-            nombre : "Sheek White",
-            descripcion : "15ml",
-            precio : "250",
-            cantidad : "70",
-            categoria : "Gelish"
-          }
-
-        }*/
       }
     }).when("/eliminarProducto", {
-      templateUrl: 'eliminarProducto'
+      templateUrl: 'eliminarProducto',
+      controller:function($scope,$http,$window){
+
+        $http.get('/producto').then((res)=>{
+          $scope.productos = res.data;
+        });
+        $scope.eliminarProducto = function(){
+          
+          var user_id = $scope.productoSeleccionado.id;
+          $http.delete("/producto", {params:{id:producto_id}}).then((res)=>{
+            alert("Administrador de sucursal eliminado exitosamente");
+            console.log("Administrador de sucursal  eliminado correctamente");
+            $window.location.href = "/";
+          });
+        }
+      }
     }).when("/agregarServicio", {
       templateUrl: 'agregarServicio'
     }).when("/editarServicio", {
