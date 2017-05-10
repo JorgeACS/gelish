@@ -45,7 +45,7 @@ app.config(function($routeProvider, $locationProvider) {
       }
     }).when("/editarProducto", {
       templateUrl: 'editarProducto',
-      controller:function($scope){
+      controller:function($scope,$http,$window){
         $http.get('/producto').then((res)=>{
           $scope.productos = res.data;
         });
