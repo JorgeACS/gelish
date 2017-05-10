@@ -174,10 +174,10 @@ class UsuarioDB{
 
               });
             }else{
+              //db.release();
               db.commit();
-            }
-            //db.release();
-            return func(insertValues)
+              return func(insertValues);
+            }     
           });
         });
       });
