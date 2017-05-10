@@ -95,7 +95,7 @@ class Usuario extends Router{
         return false;
     }
     data.usuario = {
-    	sucursal_id : req.body.sucursal_id,
+    	sucursal_id : req.session.user.sucursal_id,
     	username : req.body.username,
     	password : req.body.password,
     	nombre : req.body.nombre,
