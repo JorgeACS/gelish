@@ -239,7 +239,7 @@ app.config(function($routeProvider, $locationProvider) {
           label: 'Inactivo'
         }];
         $http.get('/usuario',{params:{tipo:3}}).then((res)=>{
-          $scope.tecnicas = res.data.tecnicas;
+          $scope.tecnicas = res.data;
         });
 
         $scope.enableFieldset = function(){
