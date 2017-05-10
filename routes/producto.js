@@ -49,6 +49,33 @@ class Producto extends Router{
       }
     });
   }
+
+  put(req,res){
+    //Validando parametros
+    if( req.producto.nombre == null ||
+        req.producto.descripcion == null ||
+        req.producto.cantidad == null || 
+        isNaN(req.producto.cantidad) ||
+        req.producto.precio == null ||
+        isNaN(req.producto.precio) ||
+        req.producto.categoria_id == null ||
+        isNaN(req.producto.categoria_id) ||
+        req.id == null || 
+        isNaN(req.id))
+    {
+      res.sendStatus(400);
+      return false;
+    }
+    ProductoDB.put(req.mysql,req.body,(insertId,err) =>{
+      if(insertId){
+        var id = {insert_id:insertId}
+        res.send(id);
+      }else{
+        console.log(err);
+        res.sendStatus(404)
+      }
+    });
+  }
   
 }
 

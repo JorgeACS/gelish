@@ -17,30 +17,37 @@
                         <div class="col-lg-9">
                             <div class = "form-group">
                                 <label>Seleccionar Producto</label>
-                                <select class="form-control" ng-model="productoSeleccionado" ng-options="y.nombre for (x, y) in productos">
+                                <select class="form-control" ng-model="productoSeleccionado" ng-options="y.nombre for (x,y) in productos" ng-change="enableFieldset()">
+                                </select>
                             </select>
                             </div>
-                            <form role="form">  
-                                <!-- <fieldset id = "editFieldSet" disabled="enabled"> !-->
+                             <form role="form">
+                                <fieldset id = "editFieldset" disabled="enabled">
                                     <div class="form-group">
                                         <label>Nombre</label>
-                                        <input class="form-control" placeholder="Escribir nombre..." ng-model="productoSeleccionado.nombre">
+                                        <input class="form-control" placeholder="Nombre" ng-model="productoSeleccionado.nombre" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Descripcion</label>
-                                        <input class="form-control" placeholder="Escribir descripcion..." ng-model="productoSeleccionado.descripcion">
+                                        <input class="form-control" placeholder="Descripcion" ng-model="productoSeleccionado.descripcion" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Precio</label>
-                                        <input class="form-control" placeholder="Insertar precio..." ng-model="productoSeleccionado.precio">
+                                        <input class="form-control" placeholder="Precio" ng-model="productoSeleccionado.precio" type="number" min="0" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label>Categoria</label>
+                                        <select class="form-control" ng-model="categoriaSeleccionada" ng-options="y.nombre for (x, y) in categorias">
+                                        </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>Cantidad actual</label>
-                                        <input class="form-control" placeholder="Insertar cantidad..." ng-model="productoSeleccionado.cantidad">
+                                        <label>Cantidad</label>
+                                        <input class="form-control" placeholder="Cantidad" ng-model="productoSeleccionado.cantidad" type="number" min="0" required>
                                     </div>
-                                <!--</fieldset>!-->
-
-                                <button type="submit" class="btn btn-default">Cambiar</button>
+                                    
+                                </fieldset>
+                                <button type="button" class="btn btn-default" ng-click="editarProducto()">Actualizar</button>
                                 <button type="reset" class="btn btn-default">Limpiar</button>
                             </form>
                         </div>

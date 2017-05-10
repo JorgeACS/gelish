@@ -46,7 +46,32 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/editarProducto", {
       templateUrl: 'editarProducto',
       controller:function($scope){
-        $scope.productos = {
+        $http.get('/producto').then((res)=>{
+          $scope.productos = res.data;
+        });
+        $scope.enableFieldset = function(){
+           document.getElementById("editFieldset").disabled = false;
+        }
+        $scope.editarAdmin = function() {
+          document.getElementById("editFieldset").disabled = true;
+          data = {
+            producto : {
+              nombre : $scope.productoSeleccionado.nombre,
+              apellido : $scope.productoSeleccionado.precio,
+              cantidad : $scope.productoSeleccionado.cantidad,
+              descripcion : $scope.productoSeleccionado.descripcion,
+              categoria_id : $scope.categoriaSeleccionada.id
+            },
+            id : $scope.productoSeleccionado.id
+          }
+          $http.put("/producto", data)
+           .then((res)=>{
+            alert("Producto '" + data.producto.nombre + "' editado exitosamente");
+            console.log("Producto editado correctamente");
+            $window.location.href = "/";
+           });
+        }
+        /*$scope.productos = {
           producto01 : {
             nombre : "Foundation",
             descripcion : "15ml",
@@ -83,7 +108,7 @@ app.config(function($routeProvider, $locationProvider) {
             categoria : "Gelish"
           }
 
-        }
+        }*/
       }
     }).when("/eliminarProducto", {
       templateUrl: 'eliminarProducto'

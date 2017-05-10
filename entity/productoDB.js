@@ -19,6 +19,28 @@ class ProductoDB{
       });
     });
   }
+  static put(pool,data,func){
+    pool.getConnection(function (err, db) {
+      if(err) {
+        console.log(err);
+        console.log("Error en la conexion");
+        db.release();
+        return func(null,err);
+      }
+      db.query("UPDATE Producto SET ? WHERE id = ?", [data.producto,data.id], function (err, insertId) {
+        if(err) {
+          console.log(err);
+          db.release();
+          func(null,err);
+        }
+        else {
+          db.release();
+          func(insertId);
+        }
+        
+      });
+    });
+  }
   static get(pool,id,func){
     pool.getConnection(function(err,db){
       if(err){
