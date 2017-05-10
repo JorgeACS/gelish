@@ -38,6 +38,11 @@ class Usuario extends Router{
       usuario : req.body.usuario,
       id : req.body.id
     }
+    if(req.body.tecnica){
+      data.tecnica = {
+        estado : req.body.tecnica.estado
+      }
+    }
     UsuarioDB.put(req.mysql,data,(insertId,err) =>{
       if(insertId){
         res.send(insertId);
@@ -54,7 +59,13 @@ class Usuario extends Router{
         res.sendStatus(400);
         return false;
     }
-    UsuarioDB.delete(req.mysql,req.query.id,(deleteId,err) =>{
+    var tecnica;
+    if(req.query.tecnica == null)
+      tecnica = false;
+    else{
+      tecnica = true;
+    }
+    UsuarioDB.delete(req.mysql,req.query.id,tecnica,(deleteId,err) =>{
       if(deleteId){
         res.send(deleteId);
       }else{

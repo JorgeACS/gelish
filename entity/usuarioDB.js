@@ -47,21 +47,42 @@ class UsuarioDB{
         db.release();
         return func(null,err);
       }
-      db.query("UPDATE Usuario SET ? WHERE id = ?", [data.usuario,data.id], function (err, insertId) {
-        if(err) {
+      db.beginTransaction(function(err){
+        if(err){
           console.log(err);
           db.release();
-          func(null,err);
+          func(err);
         }
-        else {
-          db.release();
-          func(insertId);
-        }
-        
+        db.query("UPDATE Usuario SET ? WHERE id = ?", [data.usuario,data.id], function (err, insertId) {
+          if(err) {
+            console.log(err);
+            db.release();
+            func(null,err);
+          }
+          else {
+            if(data.tecnica){
+              db.query("UPDATE Tecnica SET ?",[data.tecnica],function(err,insertId){
+                if(err){
+                  db.rollback();
+                  db.release();
+                  func(err);
+                }else{
+                  db.commit();
+                  db.release();
+                  func(insertId);
+                }
+              })
+            }else{
+              db.commit();
+              db.release();
+              func(insertId);
+            }
+          }
+        });
       });
     });
   }
-  static delete(pool,id,func){
+  static delete(pool,id,tecnica,func){
     pool.getConnection(function (err, db) {
       if(err) {
         console.log(err);
@@ -69,19 +90,51 @@ class UsuarioDB{
         db.release();
         return func(null,err);
       }
-      db.query("DELETE FROM Usuario WHERE id = ?", [id], function (err, deleteId) {
-        if(err) {
-          console.log(err);
+      db.beginTransaction(function(err){
+        if(err){
           db.release();
-          func(null,err);
+          func(err);
         }
-        else {
-          db.release();
-          func(deleteId);
+        if(tecnica){
+          db.query("DELETE FROM Tecnica WHERE usuario_id = ?", [id], function(err,deleteId){
+            if(err){
+              console.log(err);
+              db.rollback();
+              db.release();
+              func(err);
+            }
+            db.query("DELETE FROM Usuario WHERE id = ?", [id], function (err, deleteId) {
+              if(err) {
+                console.log(err);
+                db.rollback();
+                db.release();
+                func(null,err);
+              }
+              else {
+                db.commit();
+                db.release();
+                func(deleteId);
+              }
+              
+            });//delete usuario query
+          });//delete tecnica query
+        }else{
+          db.query("DELETE FROM Usuario WHERE id = ?", [id], function (err, deleteId) {
+            if(err) {
+              console.log(err);
+              db.rollback();
+              db.release();
+              func(null,err);
+            }
+            else {
+              db.commit();
+              db.release();
+              func(deleteId);
+            }
+          });//delete usuario query
         }
-        
-      });
-    });
+      });//begin transaction      
+    });//getConnection
   }
     static post(pool,data,func){
       pool.getConnection(function (err, db) {

@@ -190,7 +190,21 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/editarRecepcionista", {
       templateUrl: 'editarRecepcionista'
     }).when("/eliminarRecepcionista", {
-      templateUrl: 'eliminarRecepcionista'
+      templateUrl: 'eliminarRecepcionista',
+      controller:function($scope,$http,$window){
+        $http.get('/usuario',{params:{tipo:2}}).then((res)=>{
+          $scope.recepcionistas = res.data;
+        });
+        
+        $scope.eliminarRecepcionista = function() {
+          var user_id = $scope.recepcionistaSeleccionada.id;
+          $http.delete("/usuario", {params:{id:user_id}}).then((res)=>{
+            alert("Recepcionista eliminada exitosamente");
+            console.log("Recepcionista eliminada correctamente");
+            $window.location.href = "/";
+           });
+        }
+      }
     }).when("/agregarTecnica", {
       templateUrl: 'agregarTecnica',
       controller:function($scope,$window, $http) {
@@ -235,7 +249,7 @@ app.config(function($routeProvider, $locationProvider) {
         $scope.editarAdmin = function() {
           document.getElementById("editFieldset").disabled = true;
           data = {
-            tecnica : {
+            usuario : {
               nombre : $scope.tecnicaSeleccionada.nombre,
               apellido : $scope.tecnicaSeleccionada.apellido,
               telefono : $scope.tecnicaSeleccionada.telefono,
@@ -252,7 +266,21 @@ app.config(function($routeProvider, $locationProvider) {
         }
       }
     }).when("/eliminarTecnica", {
-      templateUrl: 'eliminarTecnica'
-    })
+      templateUrl: 'eliminarTecnica',
+      controller:function($scope,$http,$window){
+        $http.get('/usuario',{params:{tipo:3}}).then((res)=>{
+          $scope.tecnicas = res.data;
+        });
+        
+        $scope.eliminarTecnica = function() {
+          var tecnica_id = $scope.tecnicaSeleccionada.id;
+          $http.delete("/usuario", {params:{id:tecnica_id}}).then((res)=>{
+            alert("Tecnica eliminada exitosamente");
+            console.log("Tecnica  eliminada correctamente");
+            $window.location.href = "/";
+           });
+        }
+      }
+    });
   $locationProvider.html5Mode(true);
 });
