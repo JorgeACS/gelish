@@ -229,7 +229,7 @@ app.config(function($routeProvider, $locationProvider) {
       }
     }).when("/editarTecnica", {
       templateUrl: 'editarTecnica',
-      controller:function($scope){
+      controller:function($scope,$http,$window){
         
         $scope.opcionesTecnica = [{
           id: true,
