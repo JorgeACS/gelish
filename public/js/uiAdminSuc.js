@@ -274,7 +274,7 @@ app.config(function($routeProvider, $locationProvider) {
         
         $scope.eliminarTecnica = function() {
           var tecnica_id = $scope.tecnicaSeleccionada.id;
-          $http.delete("/usuario", {params:{id:tecnica_id}}).then((res)=>{
+          $http.delete("/usuario", {params:{id:tecnica_id,tecnica:true}}).then((res)=>{
             alert("Tecnica eliminada exitosamente");
             console.log("Tecnica  eliminada correctamente");
             $window.location.href = "/";
