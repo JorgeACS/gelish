@@ -46,13 +46,20 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/editarProducto", {
       templateUrl: 'editarProducto',
       controller:function($scope,$http,$window){
+
+        $http.get('/categoria').then((res)=>{
+          $scope.categorias = res.data;
+        });
+
         $http.get('/producto').then((res)=>{
           $scope.productos = res.data;
         });
+
+
         $scope.enableFieldset = function(){
            document.getElementById("editFieldset").disabled = false;
         }
-        $scope.editarAdmin = function() {
+        $scope.editarProducto = function() {
           document.getElementById("editFieldset").disabled = true;
           data = {
             producto : {
