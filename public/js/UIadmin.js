@@ -24,7 +24,7 @@ app.config(function($routeProvider, $locationProvider) {
             nombre:$scope.nombre,
             apellido:$scope.apellido,
             correo:$scope.correo,
-            telefono:$scope.tel,
+            telefono:$scope.telefono,
             tipo:1
           };
           //console.log($locals.user);
@@ -35,7 +35,7 @@ app.config(function($routeProvider, $locationProvider) {
           })
 
         };
-        $scope.regex = '/[0-9]+$/';
+        $scope.regex = '[0-9]+';
       }
     }).when("/editarAdmin", {
       templateUrl: 'editarAdmin',
