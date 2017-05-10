@@ -20,15 +20,12 @@ app.config(function($routeProvider, $locationProvider) {
           }
         }
         $scope.agregarProducto = function(){
-          console.log($scope.user.id);
-          alert($scope.user.id);
-          return;
           var producto = {
               nombre : $scope.nombre,
               descripcion : $scope.descripcion,
               cantidad : $scope.cantidad,
               precio : $scope.precio,
-              categoria : $scope.categoriaSeleccionada.id
+              categoria_id : $scope.categoriaSeleccionada.id
           }
           $http.post('/producto').then((res) =>{
             console.log(res.data);

@@ -5,10 +5,11 @@ loginApp.config(function($routeProvider, $locationProvider) {
 loginApp.controller('myCtrl', function($scope, $http, $location,$window,$rootScope) {
     //array = [];
     $scope.InicioSesion = function() {
-      user={
+      var user={
         username: $scope.username,
         password:$scope.password
       };
+      $scope.user = user;
       $http.post('/login',user).then((res) => {
         //$cookies.put('user', user);
         loginApp.value('sucursal_id',res.data.sucursal_id);

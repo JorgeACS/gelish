@@ -13,20 +13,28 @@ class Producto extends Router{
   }
   
   post(req,res){
-    var sucursal = req.body.sucursal;
-    if( sucursal.nombre == null ||
-        sucursal.descripcion == null ||
-        sucursal.cantidad == null || 
-        isNaN(sucursal.cantidad) ||
-        sucursal.precio == null ||
-        isNaN(sucursal.precio) ||
-        sucursal.categoria_id == null ||
-        isNaN(sucursal.categoria_id))
+    var producto = req.body.producto;
+    if(req.session.user == null || req.session.user.id == null){
+      res.sendStatus(400);
+      return false;
+    }
+    producto.sucursal_id = req.session.user.id;
+    console.log(res.locals.sucursal_id);
+    if( producto.nombre == null ||
+        producto.descripcion == null ||
+        producto.cantidad == null || 
+        isNaN(producto.cantidad) ||
+        producto.precio == null ||
+        isNaN(producto.precio) ||
+        producto.categoria_id == null ||
+        isNaN(producto.categoria_id) ||
+        producto.sucursal_id == null ||
+        isNaN(producto.sucursal_id))
     {
       res.sendStatus(400);
       return false;
     }
-    ProductoDB.post(req.mysql,sucursal,(insertId,err) =>{
+    ProductoDB.post(req.mysql,producto,(insertId,err) =>{
       if(insertId){
         res.send(insertId)
       }else{
