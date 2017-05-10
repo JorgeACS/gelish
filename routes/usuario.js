@@ -40,7 +40,7 @@ class Usuario extends Router{
     }
     if(req.body.tecnica){
       data.tecnica = {
-        estado : req.body.tecnica.estado
+        estado : req.body.estado
       }
     }
     UsuarioDB.put(req.mysql,data,(insertId,err) =>{
