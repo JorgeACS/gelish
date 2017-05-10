@@ -227,7 +227,6 @@ app.config(function($routeProvider, $locationProvider) {
         };
         $scope.regex = '[0-9]+';
       }
-      controller::
     }).when("/editarTecnica", {
       templateUrl: 'editarTecnica',
       controller:function($scope){
