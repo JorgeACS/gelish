@@ -41,7 +41,8 @@ class Producto extends Router{
     }
     ProductoDB.post(req.mysql,producto,(insertId,err) =>{
       if(insertId){
-        res.send(insertId)
+        var id = {insert_id:insertId}
+        res.send(id);
       }else{
         console.log(err);
         res.sendStatus(404)
