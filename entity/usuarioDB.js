@@ -68,13 +68,13 @@ class UsuarioDB{
                   func(err);
                 }else{
                   db.commit();
-                  db.release();
+                  //db.release();
                   func(insertId);
                 }
               })
             }else{
               db.commit();
-              db.release();
+              //db.release();
               func(insertId);
             }
           }
@@ -112,7 +112,7 @@ class UsuarioDB{
               }
               else {
                 db.commit();
-                db.release();
+                //db.release();
                 func(deleteId);
               }
               
@@ -128,7 +128,7 @@ class UsuarioDB{
             }
             else {
               db.commit();
-              db.release();
+              //db.release();
               func(deleteId);
             }
           });//delete usuario query
@@ -168,14 +168,14 @@ class UsuarioDB{
                   return func(null,err);
                 }
                 db.commit();
-                db.release();
+                //db.release();
                 insertValues.tecnica_id = tecnica.insertId;
                 return func(insertValues);
 
               });
             }
             db.commit();
-            db.release();
+            //db.release();
             return func(insertValues)
           });
         });
