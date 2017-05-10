@@ -87,8 +87,8 @@ app.config(function($routeProvider, $locationProvider) {
           $scope.productos = res.data;
         });
         $scope.eliminarProducto = function(){
-          
-          var user_id = $scope.productoSeleccionado.id;
+
+          var producto_id = $scope.productoSeleccionado.id;
           $http.delete("/producto", {params:{id:producto_id}}).then((res)=>{
             alert("Administrador de sucursal eliminado exitosamente");
             console.log("Administrador de sucursal  eliminado correctamente");
