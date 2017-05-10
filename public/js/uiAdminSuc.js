@@ -114,12 +114,11 @@ app.config(function($routeProvider, $locationProvider) {
       }
     }).when("/editarServicio", {
       templateUrl: 'editarServicio',
-      controller:function($scope){
+      controller:function($scope,$http,$window){
        
         $http.get('/servicio').then((res)=>{
           $scope.servicios = res.data;
         });
-
 
         $scope.enableFieldset = function(){
            document.getElementById("editFieldset").disabled = false;
