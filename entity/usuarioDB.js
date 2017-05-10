@@ -166,12 +166,11 @@ class UsuarioDB{
                   db.rollback();
                   db.release();
                   return func(null,err);
-                }else{
-                  db.commit();
-                  db.release();
-                  insertValues.tecnica_id = tecnica.insertId;
-                  return func(insertValues);
                 }
+                db.commit();
+                db.release();
+                insertValues.tecnica_id = tecnica.insertId;
+                return func(insertValues);
 
               });
             }else{

@@ -104,7 +104,7 @@ class Usuario extends Router{
     	telefono : req.body.telefono,
     	tipo : req.body.tipo
     };
-    if (data.tipo == 3){
+    if (data.usuario.tipo == 3){
     	data.tecnica = {
     		estado : true,
         fecha_alta : new Date()

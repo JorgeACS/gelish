@@ -27,6 +27,7 @@ class ProductoDB{
         db.release();
         return func(null,err);
       }
+      
       db.query("UPDATE Producto SET ? WHERE id = ?", [data.producto,data.id], function (err, insertId) {
         if(err) {
           console.log(err);
