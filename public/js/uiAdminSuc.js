@@ -245,7 +245,7 @@ app.config(function($routeProvider, $locationProvider) {
         $scope.enableFieldset = function(){
            document.getElementById("editFieldset").disabled = false;
         }
-        $scope.editarAdmin = function() {
+        $scope.editarTecnica = function() {
           document.getElementById("editFieldset").disabled = true;
           data = {
             usuario : {
