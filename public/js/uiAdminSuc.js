@@ -167,7 +167,7 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/agregarRecepcionista", {
       templateUrl: 'agregarRecepcionista',
       controller:function($scope,$window, $http) {
-        $scope.agregarTecnica = function() {
+        $scope.agregarRecepcionista = function() {
           user={
             username: $scope.username,
             password:$scope.password,
@@ -188,7 +188,33 @@ app.config(function($routeProvider, $locationProvider) {
         $scope.regex = '[0-9]+';
       }
     }).when("/editarRecepcionista", {
-      templateUrl: 'editarRecepcionista'
+      templateUrl: 'editarRecepcionista',
+      controller:function($scope,$http,$window){
+        $http.get('/usuario',{params:{tipo:2}}).then((res)=>{
+          $scope.recepcionistas = res.data;
+        });
+        $scope.enableFieldset = function(){
+           document.getElementById("editFieldset").disabled = false;
+        }
+        $scope.editarRecepcionista = function() {
+          document.getElementById("editFieldset").disabled = true;
+          data = {
+            usuario : {
+              nombre : $scope.adminSeleccionado.nombre,
+              apellido : $scope.adminSeleccionado.apellido,
+              telefono : $scope.adminSeleccionado.telefono,
+              correo : $scope.adminSeleccionado.correo
+            },
+            id : $scope.adminSeleccionado.id
+          }
+          $http.put("/usuario", data)
+           .then((res)=>{
+            alert("Recepcionista editado exitosamente");
+            console.log("Recepcionista editado correctamente");
+            $window.location.href = "/";
+           });
+        }
+      }
     }).when("/eliminarRecepcionista", {
       templateUrl: 'eliminarRecepcionista',
       controller:function($scope,$http,$window){
