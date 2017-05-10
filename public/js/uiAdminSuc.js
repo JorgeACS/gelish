@@ -254,7 +254,7 @@ app.config(function($routeProvider, $locationProvider) {
               telefono : $scope.tecnicaSeleccionada.telefono,
               correo : $scope.tecnicaSeleccionada.correo
             },
-            estado : $scope.tecnicaSeleccionada.estado;
+            estado : $scope.tecnicaSeleccionada.estado
           }
           $http.put("/usuario", data)
            .then((res)=>{
