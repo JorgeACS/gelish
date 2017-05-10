@@ -13,7 +13,7 @@ class Producto extends Router{
   }
   
   post(req,res){
-    var producto = req.body.producto;
+    var producto = req.body;
     if(req.session.user == null || req.session.user.id == null){
       res.sendStatus(400);
       return false;
