@@ -52,16 +52,16 @@ class Producto extends Router{
 
   put(req,res){
     //Validando parametros
-    if( req.producto.nombre == null ||
-        req.producto.descripcion == null ||
-        req.producto.cantidad == null || 
-        isNaN(req.producto.cantidad) ||
-        req.producto.precio == null ||
-        isNaN(req.producto.precio) ||
-        req.producto.categoria_id == null ||
-        isNaN(req.producto.categoria_id) ||
-        req.id == null || 
-        isNaN(req.id))
+    if( req.body.producto.nombre == null ||
+        req.body.producto.descripcion == null ||
+        req.body.producto.cantidad == null || 
+        isNaN(req.body.producto.cantidad) ||
+        req.body.producto.precio == null ||
+        isNaN(req.body.producto.precio) ||
+        req.body.producto.categoria_id == null ||
+        isNaN(req.body.producto.categoria_id) ||
+        req.body.id == null || 
+        isNaN(req.body.id))
     {
       res.sendStatus(400);
       return false;
