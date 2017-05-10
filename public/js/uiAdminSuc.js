@@ -200,17 +200,17 @@ app.config(function($routeProvider, $locationProvider) {
           document.getElementById("editFieldset").disabled = true;
           data = {
             usuario : {
-              nombre : $scope.adminSeleccionado.nombre,
-              apellido : $scope.adminSeleccionado.apellido,
-              telefono : $scope.adminSeleccionado.telefono,
-              correo : $scope.adminSeleccionado.correo
+              nombre : $scope.recepcionistaSeleccionada.nombre,
+              apellido : $scope.recepcionistaSeleccionada.apellido,
+              telefono : $scope.recepcionistaSeleccionada.telefono,
+              correo : $scope.recepcionistaSeleccionada.correo
             },
-            id : $scope.adminSeleccionado.id
+            id : $scope.recepcionistaSeleccionada.id
           }
           $http.put("/usuario", data)
            .then((res)=>{
-            alert("Recepcionista editado exitosamente");
-            console.log("Recepcionista editado correctamente");
+            alert("Recepcionista editada exitosamente");
+            console.log("Recepcionista editada correctamente");
             $window.location.href = "/";
            });
         }
@@ -285,8 +285,8 @@ app.config(function($routeProvider, $locationProvider) {
           }
           $http.put("/usuario", data)
            .then((res)=>{
-            alert("Administrador de sucursal editado exitosamente");
-            console.log("Administrador de sucursal editado correctamente");
+            alert("Tecnica editada exitosamente");
+            console.log("Tecnica editada correctamente");
             $window.location.href = "/";
            });
         }
