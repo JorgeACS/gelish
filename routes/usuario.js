@@ -76,6 +76,7 @@ class Usuario extends Router{
   }
   post(req,res){
     var data = {};
+    console.log(req.body);
     if( 
         (req.body.tipo != 3 && req.body.username == null || req.body.password == null) || //tecnicas no tienen login
         req.body.nombre == null ||
