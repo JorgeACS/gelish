@@ -26,8 +26,12 @@ class ProductoDB{
         db.release();
         return func(null,err);
       }
+      //this is like cheating :
+      // because we validated id earlier, it will never be 
+      // null by the time it reaches this function.
+      // This if-else was a leftover from when you could search for all products
       if(id != null){
-        db.query("SELECT * FROM Producto WHERE id = ?",[id],function(err,producto){
+        db.query("SELECT * FROM Producto WHERE sucursal_id = ?",[id],function(err,producto){
           if(err){
             console.log(err);
             db.release();

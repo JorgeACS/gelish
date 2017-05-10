@@ -2,9 +2,14 @@ const Router = require('./jaderouter');
 
 const ProductoDB = require('../entity/productoDB');
 class Producto extends Router{
+  
   get(req,res){
-    ProductoDB.get(req.mysql,(productos,err) => {
-      if (err){
+    if(req.session.user == null || req.session.user.sucursal_id == null || isNaN(req.session.user.sucursal_id)){
+      res.sendStatus(404);
+    }
+    var sucursal_id = req.session.user.sucursal_id;
+    ProductoDB.get(req.mysql,sucursal_id,(productos,err) => {
+      if(err){
         res.sendStatus(500);
       }else{
         res.send(productos);
@@ -14,11 +19,11 @@ class Producto extends Router{
   
   post(req,res){
     var producto = req.body;
-    if(req.session.user == null || req.session.user.id == null){
+    if(req.session.user == null || req.session.user.sucursal_id == null){
       res.sendStatus(400);
       return false;
     }
-    producto.sucursal_id = req.session.user.id;
+    producto.sucursal_id = req.session.user.sucursal_id;
     console.log(res.locals.sucursal_id);
     if( producto.nombre == null ||
         producto.descripcion == null ||
