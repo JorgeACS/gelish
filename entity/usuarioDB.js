@@ -14,7 +14,7 @@ class UsuarioDB{
         else {
           if(tipo == 3 && tecnicas.length > 0){
             var ids = [];
-            for(var i = 0; i < tecnicas.length;i++){
+            for(i = 0; i < tecnicas.length;i++){
               ids.push(tecnicas[i].id)
             }
             db.query("SELECT * FROM Tecnica where usuario_id in (?) ",[ids],function (err,datosTecnicas){
@@ -23,7 +23,7 @@ class UsuarioDB{
                 db.release();
                 func(null,err);
               }
-              for(var i = 0; i < datosTecnicas.length;i++){
+              for(i = 0; i < datosTecnicas.length;i++){
                 tecnicas[i].estado = datosTecnicas[i];
               }
               db.release();
