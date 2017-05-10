@@ -14,6 +14,7 @@ class UsuarioDB{
         else {
           if(tipo == 3 && tecnicas.length > 0){
             var ids = [];
+            var i;
             for(i = 0; i < tecnicas.length;i++){
               ids.push(tecnicas[i].id)
             }
