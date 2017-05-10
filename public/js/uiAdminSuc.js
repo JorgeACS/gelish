@@ -165,92 +165,90 @@ app.config(function($routeProvider, $locationProvider) {
         });
       }
     }).when("/agregarRecepcionista", {
-      templateUrl: 'agregarRecepcionista'
-    }).when("/editarRecepcionista", {
-      templateUrl: 'editarRecepcionista',
-      controller:function($scope){
-        $scope.sucursales = {
-            sucursal01 : {plaza : "Dila", ciudad : "Hermosillo", direccion : "Plaza Dila", telefono : "2-11-33-12",admin : "Dunia Morales"},
-            sucursal02 : {plaza : "Cantabria",ciudad : "Hermosillo", direccion : "Cantabria", telefono : "2-03-33-33",admin : "Lourdes Archuleta"}
-        }
-        $scope.recepcionistas = {
-            recepcionista01 : {
-              nombre : "Yadira",
-              apellido_paterno : "Rodriguez",
-              apellido_materno : "",
-              telefono : "2-00-00-00",
-              sucursal : "Dila"
-             },
-            recepcionista02 : {
-              nombre : "Berenice",
-              apellido_paterno : "Vega",
-              apellido_materno : "",
-              telefono : "2-11-11-11",
-              sucursal : "Dila"
-            },
-            recepcionista03 : {
-              nombre : "Irma",
-              apellido_paterno : "Navarro",
-              apellido_materno : "",
-              telefono : "2-22-22-22",
-              sucursal : "Cantabria"
-            }
-        }
+      templateUrl: 'agregarRecepcionista',
+      controller:function($scope,$window, $http) {
+        $scope.agregarTecnica = function() {
+          user={
+            username: $scope.username,
+            password:$scope.password,
+            nombre:$scope.nombre,
+            apellido:$scope.apellido,
+            correo:$scope.correo,
+            telefono:$scope.telefono,
+            tipo:2
+          };
+          //console.log($locals.user);
+          $http.post('/usuario',user).then((res) => {
+            alert("Recepcionista insertada exitosamente");
+            console.log("Recepcionista insertada correctamente");
+            $window.location.href = "/";
+          })
+
+        };
+        $scope.regex = '[0-9]+';
       }
+    }).when("/editarRecepcionista", {
+      templateUrl: 'editarRecepcionista'
     }).when("/eliminarRecepcionista", {
       templateUrl: 'eliminarRecepcionista'
     }).when("/agregarTecnica", {
-      templateUrl: 'agregarTecnica'
+      templateUrl: 'agregarTecnica',
+      controller:function($scope,$window, $http) {
+        
+        $scope.agregarTecnica = function() {
+          user={
+            nombre:$scope.nombre,
+            apellido:$scope.apellido,
+            correo:$scope.correo,
+            telefono:$scope.telefono,
+            tipo:3
+          };
+          //console.log($locals.user);
+          $http.post('/usuario',user).then((res) => {
+            alert("Tecnica insertada exitosamente");
+            console.log("Tecnica insertada correctamente");
+            $window.location.href = "/";
+          })
+
+        };
+        $scope.regex = '[0-9]+';
+      }
+      controller::
     }).when("/editarTecnica", {
       templateUrl: 'editarTecnica',
       controller:function($scope){
-        $scope.sucursales = {
-            sucursal01 : {plaza : "Dila", ciudad : "Hermosillo", direccion : "Plaza Dila", telefono : "2-11-33-12",admin : "Dunia Morales"},
-            sucursal02 : {plaza : "Cantabria",ciudad : "Hermosillo", direccion : "Cantabria", telefono : "2-03-33-33",admin : "Lourdes Archuleta"}
+        
+        $scope.opcionesTecnica = [{
+          id: true,
+          label: 'Activo'
+        }, {
+          id: false,
+          label: 'Inactivo'
+        }];
+        $http.get('/usuario',{params:{tipo:3}}).then((res)=>{
+          $scope.tecnicas = res.data.tecnicas;
+        });
+
+        $scope.enableFieldset = function(){
+           document.getElementById("editFieldset").disabled = false;
         }
-        $scope.tecnicas = {
-            tecnica01 : {
-              nombre : "Giovana",
-              apellido_paterno : "Flores",
-              apellido_materno : "",
-              telefono : "2-44-44-44",
-              sucursal : "Dila"
-             },
-            tecnica02 : {
-              nombre : "Miriam",
-              apellido_paterno : "Lagarda",
-              apellido_materno : "",
-              telefono : "2-55-55-55",
-              sucursal : "Dila"
+        $scope.editarAdmin = function() {
+          document.getElementById("editFieldset").disabled = true;
+          data = {
+            tecnica : {
+              nombre : $scope.tecnicaSeleccionada.nombre,
+              apellido : $scope.tecnicaSeleccionada.apellido,
+              telefono : $scope.tecnicaSeleccionada.telefono,
+              correo : $scope.tecnicaSeleccionada.correo
             },
-            tecnica03 : {
-              nombre : "Norma",
-              apellido_paterno : "Ramirez",
-              apellido_materno : "",
-              telefono : "2-66-66-66",
-              sucursal : "Cantabria"
-            },
-            tecnica04 : {
-              nombre : "Mayela",
-              apellido_paterno : "Lagarda",
-              apellido_materno : "",
-              telefono : "2-77-77-77",
-              sucursal : "Cantabria"
-            },
-            tecnica05 : {
-              nombre : "Adriana",
-              apellido_paterno : "Morales",
-              apellido_materno : "",
-              telefono : "2-88-88-88",
-              sucursal : "Cantabria"
-            },
-            tecnica06 : {
-              nombre : "Karla",
-              apellido_paterno : "Ripalda",
-              apellido_materno : "",
-              telefono : "2-99-99-99",
-              sucursal : "Dila"
-            }
+            estado : $scope.tecnicaSeleccionada.estado;
+          }
+          $http.put("/usuario", data)
+           .then((res)=>{
+            alert("Administrador de sucursal editado exitosamente");
+            console.log("Administrador de sucursal editado correctamente");
+            $window.location.href = "/";
+           });
         }
       }
     }).when("/eliminarTecnica", {

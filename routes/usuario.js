@@ -65,8 +65,8 @@ class Usuario extends Router{
   }
   post(req,res){
     var data = {};
-    if( req.body.username == null ||
-        req.body.password == null ||
+    if( 
+        (tipo!= 3 && req.body.username == null || req.body.password == null) || //tecnicas no tienen login
         req.body.nombre == null ||
         !validateName(req.body.nombre) ||
         req.body.apellido == null ||
@@ -95,7 +95,7 @@ class Usuario extends Router{
     if (data.tipo == 3){
     	data.tecnica = {
     		estado : true,
-    		fecha_alta : new Date()
+        fecha_alta : new Date()
     	};
     }
     UsuarioDB.post(req.mysql,data,(insertValues,err) =>{

@@ -5,15 +5,35 @@ class UsuarioDB{
         console.log(err);
         return func(null,err);
       }
-      db.query("SELECT * FROM Usuario where tipo = ?", [tipo], function (err, rows) {
+      db.query("SELECT * FROM Usuario where tipo = ?", [tipo], function (err, tecnicas) {
         if(err) {
           console.log(err);
           db.release();
           func(null,err);
         }
         else {
-          db.release();
-          func(rows);
+          if(tipo == 3 && tecnicas.length > 0){
+            var ids = [];
+            for(int i = 0; i < tecnicas.length;i++){
+              ids.push(tecnicas[i].id)
+            }
+            db.query("SELECT * FROM Tecnica where usuario_id in (?) ",[ids],function (err,datosTecnicas){
+              if(err){
+                console.log(err);
+                db.release();
+                func(null,err);
+              }
+              for(int i = 0; i < datosTecnicas.length;i++){
+                tecnicas[i].estado = datosTecnicas[i];
+              }
+              db.release();
+              func(tecnicas);
+            });
+          }else{
+            db.release();
+            func(tecnicas);
+          }
+         
         }
       });
     });

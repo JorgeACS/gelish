@@ -1,7 +1,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Agregar recepcionista</h1>
+            <h1 class="page-header">Agregar tecnica</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -15,7 +15,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-9">
-                            <form role="form" name="addRecepcionista">
+                            <form role="form" name="addAdmin">
                                 <div class="form-group">
                                     <label>Nombre</label>
                                     <input ng-model="nombre" class="form-control" placeholder="Nombre" required>
@@ -23,18 +23,6 @@
                                 <div class="form-group">
                                     <label>Apellido</label>
                                     <input ng-model="apellido" class="form-control" placeholder="Apellido" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Nombre de usuario</label>
-                                    <input ng-model="username" class="form-control" placeholder="Usuario" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Contraseña</label>
-                                    <input ng-model="password" type="password" class="form-control" placeholder="Contraseña" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Confirmar contraseña</label>
-                                    <input type="password" class="form-control" placeholder="Repetir contraseña" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Correo</label>
@@ -48,16 +36,9 @@
                                 <div ng-messages="addAdmin.telefono.$error" style="color:maroon" role="alert">
                                     <div ng-message="required">Telefono requerido</div>
                                     <!--<div ng-message="number">Telefono solo debe de contener numeros</div>!-->
-                                </div>
-                                <!--
-                                <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
-                                    <div ng-message="required">You did not enter a field</div>
-                                    <div ng-message="minlength">Your field is too short</div>
-                                    <div ng-message="maxlength">Your field is too long</div>
-                                </div>
-                                !--> 
+                                </div>               
                                 <button type="reset" class="btn btn-default">Limpiar</button>
-                                <button type="submit" class="btn btn-default" ng-click="agregarRecepcionista()">Agregar</button>
+                                <button type="submit" class="btn btn-default" ng-click="agregarTecnica()">Agregar</button>
                             </form>
                         </div>
                     </div>
