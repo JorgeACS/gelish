@@ -17,26 +17,27 @@
                         <div class="col-lg-9">
                             <div class = "form-group">
                                 <label>Seleccionar Servicio</label>
-                                <select class="form-control" ng-model="servicioSeleccionado" ng-options="y.nombre for (x, y) in servicios">
+                                <select class="form-control" ng-model="servicioSeleccionado" ng-options="y.nombre for (x,y) in servicios" ng-change="enableFieldset()">
                                 </select>
+                            </select>
                             </div>
-                            <form role="form">  
-                                <!--<fieldset id = "editFieldSet" disabled="enabled"> !-->
+                             <form role="form">
+                                <fieldset id = "editFieldset" disabled="enabled">
                                     <div class="form-group">
                                         <label>Nombre</label>
-                                        <input class="form-control" placeholder="Escribir nombre..." ng-model="servicioSeleccionado.nombre">
+                                        <input class="form-control" placeholder="Nombre" ng-model="servicioSeleccionado.nombre" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Descripcion</label>
-                                        <input class="form-control" placeholder="Escribir descripcion..." ng-model="servicioSeleccionado.descripcion">
+                                        <input class="form-control" placeholder="Descripcion" ng-model="servicioSeleccionado.descripcion" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Precio</label>
-                                        <input class="form-control" placeholder="Insertar precio..." ng-model="servicioSeleccionado.precio">
+                                        <input class="form-control" placeholder="Precio" ng-model="servicioSeleccionado.precio" type="number" min="0" required>
                                     </div>
-                                <!--</fieldset>!-->
-
-                                <button type="submit" class="btn btn-default">Cambiar</button>
+                                    
+                                </fieldset>
+                                <button type="button" class="btn btn-default" ng-click="editarServicio()">Actualizar</button>
                                 <button type="reset" class="btn btn-default">Limpiar</button>
                             </form>
                         </div>

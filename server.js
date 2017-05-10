@@ -60,7 +60,8 @@ var Sucursal = require('./routes/sucursal');
 var Sesion = require('./routes/login');
 var Categoria = require('./routes/categoria');
 var Usuario = require('./routes/usuario');
-var Producto = require('./routes/producto')
+var Producto = require('./routes/producto');
+var Servicio = require('./routes/servicio')
 
 var jaderouter = require('./routes/jaderouter');
 
@@ -139,6 +140,7 @@ app.use('/categoria',new Categoria().express())
 app.use('/sucursal',new Sucursal().express())
 app.use('/usuario', new Usuario().express());
 app.use('/producto', new Producto().express());
+app.use('/servicio', new Servicio().express());
 
 app.use('/reporteSucursales',reporteSucursales);
 app.use('/reporteTecnicas',reporteTecnicas);

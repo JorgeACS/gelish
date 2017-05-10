@@ -90,47 +90,74 @@ app.config(function($routeProvider, $locationProvider) {
 
           var producto_id = $scope.productoSeleccionado.id;
           $http.delete("/producto", {params:{id:producto_id}}).then((res)=>{
-            alert("Administrador de sucursal eliminado exitosamente");
-            console.log("Administrador de sucursal  eliminado correctamente");
+            alert("Producto "+ $scope.productoSeleccionado.nombre+" eliminado exitosamente");
+            console.log("Producto "+ $scope.productoSeleccionado.nombre+"  eliminado correctamente");
             $window.location.href = "/";
           });
         }
       }
     }).when("/agregarServicio", {
-      templateUrl: 'agregarServicio'
+      templateUrl: 'agregarServicio',
+      controller:function($scope,$http,$window){
+        $scope.agregarServicio = function(){
+          serv = {
+              nombre : $scope.nombre,
+              descripcion : $scope.descripcion,
+              precio : $scope.precio
+          }
+          $http.post('/servicio',serv).then((res) =>{
+            console.log(res.data);
+            alert("Servicio '"+serv.nombre+"' insertado correctamente.")
+            $window.location.href = "/";
+          })
+        }
+      }
     }).when("/editarServicio", {
       templateUrl: 'editarServicio',
       controller:function($scope){
-        $scope.servicios = {
-          servicio01 : {
-            nombre : "Gelish Manos",
-            descripcion : "",
-            precio : "120"
-           },
-          servicio02 : {
-            nombre : "U\u00f1as acrilicas",
-            descripcion : "",
-            precio : "260"
-          },
-          servicio03 : {
-            nombre : "Manicura",
-            descripcion : "",
-            precio : "150"
-          },
-          servicio04 : {
-            nombre : "Pedicura Spa",
-            descripcion : "",
-            precio : "300"
-          },
-          servicio05 : {
-            nombre : "Pedicura Brasile\u00f1o",
-            descripcion : "",
-            precio : "200"
+       
+        $http.get('/producto').then((res)=>{
+          $scope.productos = res.data;
+        });
+
+
+        $scope.enableFieldset = function(){
+           document.getElementById("editFieldset").disabled = false;
+        }
+        $scope.editarServicio = function() {
+          document.getElementById("editFieldset").disabled = true;
+          data = {
+            servicio : {
+              nombre : $scope.servicioSeleccionado.nombre,
+              precio : $scope.servicioSeleccionado.precio,
+              descripcion : $scope.servicioSeleccionado.descripcion
+            },
+            id : $scope.servicioSeleccionado.id
           }
+          $http.put("/servicio", data)
+           .then((res)=>{
+            alert("Servicio '" + data.servicio.nombre + "' editado exitosamente");
+            console.log("Servicio editado correctamente");
+            $window.location.href = "/";
+           });
         }
       }
     }).when("/eliminarServicio", {
-      templateUrl: 'eliminarServicio'
+      templateUrl: 'eliminarServicio',
+      controller:function($scope,$http,$window){
+        $http.get('/servicio').then((res)=>{
+          $scope.servicios = res.data;
+        });
+        $scope.eliminarServicio = function(){
+
+          var servicio_id = $scope.servicioSeleccionado.id;
+          $http.delete("/servicio", {params:{id:servicio_id}}).then((res)=>{
+            alert("Servicio "+$scope.servicioSeleccionado.nombre + " eliminado exitosamente");
+            console.log("Servicio "+ $scope.servicioSeleccionado.nombre + " eliminado correctamente");
+            $window.location.href = "/";
+          });
+        }
+      }
     }).when("/reporteTecnicas", {
       templateUrl: 'reporteTecnicas',
       controller:function($scope){

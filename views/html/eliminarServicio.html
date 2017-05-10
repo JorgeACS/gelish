@@ -19,15 +19,11 @@
                             <form role="form">  
                                 <div class = "form-group">
                                     <label>Seleccionar Servicio</label>
-                                    <select class="form-control">
-                                        <option value="-1" disabled selected>Seleccione un Servicio</option>
-                                        <option value="1">Servicio X</option>
-                                        <option value="2">Servicio Y</option>
-                                        <option value="2">Servicio Z</option>
+                                    <select class="form-control" ng-model="ServicioSeleccionado" ng-options="y.nombre for (x, y) in servicios">
                                     </select>
                                 </div>
 
-                                <button type="submit" class="btn btn-default">Eliminar</button>
+                                <button type="submit" class="btn btn-default" ng-click="eliminarServicio()">Eliminar</button>
                             </form>
                         </div>
                             <!--<h1>Form Validation States</h1>

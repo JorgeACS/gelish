@@ -33,6 +33,9 @@ loginApp.controller('myCtrl', function($scope, $http, $location,$window,$rootSco
           
         }
 
+      },(err) =>{
+        alert("Nombre de usuario y contrase\u00f1a incorrectos.");
+        $window.location.href = "/";
       })
     };
 });
