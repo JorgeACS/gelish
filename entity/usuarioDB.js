@@ -173,8 +173,9 @@ class UsuarioDB{
                 return func(insertValues);
 
               });
+            }else{
+              db.commit();
             }
-            db.commit();
             //db.release();
             return func(insertValues)
           });
