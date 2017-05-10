@@ -65,7 +65,6 @@ class Usuario extends Router{
   }
   post(req,res){
     var data = {};
-    console.log(req.body);
     if( req.body.username == null ||
         req.body.password == null ||
         req.body.nombre == null ||
@@ -113,12 +112,10 @@ class Usuario extends Router{
 
 function validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    console.log(re.test(email));
     return re.test(email);
 }
 function validateName(name){
     var regex = /^[A-Za-z\s]+$/;
-    console.log(regex.test(name));
     return regex.test(name);
 }
 module.exports = Usuario;
