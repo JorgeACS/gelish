@@ -64,7 +64,7 @@ app.config(function($routeProvider, $locationProvider) {
           data = {
             producto : {
               nombre : $scope.productoSeleccionado.nombre,
-              apellido : $scope.productoSeleccionado.precio,
+              precio : $scope.productoSeleccionado.precio,
               cantidad : $scope.productoSeleccionado.cantidad,
               descripcion : $scope.productoSeleccionado.descripcion,
               categoria_id : $scope.categoriaSeleccionada.id
