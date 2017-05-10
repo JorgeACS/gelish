@@ -53,9 +53,7 @@ class Servicio extends Router{
         req.body.servicio.precio == null ||
         isNaN(req.body.servicio.precio) ||
         req.body.id == null || 
-        isNaN(req.body.id) ||
-        req.body.sucursal_id == null ||
-        isNaN(req.body.sucursal_id))
+        isNaN(req.body.id))
     {
       res.sendStatus(400);
       return false;
