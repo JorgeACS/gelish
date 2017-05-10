@@ -94,7 +94,7 @@ class UsuarioDB{
       db.beginTransaction(function(err){
         if(err){
           db.release();
-          func(err);
+          return func(err);
         }
         if(tecnica){
           db.query("DELETE FROM Tecnica WHERE usuario_id = ?", [id], function(err,deleteId){
@@ -102,19 +102,19 @@ class UsuarioDB{
               console.log(err);
               db.rollback();
               db.release();
-              func(err);
+              return func(err);
             }
             db.query("DELETE FROM Usuario WHERE id = ?", [id], function (err, deleteId) {
               if(err) {
                 console.log(err);
                 db.rollback();
                 db.release();
-                func(null,err);
+                return func(null,err);
               }
               else {
                 db.commit();
                 //db.release();
-                func(deleteId);
+                return func(deleteId);
               }
               
             });//delete usuario query
@@ -125,12 +125,12 @@ class UsuarioDB{
               console.log(err);
               db.rollback();
               db.release();
-              func(null,err);
+              return func(null,err);
             }
             else {
               db.commit();
               //db.release();
-              func(deleteId);
+              return func(deleteId);
             }
           });//delete usuario query
         }
