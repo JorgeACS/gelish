@@ -36,7 +36,7 @@
                   input.form-control(list='adminSuc', name='adminSuc', ng-model='adminSuc', placeholder='Nombre del administrador',required)
                   span(style='color:red', ng-show='form.adminSuc.$invalid && form.adminSuc.$touched  ') El nombre del administrador de sucursal es requerido.
                 datalist#adminSuc
-                  option(ng-repeat='x1 in admins', value="{{x1.nombre+' '+x1.apellido_paterno}}")
+                  option(ng-repeat='x1 in admins', value="{{x1.nombre}}",name="x1.id")
                 button.btn.btn-default(type='reset') Limpiar
                 button.btn.btn-default(type='submit', ng-click='agregarSucursal()',ng-disabled='form.plaza.$invalid || form.ciudad.$invalid || form.telefono.$invalid || form.adminSuc.$invalid') Agregar
         // /.panel-body

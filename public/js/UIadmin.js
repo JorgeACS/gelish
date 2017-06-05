@@ -104,9 +104,16 @@ app.config(function($routeProvider, $locationProvider) {
             ciudad:$scope.ciudad,
             telefono:$scope.telefono,
           };
+          $scope.idAdmin=null;
+          console.log($scope.adminSuc);
+          for (var i in $scope.admins){
+            if($scope.adminSuc == $scope.admins[i].nombre){
+              $scope.idAdmin=$scope.admins[i].id;
+            }
+          }
           var data ={
             sucursal : suc,
-            admin_id : $scope.adminSeleccionado.id
+            admin_id : $scope.idAdmin
           }
           $http.post('/sucursal',data).then((res) => {
             alert("Sucursal insertada exitosamente");
