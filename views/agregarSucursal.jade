@@ -1,1 +1,46 @@
-include html/agregarSucursal.html
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Agregar sucursal
+    // /.col-lg-12
+  // /.row
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          | Información basica
+        .panel-body
+          .row
+            .col-lg-9
+              form(role='form', name="form")
+                .form-group
+                  label Plaza
+                  input.form-control(ng-model='plaza', name="plaza", placeholder='Plaza',required)
+                  span(style='color:red', ng-show='form.plaza.$touched && form.plaza.$invalid') El nombre de la plaza es requerido.
+                .form-group
+                  label Ciudad
+                  input.form-control(ng-model='ciudad', name="ciudad" ,placeholder='Ciudad', required)
+                  span(style='color:red', ng-show='form.ciudad.$touched && form.ciudad.$invalid') El nombre de la ciudad es requerido.
+                .form-group
+                  label Teléfono
+                  input.form-control(ng-model='telefono', ng-pattern='onlyNumbers', name="telefono" placeholder='Numero de telfono',required)
+                  span(style='color:red', ng-show='form.telefono.$error.required && form.telefono.$touched') El número teléfono es requerido.
+                  br
+                  span(style='color:red', ng-show='form.telefono.$invalid && form.telefono.$touched  ') El número teléfono es incorrecto.
+                  br
+                //.form-group
+                  //label Administrador de Sucursal
+                  //select.form-control(ng-model='adminSeleccionado',name="adminSeleccionado", ng-options="y.nombre + ' ' + y.apellido_paterno for (x, y) in admins")
+                .form-group
+                  label Administrador de Sucursal
+                  input.form-control(list='adminSuc', name='adminSuc', ng-model='adminSuc', placeholder='Nombre del administrador',required)
+                  span(style='color:red', ng-show='form.adminSuc.$invalid && form.adminSuc.$touched  ') El nombre del administrador de sucursal es requerido.
+                datalist#adminSuc
+                  option(ng-repeat='x1 in admins', value="{{x1.nombre+' '+x1.apellido_paterno}}")
+                button.btn.btn-default(type='reset') Limpiar
+                button.btn.btn-default(type='submit', ng-click='agregarSucursal()',ng-disabled='form.plaza.$invalid || form.ciudad.$invalid || form.telefono.$invalid || form.adminSuc.$invalid') Agregar
+        // /.panel-body
+      // /.panel
+    // /.col-lg-12
+  // /.row
+// /#page-wrapper

@@ -39,7 +39,7 @@
                   span(style='color:red', ng-show='addAdmin.correo.$error.required && addAdmin.correo.$touched') El correo electronico es requerido.
                   span(style='color:red', ng-show='addAdmin.correo.$error.email') El correo electronico es incorrecto.                  
                 .form-group
-                  label Telefono
+                  label Teléfono
                   input.form-control(type='text', ng-model='telefono',ng-pattern='onlyNumbers', name='telefono' placeholder='Número de teléfono', required)
                   span(style='color:red', ng-show='addAdmin.telefono.$error.required && addAdmin.telefono.$touched') El número teléfono es requerido.
                   br

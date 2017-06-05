@@ -92,12 +92,13 @@ app.config(function($routeProvider, $locationProvider) {
         $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
           $scope.admins = res.data;
         });
+        $scope.onlyNumbers = /^\d+$/;
         $scope.agregarSucursal = function() {
 
-          if($scope.adminSeleccionado == null){
+          /*if($scope.adminSeleccionado == null){//seria validar si el admin existe ya que ahora se puede autocompletar
             alert("Seleccione un administrador de sucursal.");
             return;
-          }
+          }*/
           var suc={
             plaza:$scope.plaza,
             ciudad:$scope.ciudad,
