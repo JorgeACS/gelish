@@ -17,25 +17,28 @@ app.config(function($routeProvider, $locationProvider) {
     }).when("/agregarAdmin", {
       templateUrl: 'agregarAdmin',
       controller:function($scope,$window, $http) {
-        $scope.agregarAdmin = function() {
-          user={
-            username: $scope.username,
-            password:$scope.password,
-            nombre:$scope.nombre,
-            apellido:$scope.apellido,
-            correo:$scope.correo,
-            telefono:$scope.telefono,
-            tipo:1
-          };
-          //console.log($locals.user);
-          $http.post('/usuario',user).then((res) => {
-            alert("Administrador de sucursal insertado exitosamente");
-            console.log("Administrador de sucursal insertado correctamente");
-            $window.location.href = "/";
-          })
-
-        };
-        $scope.regex = '[0-9]+';
+        $scope.onlyNumbers = /^\d+$/;
+        $scope.agregarAd = function(){
+          if($scope.password != $scope.password2){
+            window.alert("No coinciden las contraseñas")
+          }else{
+            user={
+              username: $scope.username,
+              password:$scope.password,
+              nombre:$scope.nombre,
+              apellido:$scope.apellido,
+              correo:$scope.correo,
+              telefono:$scope.telefono,
+              tipo:1
+            };
+            //console.log($locals.user);
+            $http.post('/usuario',user).then((res) => {
+              alert("Administrador de sucursal insertado exitosamente");
+              console.log("Administrador de sucursal insertado correctamente");
+              $window.location.href = "/";
+            })
+          }
+        }
       }
     }).when("/editarAdmin", {
       templateUrl: 'editarAdmin',
@@ -72,7 +75,7 @@ app.config(function($routeProvider, $locationProvider) {
         $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
           $scope.admins = res.data;
         });
-        
+
         $scope.eliminarAdmin = function() {
           var user_id = $scope.adminSeleccionado.id;
           $http.delete("/usuario", {params:{id:user_id}}).then((res)=>{
@@ -121,13 +124,13 @@ app.config(function($routeProvider, $locationProvider) {
         $http.get('/sucursal').then((res) =>{
           $scope.sucursales = res.data;
         })
-        
+
         $http.get('/usuario',{params:{tipo:1}}).then((res)=>{
           $scope.admins = res.data;
         });
 
         $scope.editarSucursal = function() {
-          
+
           if($scope.adminSeleccionado == null){
             alert("Seleccione un administrador de sucursal.");
             return;
@@ -156,7 +159,7 @@ app.config(function($routeProvider, $locationProvider) {
         $http.get('/sucursal',{params:{tipo:1}}).then((res)=>{
           $scope.sucursales = res.data;
         });
-        
+
         $scope.eliminarSucursal = function() {
           var sucursal_id = $scope.sucursalSeleccionada.id;
           $http.delete("/sucursal", {params:{id:sucursal_id}}).then((res)=>{

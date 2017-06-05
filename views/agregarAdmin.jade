@@ -1,1 +1,55 @@
-include html/agregarAdmin.html
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Agregar administrador de sucursal
+    // /.col-lg-12
+  // /.row
+  .row
+    .col-lg-12
+      .panel.panel-default
+        .panel-heading
+          | Información basica
+        .panel-body
+          .row
+            .col-lg-9
+              form(role='form', name='addAdmin')
+                .form-group
+                  label Nombre
+                  input.form-control(ng-model='nombre', name='nombre', placeholder='Nombre', required,autofocus)
+                  span(style='color:red', ng-show='addAdmin.nombre.$touched && addAdmin.nombre.$invalid') El nombre es requerido.  
+                .form-group
+                  label Apellido
+                  input.form-control(ng-model='apellido',name='apellido', placeholder='Apellido', required)
+                  span(style='color:red', ng-show='addAdmin.apellido.$touched && addAdmin.apellido.$invalid') El apellido es requerido.      
+                .form-group
+                  label Nombre de usuario
+                  input.form-control(ng-model='username',name="username", placeholder='Usuario', required='')
+                  span(style='color:red', ng-show='addAdmin.username.$touched && addAdmin.username.$invalid') El nombre de usuario es requerido.
+                .form-group
+                  label Contraseña
+                  input.form-control(ng-model='password',name="password", type='password', placeholder='Contraseña', required)
+                  span(style='color:red', ng-show='addAdmin.password.$touched && addAdmin.password.$invalid') Contraseña requerida.
+                .form-group
+                  label Confirmar contraseña
+                  input.form-control(ng-model='password2', name="password2",type='password', placeholder='Repetir contraseña', required)
+                  span(style='color:red', ng-show='addAdmin.password2.$touched && addAdmin.password2.$invalid') Favor de comfirmar su contraseña.
+                .form-group
+                  label Correo
+                  input.form-control(ng-model='correo', name="correo", type='email', placeholder='Correo electronico', required)
+                  span(style='color:red', ng-show='addAdmin.correo.$error.required && addAdmin.correo.$touched') El correo electronico es requerido.
+                  span(style='color:red', ng-show='addAdmin.correo.$error.email') El correo electronico es incorrecto.                  
+                .form-group
+                  label Telefono
+                  input.form-control(type='text', ng-model='telefono',ng-pattern='onlyNumbers', name='telefono' placeholder='Número de teléfono', required)
+                  span(style='color:red', ng-show='addAdmin.telefono.$error.required && addAdmin.telefono.$touched') El número teléfono es requerido.
+                  br
+                  span(style='color:red', ng-show='addAdmin.telefono.$invalid && addAdmin.telefono.$touched  ') El número teléfono es incorrecto.
+                  br
+                  button.btn.btn-default(type='reset') Limpiar
+                  button.btn.btn-default(type='submit', ng-click='agregarAd()' ng-disabled='addAdmin.nombre.$invalid || addAdmin.username.$invalid || addAdmin.apellido.$invalid || addAdmin.password.$invalid || addAdmin.password2.$invalid || addAdmin.correo.$invalid || addAdmin.telefono.$invalid') Agregar
+          // /.row (nested)
+        // /.panel-body
+      // /.panel
+    // /.col-lg-12
+  // /.row
+// /#page-wrapper
